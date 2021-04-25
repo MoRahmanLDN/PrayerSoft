@@ -2,6 +2,6 @@
 {
     public interface IClock
     {
-
+        string GetTime();
     }
 }
