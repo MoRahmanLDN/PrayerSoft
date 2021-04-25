@@ -5,7 +5,7 @@ namespace PrayerSoft
     [AddINotifyPropertyChangedInterface]
     public class CurrentTimeViewModel
     {
-        IClock clock;
+        readonly IClock clock;
 
         public CurrentTimeViewModel(IClock clock)
         {
@@ -13,10 +13,12 @@ namespace PrayerSoft
         }
 
         public string CurrentTime { get; set; }
+        public string CurrentDate { get; set; }
 
         public void Refresh()
         {
-            this.CurrentTime = this.clock.GetTime();
+            CurrentTime = clock.GetTime();
+            CurrentDate = clock.GetDate();
         }
     }
 }

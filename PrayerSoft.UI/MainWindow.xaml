@@ -11,6 +11,9 @@
         <root:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <Label Content="{Binding Today.CurrentTime}"></Label>
+        <StackPanel>
+            <Label Content="{Binding Today.CurrentTime}"></Label>
+            <Label Content="{Binding Today.CurrentDate}"></Label>
+        </StackPanel>
     </Grid>
 </Window>

@@ -3,5 +3,6 @@
     public interface IClock
     {
         string GetTime();
+        string GetDate();
     }
 }
