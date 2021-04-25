@@ -4,14 +4,10 @@
     {
         string time;
         string date;
+        string islamicDate;
 
         public MockClock()
         {
-        }
-
-        public string GetDate()
-        {
-            return date;
         }
 
         public string GetTime()
@@ -24,9 +20,24 @@
             this.time = time;
         }
 
+        public string GetDate()
+        {
+            return date;
+        }
+
         public void SetDate(string date)
         {
             this.date = date;
+        }
+
+        public string GetIslamicDate()
+        {
+            return islamicDate;
+        }
+
+        public void SetIslamicDate(string islamicDate)
+        {
+            this.islamicDate = islamicDate;
         }
     }
 }

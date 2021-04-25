@@ -4,5 +4,6 @@
     {
         string GetTime();
         string GetDate();
+        string GetIslamicDate();
     }
 }

@@ -16,7 +16,7 @@ namespace PrayerSoft.Tests
         }
 
         [TestMethod]
-        public void OnRefreshCurrentTimeIsDisplayed()
+        public void OnRefreshCurrentTimeIsUpdated()
         {
             var expectedTime = "10:00:00";
             clock.SetTime(expectedTime);
@@ -28,7 +28,7 @@ namespace PrayerSoft.Tests
         }
 
         [TestMethod]
-        public void OnRefreshCurrentDateIsDisplayed()
+        public void OnRefreshCurrentDateIsUpdated()
         {
             var expectedDate = "Sunday, 25 April 2021";
             clock.SetDate(expectedDate);
@@ -36,6 +36,18 @@ namespace PrayerSoft.Tests
             viewModel.Refresh();
 
             var actualDate = viewModel.CurrentDate;
+            Assert.AreEqual(expectedDate, actualDate);
+        }
+
+        [TestMethod]
+        public void OnRefreshCurrentIslamicDateIsUpdated()
+        {
+            var expectedDate = "13 Ramadan 1442";
+            clock.SetIslamicDate(expectedDate);
+
+            viewModel.Refresh();
+
+            var actualDate = viewModel.CurrentIslamicDate;
             Assert.AreEqual(expectedDate, actualDate);
         }
     }

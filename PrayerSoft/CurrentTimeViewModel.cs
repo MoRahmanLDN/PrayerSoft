@@ -14,11 +14,13 @@ namespace PrayerSoft
 
         public string CurrentTime { get; set; }
         public string CurrentDate { get; set; }
+        public string CurrentIslamicDate { get; set; }
 
         public void Refresh()
         {
             CurrentTime = clock.GetTime();
             CurrentDate = clock.GetDate();
+            CurrentIslamicDate = clock.GetIslamicDate();
         }
     }
 }
