@@ -1,5 +1,8 @@
-﻿namespace PrayerSoft
+﻿using PropertyChanged;
+
+namespace PrayerSoft
 {
+    [AddINotifyPropertyChangedInterface]
     public class CurrentTimeViewModel
     {
         IClock clock;
