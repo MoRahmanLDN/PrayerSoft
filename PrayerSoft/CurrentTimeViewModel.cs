@@ -9,15 +9,11 @@
             this.clock = clock;
         }
 
-        public string CurrentTime { 
-            get
-            {
-                return clock.GetTime();
-            }
-        }
+        public string CurrentTime { get; set; }
 
         public void Refresh()
         {
+            this.CurrentTime = this.clock.GetTime();
         }
     }
 }
