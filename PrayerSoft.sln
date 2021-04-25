@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrayerSoft.Tests", "PrayerS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrayerSoft", "PrayerSoft\PrayerSoft.csproj", "{44C59C22-9FAA-41E1-A62F-7AAE26E59C0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrayerSoft.UI", "PrayerSoft.UI\PrayerSoft.UI.csproj", "{72F5F3A1-1701-4A7E-9344-10C4D1FEC41F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44C59C22-9FAA-41E1-A62F-7AAE26E59C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C59C22-9FAA-41E1-A62F-7AAE26E59C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C59C22-9FAA-41E1-A62F-7AAE26E59C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F5F3A1-1701-4A7E-9344-10C4D1FEC41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F5F3A1-1701-4A7E-9344-10C4D1FEC41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F5F3A1-1701-4A7E-9344-10C4D1FEC41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F5F3A1-1701-4A7E-9344-10C4D1FEC41F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
