@@ -6,10 +6,12 @@ namespace PrayerSoft
     public class CurrentTimeViewModel
     {
         readonly IClock clock;
+        readonly Format format;
 
         public CurrentTimeViewModel(IClock clock)
         {
             this.clock = clock;
+            format = new Format();
         }
 
         public string CurrentTime { get; set; }
@@ -18,9 +20,10 @@ namespace PrayerSoft
 
         public void Refresh()
         {
-            CurrentTime = clock.GetTime();
-            CurrentDate = clock.GetDate();
-            CurrentIslamicDate = clock.GetIslamicDate();
+            var now = clock.Read();
+            CurrentTime = format.Time(now);
+            CurrentDate = format.Date(now);
+            CurrentIslamicDate = format.IslamicDate(now);
         }
     }
 }

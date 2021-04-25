@@ -1,9 +1,9 @@
-﻿namespace PrayerSoft
+﻿using System;
+
+namespace PrayerSoft
 {
     public interface IClock
     {
-        string GetTime();
-        string GetDate();
-        string GetIslamicDate();
+        DateTime Read();
     }
 }

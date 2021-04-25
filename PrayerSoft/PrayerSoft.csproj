@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Clock.cs" />
     <Compile Include="CurrentTimeViewModel.cs" />
+    <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

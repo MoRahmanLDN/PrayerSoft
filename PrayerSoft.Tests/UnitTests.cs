@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace PrayerSoft.Tests
 {
@@ -19,7 +20,7 @@ namespace PrayerSoft.Tests
         public void OnRefreshCurrentTimeIsUpdated()
         {
             var expectedTime = "10:00:00";
-            clock.SetTime(expectedTime);
+            clock.Set(new DateTime(2021, 04, 25, 10, 00, 00));
 
             viewModel.Refresh();
 
@@ -31,7 +32,7 @@ namespace PrayerSoft.Tests
         public void OnRefreshCurrentDateIsUpdated()
         {
             var expectedDate = "Sunday, 25 April 2021";
-            clock.SetDate(expectedDate);
+            clock.Set(new DateTime(2021, 04, 25));
 
             viewModel.Refresh();
 
@@ -43,7 +44,7 @@ namespace PrayerSoft.Tests
         public void OnRefreshCurrentIslamicDateIsUpdated()
         {
             var expectedDate = "13 Ramadan 1442";
-            clock.SetIslamicDate(expectedDate);
+            clock.Set(new DateTime(2021, 04, 25));
 
             viewModel.Refresh();
 

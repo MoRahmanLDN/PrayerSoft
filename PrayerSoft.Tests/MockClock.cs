@@ -1,43 +1,23 @@
-﻿namespace PrayerSoft.Tests
+﻿using System;
+
+namespace PrayerSoft.Tests
 {
     internal class MockClock: IClock
     {
-        string time;
-        string date;
-        string islamicDate;
+        DateTime dateTime;
 
         public MockClock()
         {
         }
 
-        public string GetTime()
+        public DateTime Read()
         {
-            return time;
+            return dateTime;
         }
 
-        public void SetTime(string time)
+        public void Set(DateTime dateTime)
         {
-            this.time = time;
-        }
-
-        public string GetDate()
-        {
-            return date;
-        }
-
-        public void SetDate(string date)
-        {
-            this.date = date;
-        }
-
-        public string GetIslamicDate()
-        {
-            return islamicDate;
-        }
-
-        public void SetIslamicDate(string islamicDate)
-        {
-            this.islamicDate = islamicDate;
+            this.dateTime = dateTime;
         }
     }
 }
