@@ -1,7 +1,9 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 
 namespace PrayerSoft
 {
+    [AddINotifyPropertyChangedInterface]
     public class PrayerTimesTodayViewModel
     {
         private IClock clock;

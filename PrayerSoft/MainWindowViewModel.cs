@@ -23,18 +23,28 @@ namespace PrayerSoft
 
         public void OnLoaded()
         {
-            repository.Load(File.ReadAllText("calendar.csv"));
-
-            var timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += OnTick;
-            timer.Start();
+            LoadCalendar();
+            Refresh();
+            SetTimer();
         }
 
-        private void OnTick(object sender, EventArgs e)
+        private void LoadCalendar()
+        {
+            repository.Load(File.ReadAllText("calendar.csv"));
+        }
+
+        private void Refresh()
         {
             Today.Refresh();
             PrayersToday.Refresh();
+        }
+
+        private void SetTimer()
+        {
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (sender, eventArgs) => Refresh();
+            timer.Start();
         }
     }
 }

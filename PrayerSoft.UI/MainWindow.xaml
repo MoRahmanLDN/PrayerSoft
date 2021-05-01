@@ -17,7 +17,7 @@
     </d:Window.DataContext>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnLoaded}"/>
+            <i:CallMethodAction MethodName="OnLoaded" TargetObject="{Binding}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
