@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PrayerSoft.Tests
+namespace PrayerSoft
 {
     public class PrayerTimesTodayViewModel
     {
@@ -31,7 +31,7 @@ namespace PrayerSoft.Tests
         {
             DateTime today = clock.Read();
             var prayerTimes = repository.Get(today);
-            
+
             FajrBegins = format.ShortTime(prayerTimes.FajrBegins);
             FajrJamaat = format.ShortTime(prayerTimes.FajrJamaat);
 
