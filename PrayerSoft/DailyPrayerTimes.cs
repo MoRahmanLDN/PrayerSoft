@@ -4,7 +4,6 @@ namespace PrayerSoft
 {
     public class DailyPrayerTimes
     {
-        public DateTime Date { get; set; }
         public DateTime FajrBegins { get; set; }
         public DateTime FajrJamaat { get; set; }
 
