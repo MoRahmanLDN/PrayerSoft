@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PrayerSoft.Tests
+namespace PrayerSoft
 {
     public interface IPrayerTimesRepository
     {

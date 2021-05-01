@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DailyPrayerTimesRepositoryTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />
     <Compile Include="CurrentTimeViewModelTests.cs" />
     <Compile Include="Mocks\MockPrayerTimesRepository.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

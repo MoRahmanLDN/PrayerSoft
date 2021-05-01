@@ -8,7 +8,7 @@ namespace PrayerSoft.Tests
     public class PrayerTimesTodayViewModelTests
     {
         [TestMethod]
-        public void CanLoad()
+        public void OnRefreshTodaysPrayersAreUpdated()
         {
             var clock = new MockClock();
             var repository = new MockPrayerTimesRepository();
