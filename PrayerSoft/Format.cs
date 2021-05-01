@@ -5,9 +5,14 @@ namespace PrayerSoft
 {
     public class Format
     {
-        public string Time(DateTime date)
+        public string LongTime(DateTime date)
         {
             return date.ToString("HH:mm:ss");
+        }
+
+        public string ShortTime(DateTime date)
+        {
+            return date.ToString("HH:mm");
         }
 
         public string Date(DateTime date)

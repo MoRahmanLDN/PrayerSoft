@@ -21,7 +21,7 @@ namespace PrayerSoft
         public void Refresh()
         {
             var now = clock.Read();
-            CurrentTime = format.Time(now);
+            CurrentTime = format.LongTime(now);
             CurrentDate = format.Date(now);
             CurrentIslamicDate = format.IslamicDate(now);
         }

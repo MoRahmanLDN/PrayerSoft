@@ -50,9 +50,12 @@
   <ItemGroup>
     <Compile Include="Clock.cs" />
     <Compile Include="CurrentTimeViewModel.cs" />
+    <Compile Include="DailyPrayerTimes.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
+    <Compile Include="IPrayerTimesRepository.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

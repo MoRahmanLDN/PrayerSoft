@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PrayerSoft.Tests
+namespace PrayerSoft.Tests.Mocks
 {
-    internal class MockClock: IClock
+    internal class MockClock : IClock
     {
         DateTime dateTime;
 

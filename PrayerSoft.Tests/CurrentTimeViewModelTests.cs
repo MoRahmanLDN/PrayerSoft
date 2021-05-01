@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrayerSoft.Tests.Mocks;
 using System;
 
 namespace PrayerSoft.Tests
 {
     [TestClass]
-    public class UnitTests
+    public class CurrentTimeViewModelTests
     {
         MockClock clock;
         CurrentTimeViewModel viewModel;
