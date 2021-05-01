@@ -16,6 +16,9 @@ namespace PrayerSoft
             public DateTime FajrBegins { get; set; }
             public DateTime FajrJamaat { get; set; }
 
+            public DateTime ZuhrBegins { get; set; }
+            public DateTime ZuhrJamaat { get; set; }
+
             public DateTime AsrBegins { get; set; }
             public DateTime AsrJamaat { get; set; }
 
@@ -51,6 +54,9 @@ namespace PrayerSoft
             {
                 FajrBegins = Combine(record.Date, record.FajrBegins),
                 FajrJamaat = Combine(record.Date, record.FajrJamaat),
+
+                ZuhrBegins = Combine(record.Date, record.ZuhrBegins),
+                ZuhrJamaat = Combine(record.Date, record.ZuhrJamaat),
 
                 AsrBegins = Combine(record.Date, record.AsrBegins),
                 AsrJamaat = Combine(record.Date, record.AsrJamaat),

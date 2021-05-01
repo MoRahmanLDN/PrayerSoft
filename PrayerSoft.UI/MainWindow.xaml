@@ -38,12 +38,14 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="2" Content="Fajr"/>
-                <Label Grid.Column="0" Grid.Row="3" Content="Asr"/>
-                <Label Grid.Column="0" Grid.Row="4" Content="Maghrib"/>
-                <Label Grid.Column="0" Grid.Row="5" Content="Isha"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="Zuhr"/>
+                <Label Grid.Column="0" Grid.Row="4" Content="Asr"/>
+                <Label Grid.Column="0" Grid.Row="5" Content="Maghrib"/>
+                <Label Grid.Column="0" Grid.Row="6" Content="Isha"/>
 
                 <Label Grid.Column="1" Grid.Row="1" Content="Begins"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Jamaat"/>
@@ -51,14 +53,17 @@
                 <Label Grid.Column="1" Grid.Row="2" Content="{Binding PrayersToday.FajrBegins}"/>
                 <Label Grid.Column="2" Grid.Row="2" Content="{Binding PrayersToday.FajrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="3" Content="{Binding PrayersToday.AsrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="3" Content="{Binding PrayersToday.AsrJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="{Binding PrayersToday.ZuhrBegins}"/>
+                <Label Grid.Column="2" Grid.Row="3" Content="{Binding PrayersToday.ZuhrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="4" Content="{Binding PrayersToday.MaghribBegins}"/>
-                <Label Grid.Column="2" Grid.Row="4" Content="{Binding PrayersToday.MaghribJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="4" Content="{Binding PrayersToday.AsrBegins}"/>
+                <Label Grid.Column="2" Grid.Row="4" Content="{Binding PrayersToday.AsrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="5" Content="{Binding PrayersToday.IshaBegins}"/>
-                <Label Grid.Column="2" Grid.Row="5" Content="{Binding PrayersToday.IshaJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="5" Content="{Binding PrayersToday.MaghribBegins}"/>
+                <Label Grid.Column="2" Grid.Row="5" Content="{Binding PrayersToday.MaghribJamaat}"/>
+
+                <Label Grid.Column="1" Grid.Row="6" Content="{Binding PrayersToday.IshaBegins}"/>
+                <Label Grid.Column="2" Grid.Row="6" Content="{Binding PrayersToday.IshaJamaat}"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -20,6 +20,9 @@ namespace PrayerSoft
         public string FajrBegins { get; set; }
         public string FajrJamaat { get; set; }
 
+        public string ZuhrBegins { get; set; }
+        public string ZuhrJamaat { get; set; }
+
         public string AsrBegins { get; set; }
         public string AsrJamaat { get; set; }
 
@@ -32,10 +35,13 @@ namespace PrayerSoft
         public void Refresh()
         {
             DateTime today = clock.Read();
-            var prayerTimes = repository.Get(today);
+            DailyPrayerTimes prayerTimes = repository.Get(today);
 
             FajrBegins = format.ShortTime(prayerTimes.FajrBegins);
             FajrJamaat = format.ShortTime(prayerTimes.FajrJamaat);
+
+            ZuhrBegins = format.ShortTime(prayerTimes.ZuhrBegins);
+            ZuhrJamaat = format.ShortTime(prayerTimes.ZuhrJamaat);
 
             AsrBegins = format.ShortTime(prayerTimes.AsrBegins);
             AsrJamaat = format.ShortTime(prayerTimes.AsrJamaat);
