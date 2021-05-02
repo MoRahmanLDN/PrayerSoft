@@ -8,7 +8,8 @@
         xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
         xmlns:root="clr-namespace:PrayerSoft;assembly=PrayerSoft"
         mc:Ignorable="d"
-        Title="PrayerSoft" Height="576" Width="1024">
+        Title="PrayerSoft" Height="576" Width="1024"
+        KeyDown="Window_KeyDown">
     <Window.DataContext>
         <root:MainWindowViewModel/>
     </Window.DataContext>

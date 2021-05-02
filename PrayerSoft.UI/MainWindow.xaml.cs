@@ -24,5 +24,35 @@ namespace PrayerSoft.UI
         {
             InitializeComponent();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F11)
+            {
+                ToggleFullScreen();
+            }
+        }
+
+        private bool isFullscreen;
+
+        private void ToggleFullScreen()
+        {
+            isFullscreen = !isFullscreen;
+
+            if (isFullscreen)
+            {
+                this.Visibility = Visibility.Collapsed;
+                this.Topmost = true;
+                this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
+                this.Visibility = Visibility.Visible;
+            }
+            else
+            {   
+                this.Topmost = false;
+                this.WindowState = WindowState.Normal;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+        }
     }
 }
