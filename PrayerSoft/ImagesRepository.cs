@@ -1,21 +1,26 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace PrayerSoft
 {
     public class ImagesRepository: IImagesRepository
     {
-        private string[] images;
+        private List<string> images;
 
-        public void Load(string path)
+        public void Load(string folder, string pattern)
         {
-            images = Directory.GetFiles(path);
+            images = new DirectoryInfo(folder)
+                .GetFiles(pattern)
+                .Select(x => x.FullName)
+                .ToList();
         }
 
         private int index;
 
         public string GetNextImage()
         {
-            if (index == images.Length)
+            if (index == images.Count)
             {
                 index = 0;
             }

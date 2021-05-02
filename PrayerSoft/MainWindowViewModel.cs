@@ -35,7 +35,7 @@ namespace PrayerSoft
         private void LoadCalendar()
         {
             repository.Load(File.ReadAllText("calendar.csv"));
-            imagesRepository.Load(@".");
+            imagesRepository.Load(@"Images","*.jpg");
         }
 
         private void Refresh()
