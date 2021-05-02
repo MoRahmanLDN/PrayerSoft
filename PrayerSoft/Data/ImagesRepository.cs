@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 
-namespace PrayerSoft
+namespace PrayerSoft.Data
 {
-    public class ImagesRepository: IImagesRepository
+    public class ImagesRepository : IImagesRepository
     {
         private List<string> images;
 

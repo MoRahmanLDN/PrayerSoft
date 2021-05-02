@@ -65,13 +65,13 @@
   <ItemGroup>
     <Compile Include="Clock.cs" />
     <Compile Include="CurrentTimeViewModel.cs" />
-    <Compile Include="DailyPrayersRepository.cs" />
+    <Compile Include="Data\DailyPrayersRepository.cs" />
     <Compile Include="DailyPrayerTimes.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
-    <Compile Include="IImagesRepository.cs" />
-    <Compile Include="ImagesRepository.cs" />
-    <Compile Include="IPrayerTimesRepository.cs" />
+    <Compile Include="Data\IImagesRepository.cs" />
+    <Compile Include="Data\ImagesRepository.cs" />
+    <Compile Include="Data\IPrayerTimesRepository.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

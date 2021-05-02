@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿using PrayerSoft.Data;
+using PropertyChanged;
 using System;
 
 namespace PrayerSoft

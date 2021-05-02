@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PrayerSoft
+namespace PrayerSoft.Data
 {
     public interface IPrayerTimesRepository
     {

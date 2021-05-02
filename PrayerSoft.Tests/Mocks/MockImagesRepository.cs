@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PrayerSoft.Data;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {

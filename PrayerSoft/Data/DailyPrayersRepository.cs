@@ -5,14 +5,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace PrayerSoft
+namespace PrayerSoft.Data
 {
-    public class DailyPrayerTimesRepository: IPrayerTimesRepository
+    public class DailyPrayerTimesRepository : IPrayerTimesRepository
     {
         public class DailyPrayerTimesRecord
         {
             public DateTime Date { get; set; }
-            
+
             public DateTime FajrBegins { get; set; }
             public DateTime FajrJamaat { get; set; }
 
@@ -60,7 +60,7 @@ namespace PrayerSoft
 
                 AsrBegins = Combine(record.Date, record.AsrBegins),
                 AsrJamaat = Combine(record.Date, record.AsrJamaat),
-                
+
                 MaghribBegins = Combine(record.Date, record.MaghribBegins),
                 MaghribJamaat = Combine(record.Date, record.MaghribJamaat),
 
