@@ -69,10 +69,13 @@
     <Compile Include="DailyPrayerTimes.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
+    <Compile Include="IImagesRepository.cs" />
+    <Compile Include="ImagesRepository.cs" />
     <Compile Include="IPrayerTimesRepository.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlideshowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

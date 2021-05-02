@@ -49,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\MockImagesRepository.cs" />
+    <Compile Include="SlideshowViewModelTests.cs" />
     <Compile Include="DailyPrayerTimesRepositoryTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />
     <Compile Include="CurrentTimeViewModelTests.cs" />

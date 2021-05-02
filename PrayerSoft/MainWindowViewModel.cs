@@ -8,17 +8,21 @@ namespace PrayerSoft
     {
         private Clock clock;
         private DailyPrayerTimesRepository repository;
+        private ImagesRepository imagesRepository;
 
         public CurrentTimeViewModel Today { get; set; }
         public PrayerTimesTodayViewModel PrayersToday { get; set; }
+        public SlideshowViewModel Slideshow { get; set; }
 
         public MainWindowViewModel()
         {
             clock = new Clock();
             repository = new DailyPrayerTimesRepository();
-            
+            imagesRepository = new ImagesRepository();
+
             Today = new CurrentTimeViewModel(clock);
             PrayersToday = new PrayerTimesTodayViewModel(clock, repository);
+            Slideshow = new SlideshowViewModel(clock, imagesRepository, TimeSpan.FromSeconds(5));
         }
 
         public void OnLoaded()
@@ -31,12 +35,14 @@ namespace PrayerSoft
         private void LoadCalendar()
         {
             repository.Load(File.ReadAllText("calendar.csv"));
+            imagesRepository.Load(@".");
         }
 
         private void Refresh()
         {
             Today.Refresh();
             PrayersToday.Refresh();
+            Slideshow.Refresh();
         }
 
         private void SetTimer()
