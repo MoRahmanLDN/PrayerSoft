@@ -70,7 +70,6 @@
     <Compile Include="DesignTime\CurrentTimeDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\PrayerTimesTodayDesignTimeViewModel.cs" />
-    <Compile Include="DesignTime\SlideshowDesignTimeViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
