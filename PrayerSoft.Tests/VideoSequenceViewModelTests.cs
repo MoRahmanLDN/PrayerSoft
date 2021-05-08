@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
@@ -20,7 +21,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CanPlayFirstVideo()
         {   
-            viewModel.Play();
+            viewModel.Refresh();
 
             Assert.AreEqual("video1", viewModel.Video);
         }
@@ -28,9 +29,10 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CanPlayNextVideo()
         {
-            viewModel.Play();
+            viewModel.Refresh();
+            viewModel.HasEnded = true;
 
-            viewModel.OnVideoFinished();
+            viewModel.Refresh();
 
             Assert.AreEqual("video2", viewModel.Video);
         }

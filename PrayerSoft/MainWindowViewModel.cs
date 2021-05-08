@@ -39,7 +39,6 @@ namespace PrayerSoft
             LoadData();
             Refresh();
             SetRefreshTimer();
-            VideoSequence.Play();
         }
 
         private void LoadData()
@@ -54,6 +53,7 @@ namespace PrayerSoft
             Today.Refresh();
             PrayersToday.Refresh();
             Slideshow.Refresh();
+            VideoSequence.Refresh();
         }
 
         private void SetRefreshTimer()

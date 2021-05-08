@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\Video.cs" />
     <Compile Include="DesignTime\CurrentTimeDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\PrayerTimesTodayDesignTimeViewModel.cs" />

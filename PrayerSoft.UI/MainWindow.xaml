@@ -7,15 +7,16 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
         xmlns:root="clr-namespace:PrayerSoft;assembly=PrayerSoft"
+        xmlns:c="clr-namespace:PrayerSoft.UI.Controls"
         mc:Ignorable="d"
         Title="PrayerSoft" Height="576" Width="1024"
         KeyDown="Window_KeyDown">
     <Window.Resources>
         <DataTemplate DataType="{x:Type root:SlideshowViewModel}">
-            <Image  Stretch="Uniform" Source="{Binding Image}"></Image>
+            <Image Stretch="Uniform" Source="{Binding Image}"></Image>
         </DataTemplate>
         <DataTemplate DataType="{x:Type root:VideoSequenceViewModel}">
-            <MediaElement Stretch="Uniform" Source="{Binding Video}"></MediaElement>
+            <c:Video Stretch="Uniform" Source="{Binding Video}" HasEnded="{Binding HasEnded, Mode=OneWayToSource}"></c:Video>
         </DataTemplate>
     </Window.Resources>
     <Window.DataContext>

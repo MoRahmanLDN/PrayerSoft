@@ -1,6 +1,5 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
-using System;
 
 namespace PrayerSoft
 {
@@ -8,22 +7,20 @@ namespace PrayerSoft
     public class VideoSequenceViewModel
     {
         private readonly IFileRepository videoRepository;
+        public string Video { get; set; }
+        public bool HasEnded { get; set; }
 
         public VideoSequenceViewModel(IFileRepository videoRepository)
         {
             this.videoRepository = videoRepository;
         }
 
-        public string Video { get; set; }
-
-        public void Play()
+        public void Refresh()
         {
-            Video = videoRepository.GetNext();
-        }
-
-        public void OnVideoFinished()
-        {
-            Video = videoRepository.GetNext();
+            if (Video == null || HasEnded)
+            {
+                Video = videoRepository.GetNext();
+            }
         }
     }
 }
