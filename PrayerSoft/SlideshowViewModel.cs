@@ -5,7 +5,7 @@ using System;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class SlideshowViewModel: IViewModel
+    public class SlideshowViewModel: ISequenceViewModel
     {
         private readonly IClock clock;
         private readonly IFileEnumerator imageEnumerator;
@@ -13,7 +13,7 @@ namespace PrayerSoft
         private DateTime? lastUpdate;
 
         public string Image { get; set; }
-        public bool HasEnded => imageEnumerator.IsComplete;
+        public bool HasEnded { get; set; }
 
         public SlideshowViewModel(IClock clock, IFileEnumerator imageEnumerator, TimeSpan interval)
         {
@@ -27,13 +27,21 @@ namespace PrayerSoft
             var now = clock.Read();
             if (lastUpdate == null || now >= lastUpdate + interval)
             {
-                Image = imageEnumerator.GetNext();
-                lastUpdate = now;
+                if (imageEnumerator.IsComplete)
+                {
+                    HasEnded = true;
+                }
+                else
+                {
+                    Image = imageEnumerator.GetNext();
+                    lastUpdate = now;
+                }
             }
         }
 
         public void Reset()
         {
+            HasEnded = false;
             imageEnumerator.Reset();
         }
     }

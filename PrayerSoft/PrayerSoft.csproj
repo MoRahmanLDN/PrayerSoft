@@ -72,6 +72,7 @@
     <Compile Include="Data\IFileEnumerator.cs" />
     <Compile Include="Data\FileEnumerator.cs" />
     <Compile Include="Data\IPrayerTimesRepository.cs" />
+    <Compile Include="ISequenceViewModel.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />

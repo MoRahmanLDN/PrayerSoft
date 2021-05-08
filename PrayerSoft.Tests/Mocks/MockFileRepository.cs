@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
-    public class MockFileRepository: IFileEnumerator
+    public class MockFileEnumerator: IFileEnumerator
     {
         public List<string> Files { get; set; }
 

@@ -1,16 +1,15 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
-using System;
 
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class VideoSequenceViewModel: IViewModel
+    public class VideoSequenceViewModel: ISequenceViewModel
     {
         private readonly IFileEnumerator videoEnumerator;
         public string Video { get; set; }
         public bool HasCurrentVideoEnded { get; set; }
-        public bool HasEnded => videoEnumerator.IsComplete && HasCurrentVideoEnded;
+        public bool HasEnded { get; set; }
 
         public VideoSequenceViewModel(IFileEnumerator videoEnumerator)
         {
@@ -21,12 +20,20 @@ namespace PrayerSoft
         {
             if (Video == null || HasCurrentVideoEnded)
             {
-                Video = videoEnumerator.GetNext();
+                if (videoEnumerator.IsComplete)
+                {
+                    HasEnded = true;
+                }
+                else
+                {
+                    Video = videoEnumerator.GetNext();
+                }
             }
         }
 
         public void Reset()
         {
+            HasEnded = false;
             videoEnumerator.Reset();
         }
     }
