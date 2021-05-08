@@ -14,6 +14,8 @@ namespace PrayerSoft
 
         public ISequenceViewModel Media { get; set; }
 
+        private LayoutEngine layoutEngine { get; set; }
+
         public MainWindowViewModel(
             IClock clock,
             IPrayerTimesRepository prayerTimesRepository,
@@ -25,29 +27,15 @@ namespace PrayerSoft
             PrayersToday = new PrayerTimesTodayViewModel(clock, prayerTimesRepository);
             Slideshow = new SlideshowViewModel(clock, imageEnumerator, slideshowInterval);
             VideoSequence = new VideoSequenceViewModel(videoEnumerator);
+
+            layoutEngine = new LayoutEngine(Slideshow, VideoSequence);
         }
 
         public void Refresh()
         {
             Today.Refresh();
             PrayersToday.Refresh();
-
-            if (Media == null)
-            {
-                Media = Slideshow;
-            }
-            if (Media.HasEnded)
-            {
-                if (Media == Slideshow)
-                {
-                    Media = VideoSequence;
-                }
-                else
-                {
-                    Media = Slideshow;
-                }
-                Media.Reset();
-            }
+            Media = layoutEngine.Choose();
             Media.Refresh();
         }
     }
