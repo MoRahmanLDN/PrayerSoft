@@ -36,5 +36,29 @@ namespace PrayerSoft.Tests
 
             Assert.AreEqual("video2", viewModel.Video);
         }
+
+        [TestMethod]
+        public void SequenceDoesNotEndBeforeLastVideoIsPlayed()
+        {
+            viewModel.Refresh();
+            viewModel.HasCurrentVideoEnded = true;
+            viewModel.Refresh();
+            viewModel.HasCurrentVideoEnded = false;
+            viewModel.Refresh();
+
+            Assert.IsFalse(viewModel.HasEnded);
+        }
+
+        [TestMethod]
+        public void SequenceEndsWhenLastVideoIsPlayed()
+        {
+            viewModel.Refresh();
+            viewModel.HasCurrentVideoEnded = true;
+            viewModel.Refresh();
+            viewModel.HasCurrentVideoEnded = true;
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.HasEnded);
+        }
     }
 }

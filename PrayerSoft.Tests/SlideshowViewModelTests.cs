@@ -45,5 +45,36 @@ namespace PrayerSoft.Tests
 
             Assert.AreEqual("image2", viewModel.Image);
         }
+
+        [TestMethod]
+        public void SequenceDoesNotEndBeforeTimeElapsesForLastImage()
+        {
+            repository.Files = new List<string> { "image1", "image2" };
+
+            clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
+            viewModel.Refresh();
+
+            clock.Set(new DateTime(2021, 05, 02, 19, 01, 10));
+            viewModel.Refresh();
+
+            Assert.IsFalse(viewModel.HasEnded);
+        }
+
+        [TestMethod]
+        public void SequenceEndsWhenTimeElapsesForLastImage()
+        {
+            repository.Files = new List<string> { "image1", "image2" };
+
+            clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
+            viewModel.Refresh();
+
+            clock.Set(new DateTime(2021, 05, 02, 19, 01, 10));
+            viewModel.Refresh();
+
+            clock.Set(new DateTime(2021, 05, 02, 19, 01, 20));
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.HasEnded);
+        }
     }
 }
