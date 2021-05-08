@@ -10,7 +10,8 @@
         xmlns:c="clr-namespace:PrayerSoft.UI.Controls"
         mc:Ignorable="d"
         Title="PrayerSoft" Height="576" Width="1024"
-        KeyDown="Window_KeyDown">
+        KeyDown="Window_KeyDown"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <DataTemplate DataType="{x:Type root:SlideshowViewModel}">
             <Image Stretch="Uniform" Source="{Binding Image}"></Image>
@@ -19,17 +20,9 @@
             <c:Video Stretch="Uniform" Source="{Binding Video}" HasEnded="{Binding HasCurrentVideoEnded, Mode=OneWayToSource}"></c:Video>
         </DataTemplate>
     </Window.Resources>
-    <Window.DataContext>
-        <root:MainWindowViewModel/>
-    </Window.DataContext>
     <d:Window.DataContext>
         <dt:MainWindowDesignTimeViewModel></dt:MainWindowDesignTimeViewModel>
     </d:Window.DataContext>
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:CallMethodAction MethodName="OnLoaded" TargetObject="{Binding}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"></ColumnDefinition>

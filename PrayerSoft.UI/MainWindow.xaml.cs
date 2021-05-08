@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PrayerSoft.Data;
+using System;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PrayerSoft.UI
 {
@@ -20,9 +12,51 @@ namespace PrayerSoft.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isFullscreen;
+        private DailyPrayerTimesRepository repository;
+        private FileEnumerator imageEnumerator;
+        private FileEnumerator videoEnumerator;
+        private TimeSpan slideshowInterval;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            var clock = new Clock();
+            repository = new DailyPrayerTimesRepository();
+            imageEnumerator = new FileEnumerator();
+            videoEnumerator = new FileEnumerator();
+            slideshowInterval = TimeSpan.FromSeconds(5);
+            DataContext = new MainWindowViewModel(clock, repository, imageEnumerator, videoEnumerator, slideshowInterval);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+            Refresh();
+            SetRefreshTimer();
+        }
+
+        private void LoadData()
+        {
+            repository.Load(File.ReadAllText("calendar.csv"));
+            imageEnumerator.Load(@"Images", "*.jpg");
+            videoEnumerator.Load(@"Videos", "*.mp4");
+        }
+
+        private void Refresh()
+        {
+            ((MainWindowViewModel)DataContext).Refresh();
+        }
+
+        private void SetRefreshTimer()
+        {
+            var interval = TimeSpan.FromSeconds(1);
+            var priority = DispatcherPriority.Normal;
+            EventHandler callback = (sender, eventArgs) => Refresh();
+
+            var timer = new DispatcherTimer(interval, priority, callback, Dispatcher);
+            timer.Start();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -32,8 +66,6 @@ namespace PrayerSoft.UI
                 ToggleFullScreen();
             }
         }
-
-        private bool isFullscreen;
 
         private void ToggleFullScreen()
         {
