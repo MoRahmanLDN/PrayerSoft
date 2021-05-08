@@ -17,6 +17,8 @@ namespace PrayerSoft
         public SlideshowViewModel Slideshow { get; set; }
         public VideoSequenceViewModel VideoSequence { get; set; }
 
+        public object Media { get; set; }
+
         public MainWindowViewModel()
         {
             clock = new Clock();
@@ -28,6 +30,8 @@ namespace PrayerSoft
             PrayersToday = new PrayerTimesTodayViewModel(clock, repository);
             Slideshow = new SlideshowViewModel(clock, imagesRepository, TimeSpan.FromSeconds(5));
             VideoSequence = new VideoSequenceViewModel(videosRepository);
+
+            Media = VideoSequence;
         }
 
         public void OnLoaded()

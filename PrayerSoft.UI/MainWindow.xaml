@@ -10,6 +10,14 @@
         mc:Ignorable="d"
         Title="PrayerSoft" Height="576" Width="1024"
         KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type root:SlideshowViewModel}">
+            <Image  Stretch="Uniform" Source="{Binding Image}"></Image>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type root:VideoSequenceViewModel}">
+            <MediaElement Stretch="Uniform" Source="{Binding Video}"></MediaElement>
+        </DataTemplate>
+    </Window.Resources>
     <Window.DataContext>
         <root:MainWindowViewModel/>
     </Window.DataContext>
@@ -71,6 +79,6 @@
                 <Label Grid.Column="2" Grid.Row="6" Content="{Binding PrayersToday.IshaJamaat}"/>
             </Grid>
         </StackPanel>
-        <MediaElement Stretch="Uniform" Grid.Column="1" Source="{Binding VideoSequence.Video}"></MediaElement>
+        <ContentControl Grid.Column="1" Content="{Binding Media}"></ContentControl>
     </Grid>
 </Window>
