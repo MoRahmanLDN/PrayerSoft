@@ -74,7 +74,7 @@
     <Compile Include="Data\IPrayerTimesRepository.cs" />
     <Compile Include="ISequenceViewModel.cs" />
     <Compile Include="IViewModel.cs" />
-    <Compile Include="LayoutEngine.cs" />
+    <Compile Include="AlternatingSequenceViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

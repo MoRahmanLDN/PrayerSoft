@@ -10,14 +10,14 @@ namespace PrayerSoft.Tests
     {
         MockClock clock;
         MockFileEnumerator repository;
-        SlideshowViewModel viewModel;
+        ImageSequenceViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
             clock = new MockClock();
             repository = new MockFileEnumerator();
-            viewModel = new SlideshowViewModel(clock, repository, TimeSpan.FromSeconds(10));
+            viewModel = new ImageSequenceViewModel(clock, repository, TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]

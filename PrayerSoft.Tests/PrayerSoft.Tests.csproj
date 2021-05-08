@@ -49,7 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayoutEngineTests.cs" />
+    <Compile Include="AlternatingSequenceViewModelTests.cs" />
     <Compile Include="Mocks\MockFileRepository.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />

@@ -5,7 +5,7 @@ using System;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class SlideshowViewModel: ISequenceViewModel
+    public class ImageSequenceViewModel: ISequenceViewModel
     {
         private readonly IClock clock;
         private readonly IFileEnumerator imageEnumerator;
@@ -15,7 +15,7 @@ namespace PrayerSoft
         public string Image { get; set; }
         public bool HasEnded { get; set; }
 
-        public SlideshowViewModel(IClock clock, IFileEnumerator imageEnumerator, TimeSpan interval)
+        public ImageSequenceViewModel(IClock clock, IFileEnumerator imageEnumerator, TimeSpan interval)
         {
             this.clock = clock;
             this.imageEnumerator = imageEnumerator;
