@@ -72,10 +72,13 @@
     <Compile Include="Data\IImagesRepository.cs" />
     <Compile Include="Data\ImagesRepository.cs" />
     <Compile Include="Data\IPrayerTimesRepository.cs" />
+    <Compile Include="IVideoRepository.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlideshowViewModel.cs" />
+    <Compile Include="VideoRepository.cs" />
+    <Compile Include="VideoSequenceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

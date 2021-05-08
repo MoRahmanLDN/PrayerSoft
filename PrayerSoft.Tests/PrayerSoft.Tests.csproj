@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mocks\MockImagesRepository.cs" />
+    <Compile Include="MockVideoRepository.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />
     <Compile Include="DailyPrayerTimesRepositoryTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Mocks\MockPrayerTimesRepository.cs" />
     <Compile Include="PrayerTimesTodayViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoSequenceViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
