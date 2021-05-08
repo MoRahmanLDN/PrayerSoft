@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace PrayerSoft.Data
 {
-    public class ImagesRepository : IImagesRepository
+    public class FileRepository : IFileRepository
     {
-        private List<string> images;
+        private List<string> files;
 
         public void Load(string folder, string pattern)
         {
-            images = new DirectoryInfo(folder)
+            files = new DirectoryInfo(folder)
                 .GetFiles(pattern)
                 .Select(x => x.FullName)
                 .ToList();
@@ -18,13 +18,13 @@ namespace PrayerSoft.Data
 
         private int index;
 
-        public string GetNextImage()
+        public string GetNext()
         {
-            if (index == images.Count)
+            if (index == files.Count)
             {
                 index = 0;
             }
-            return images[index++];
+            return files[index++];
         }
     }
 }

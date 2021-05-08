@@ -8,13 +8,13 @@ namespace PrayerSoft
     public class SlideshowViewModel
     {
         private readonly IClock clock;
-        private readonly IImagesRepository imagesRepository;
+        private readonly IFileRepository imagesRepository;
         private readonly TimeSpan interval;
         private DateTime? lastUpdate;
 
         public string Image { get; set; }
         
-        public SlideshowViewModel(IClock clock, IImagesRepository imagesRepository, TimeSpan interval)
+        public SlideshowViewModel(IClock clock, IFileRepository imagesRepository, TimeSpan interval)
         {
             this.clock = clock;
             this.imagesRepository = imagesRepository;
@@ -26,7 +26,7 @@ namespace PrayerSoft
             var now = clock.Read();
             if (lastUpdate == null || now >= lastUpdate + interval)
             {
-                Image = imagesRepository.GetNextImage();
+                Image = imagesRepository.GetNext();
                 lastUpdate = now;
             }
         }

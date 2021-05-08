@@ -9,34 +9,40 @@ namespace PrayerSoft
     {
         private Clock clock;
         private DailyPrayerTimesRepository repository;
-        private ImagesRepository imagesRepository;
+        private FileRepository imagesRepository;
+        private FileRepository videosRepository;
 
         public CurrentTimeViewModel Today { get; set; }
         public PrayerTimesTodayViewModel PrayersToday { get; set; }
         public SlideshowViewModel Slideshow { get; set; }
+        public VideoSequenceViewModel VideoSequence { get; set; }
 
         public MainWindowViewModel()
         {
             clock = new Clock();
             repository = new DailyPrayerTimesRepository();
-            imagesRepository = new ImagesRepository();
+            imagesRepository = new FileRepository();
+            videosRepository = new FileRepository();
 
             Today = new CurrentTimeViewModel(clock);
             PrayersToday = new PrayerTimesTodayViewModel(clock, repository);
             Slideshow = new SlideshowViewModel(clock, imagesRepository, TimeSpan.FromSeconds(5));
+            VideoSequence = new VideoSequenceViewModel(videosRepository);
         }
 
         public void OnLoaded()
         {
-            LoadCalendar();
+            LoadData();
             Refresh();
-            SetTimer();
+            SetRefreshTimer();
+            VideoSequence.Play();
         }
 
-        private void LoadCalendar()
+        private void LoadData()
         {
             repository.Load(File.ReadAllText("calendar.csv"));
             imagesRepository.Load(@"Images","*.jpg");
+            videosRepository.Load(@"Videos", "*.mp4");
         }
 
         private void Refresh()
@@ -46,7 +52,7 @@ namespace PrayerSoft
             Slideshow.Refresh();
         }
 
-        private void SetTimer()
+        private void SetRefreshTimer()
         {
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);

@@ -1,7 +1,7 @@
 ﻿namespace PrayerSoft.Data
 {
-    public interface IImagesRepository
+    public interface IFileRepository
     {
-        string GetNextImage();
+        string GetNext();
     }
 }

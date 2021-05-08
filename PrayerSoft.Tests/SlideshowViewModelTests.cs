@@ -9,21 +9,21 @@ namespace PrayerSoft.Tests
     public class SlideshowViewModelTests
     {
         MockClock clock;
-        MockImagesRepository repository;
+        MockFileRepository repository;
         SlideshowViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
             clock = new MockClock();
-            repository = new MockImagesRepository();
+            repository = new MockFileRepository();
             viewModel = new SlideshowViewModel(clock, repository, TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
         public void WhenFirstShownDisplayFirstImage()
         {
-            repository.Images = new List<string> { "image" };
+            repository.Files = new List<string> { "image" };
 
             viewModel.Refresh();
 
@@ -33,7 +33,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void WhenTimeElapsedDisplayNextImage()
         {
-            repository.Images = new List<string> { "image1", "image2" };
+            repository.Files = new List<string> { "image1", "image2" };
 
             clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
             viewModel.Refresh();

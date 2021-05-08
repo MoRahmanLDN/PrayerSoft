@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using PrayerSoft.Data;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
-    public class MockVideoRepository: IVideoRepository
+    public class MockVideoRepository: IFileRepository
     {
         public MockVideoRepository()
         {

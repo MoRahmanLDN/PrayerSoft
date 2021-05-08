@@ -1,12 +1,15 @@
-﻿using System;
+﻿using PrayerSoft.Data;
+using PropertyChanged;
+using System;
 
 namespace PrayerSoft
 {
+    [AddINotifyPropertyChangedInterface]
     public class VideoSequenceViewModel
     {
-        private readonly IVideoRepository videoRepository;
+        private readonly IFileRepository videoRepository;
 
-        public VideoSequenceViewModel(IVideoRepository videoRepository)
+        public VideoSequenceViewModel(IFileRepository videoRepository)
         {
             this.videoRepository = videoRepository;
         }

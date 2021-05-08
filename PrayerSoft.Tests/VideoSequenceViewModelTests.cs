@@ -6,14 +6,14 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class VideoSequenceViewModelTests
     {
-        private MockVideoRepository repository;
+        private MockFileRepository repository;
         private VideoSequenceViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
-            repository = new MockVideoRepository();
-            repository.Videos = new List<string> { "video1", "video2" };
+            repository = new MockFileRepository();
+            repository.Files = new List<string> { "video1", "video2" };
             viewModel = new VideoSequenceViewModel(repository);
         }
 
