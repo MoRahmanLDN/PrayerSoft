@@ -5,19 +5,20 @@ using System;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class SlideshowViewModel
+    public class SlideshowViewModel: IViewModel
     {
         private readonly IClock clock;
-        private readonly IFileRepository imagesRepository;
+        private readonly IFileEnumerator imageEnumerator;
         private readonly TimeSpan interval;
         private DateTime? lastUpdate;
 
         public string Image { get; set; }
-        
-        public SlideshowViewModel(IClock clock, IFileRepository imagesRepository, TimeSpan interval)
+        public bool HasEnded => imageEnumerator.IsComplete;
+
+        public SlideshowViewModel(IClock clock, IFileEnumerator imageEnumerator, TimeSpan interval)
         {
             this.clock = clock;
-            this.imagesRepository = imagesRepository;
+            this.imageEnumerator = imageEnumerator;
             this.interval = interval;
         }
 
@@ -26,9 +27,14 @@ namespace PrayerSoft
             var now = clock.Read();
             if (lastUpdate == null || now >= lastUpdate + interval)
             {
-                Image = imagesRepository.GetNext();
+                Image = imageEnumerator.GetNext();
                 lastUpdate = now;
             }
+        }
+
+        public void Reset()
+        {
+            imageEnumerator.Reset();
         }
     }
 }

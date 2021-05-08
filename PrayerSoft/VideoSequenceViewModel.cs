@@ -1,26 +1,33 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
+using System;
 
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class VideoSequenceViewModel
+    public class VideoSequenceViewModel: IViewModel
     {
-        private readonly IFileRepository videoRepository;
+        private readonly IFileEnumerator videoEnumerator;
         public string Video { get; set; }
-        public bool HasEnded { get; set; }
+        public bool HasCurrentVideoEnded { get; set; }
+        public bool HasEnded => videoEnumerator.IsComplete && HasCurrentVideoEnded;
 
-        public VideoSequenceViewModel(IFileRepository videoRepository)
+        public VideoSequenceViewModel(IFileEnumerator videoEnumerator)
         {
-            this.videoRepository = videoRepository;
+            this.videoEnumerator = videoEnumerator;
         }
 
         public void Refresh()
         {
-            if (Video == null || HasEnded)
+            if (Video == null || HasCurrentVideoEnded)
             {
-                Video = videoRepository.GetNext();
+                Video = videoEnumerator.GetNext();
             }
+        }
+
+        public void Reset()
+        {
+            videoEnumerator.Reset();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace PrayerSoft.Tests
         public void CanPlayNextVideo()
         {
             viewModel.Refresh();
-            viewModel.HasEnded = true;
+            viewModel.HasCurrentVideoEnded = true;
 
             viewModel.Refresh();
 

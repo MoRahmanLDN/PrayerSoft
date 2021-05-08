@@ -69,9 +69,10 @@
     <Compile Include="DailyPrayerTimes.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
-    <Compile Include="Data\IImagesRepository.cs" />
-    <Compile Include="Data\FileRepository.cs" />
+    <Compile Include="Data\IFileEnumerator.cs" />
+    <Compile Include="Data\FileEnumerator.cs" />
     <Compile Include="Data\IPrayerTimesRepository.cs" />
+    <Compile Include="IViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PrayerTimesTodayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

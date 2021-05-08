@@ -3,7 +3,7 @@
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class CurrentTimeViewModel
+    public class CurrentTimeViewModel: IViewModel
     {
         readonly IClock clock;
         readonly Format format;

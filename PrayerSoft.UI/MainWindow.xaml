@@ -16,7 +16,7 @@
             <Image Stretch="Uniform" Source="{Binding Image}"></Image>
         </DataTemplate>
         <DataTemplate DataType="{x:Type root:VideoSequenceViewModel}">
-            <c:Video Stretch="Uniform" Source="{Binding Video}" HasEnded="{Binding HasEnded, Mode=OneWayToSource}"></c:Video>
+            <c:Video Stretch="Uniform" Source="{Binding Video}" HasEnded="{Binding HasCurrentVideoEnded, Mode=OneWayToSource}"></c:Video>
         </DataTemplate>
     </Window.Resources>
     <Window.DataContext>

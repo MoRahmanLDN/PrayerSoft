@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PrayerSoft.Data
 {
-    public class FileRepository : IFileRepository
+    public class FileEnumerator : IFileEnumerator
     {
         private List<string> files;
 
@@ -18,13 +18,16 @@ namespace PrayerSoft.Data
 
         private int index;
 
+        public bool IsComplete => index == files.Count;
+
         public string GetNext()
         {
-            if (index == files.Count)
-            {
-                index = 0;
-            }
             return files[index++];
+        }
+
+        public void Reset()
+        {
+            index = 0;
         }
     }
 }

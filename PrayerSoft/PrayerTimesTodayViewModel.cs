@@ -5,7 +5,7 @@ using System;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class PrayerTimesTodayViewModel
+    public class PrayerTimesTodayViewModel: IViewModel
     {
         private IClock clock;
         private IPrayerTimesRepository repository;

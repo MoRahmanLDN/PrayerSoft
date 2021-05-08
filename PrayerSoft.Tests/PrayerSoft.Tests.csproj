@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mocks\MockFileRepository.cs" />
-    <Compile Include="MockVideoRepository.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />
     <Compile Include="DailyPrayerTimesRepositoryTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />

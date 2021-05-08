@@ -1,37 +1,39 @@
 ﻿using PrayerSoft.Data;
+using PropertyChanged;
 using System;
 using System.IO;
 using System.Windows.Threading;
 
 namespace PrayerSoft
 {
-    public class MainWindowViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class MainWindowViewModel: IViewModel
     {
         private Clock clock;
         private DailyPrayerTimesRepository repository;
-        private FileRepository imagesRepository;
-        private FileRepository videosRepository;
+        private FileEnumerator imagesRepository;
+        private FileEnumerator videosRepository;
 
         public CurrentTimeViewModel Today { get; set; }
         public PrayerTimesTodayViewModel PrayersToday { get; set; }
         public SlideshowViewModel Slideshow { get; set; }
         public VideoSequenceViewModel VideoSequence { get; set; }
 
-        public object Media { get; set; }
+        public IViewModel Media { get; set; }
 
         public MainWindowViewModel()
         {
             clock = new Clock();
             repository = new DailyPrayerTimesRepository();
-            imagesRepository = new FileRepository();
-            videosRepository = new FileRepository();
+            imagesRepository = new FileEnumerator();
+            videosRepository = new FileEnumerator();
 
             Today = new CurrentTimeViewModel(clock);
             PrayersToday = new PrayerTimesTodayViewModel(clock, repository);
             Slideshow = new SlideshowViewModel(clock, imagesRepository, TimeSpan.FromSeconds(5));
             VideoSequence = new VideoSequenceViewModel(videosRepository);
 
-            Media = VideoSequence;
+            Media = Slideshow;
         }
 
         public void OnLoaded()
@@ -48,12 +50,11 @@ namespace PrayerSoft
             videosRepository.Load(@"Videos", "*.mp4");
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             Today.Refresh();
             PrayersToday.Refresh();
-            Slideshow.Refresh();
-            VideoSequence.Refresh();
+            Media.Refresh();
         }
 
         private void SetRefreshTimer()

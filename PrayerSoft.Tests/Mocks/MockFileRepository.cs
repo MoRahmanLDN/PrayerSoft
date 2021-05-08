@@ -3,19 +3,22 @@ using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
-    public class MockFileRepository: IFileRepository
+    public class MockFileRepository: IFileEnumerator
     {
         public List<string> Files { get; set; }
 
-        private int currentIndex;
+        public bool IsComplete => index == Files.Count;
+
+        private int index;
         
         public string GetNext()
         {
-            if (currentIndex == Files.Count)
-            {
-                currentIndex = 0;
-            }
-            return Files[currentIndex++];
+            return Files[index++];
+        }
+
+        public void Reset()
+        {
+            index = 0;
         }
     }
 }
