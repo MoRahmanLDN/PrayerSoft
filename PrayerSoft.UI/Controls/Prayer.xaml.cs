@@ -21,32 +21,5 @@ namespace PrayerSoft.UI.Controls
         {
             InitializeComponent();
         }
-
-        public string PrayerName
-        {
-            get { return (string)GetValue(PrayerNameProperty); }
-            set { SetValue(PrayerNameProperty, value); }
-        }
-
-        public static readonly DependencyProperty PrayerNameProperty =
-            DependencyProperty.Register("PrayerName", typeof(string), typeof(Prayer), new PropertyMetadata(string.Empty));
-
-        public string Begins
-        {
-            get { return (string)GetValue(BeginsProperty); }
-            set { SetValue(BeginsProperty, value); }
-        }
-
-        public static readonly DependencyProperty BeginsProperty =
-            DependencyProperty.Register("Begins", typeof(string), typeof(Prayer), new PropertyMetadata(string.Empty));
-
-        public string Jamaat
-        {
-            get { return (string)GetValue(JamaatProperty); }
-            set { SetValue(JamaatProperty, value); }
-        }
-
-        public static readonly DependencyProperty JamaatProperty =
-            DependencyProperty.Register("Jamaat", typeof(string), typeof(Prayer), new PropertyMetadata(string.Empty));
     }
 }
