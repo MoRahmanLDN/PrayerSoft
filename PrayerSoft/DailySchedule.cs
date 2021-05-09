@@ -2,7 +2,7 @@
 
 namespace PrayerSoft
 {
-    public class DailyPrayerTimes
+    public class DailySchedule
     {
         public DateTime FajrBegins { get; set; }
         public DateTime FajrJamaat { get; set; }
@@ -18,5 +18,10 @@ namespace PrayerSoft
 
         public DateTime IshaBegins { get; set; }
         public DateTime IshaJamaat { get; set; }
+
+        public DateTime Sunrise { get; set; }
+        public DateTime Sunset { get; set; }
+        public DateTime SubSadiq { get; set; }
+        public DateTime Zawaal { get; set; }
     }
 }

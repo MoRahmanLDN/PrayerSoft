@@ -53,11 +53,11 @@
     <Compile Include="Mocks\MockFileRepository.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />
-    <Compile Include="DailyPrayerTimesRepositoryTests.cs" />
+    <Compile Include="CalendarTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />
-    <Compile Include="CurrentTimeViewModelTests.cs" />
+    <Compile Include="DateAndTimeViewModelTests.cs" />
     <Compile Include="Mocks\MockPrayerTimesRepository.cs" />
-    <Compile Include="PrayerTimesTodayViewModelTests.cs" />
+    <Compile Include="DailyScheduleViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VideoSequenceViewModelTests.cs" />
   </ItemGroup>

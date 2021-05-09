@@ -2,7 +2,7 @@
 {
     class MainWindowDesignTimeViewModel
     {
-        public CurrentTimeDesignTimeViewModel Today { get; set; } = new CurrentTimeDesignTimeViewModel();
-        public PrayerTimesTodayDesignTimeViewModel PrayersToday { get; set; } = new PrayerTimesTodayDesignTimeViewModel();
+        public DateAndTimeDesignTimeViewModel DateAndTime { get; set; } = new DateAndTimeDesignTimeViewModel();
+        public DailyScheduleDesignTimeViewModel DailySchedule { get; set; } = new DailyScheduleDesignTimeViewModel();
     }
 }

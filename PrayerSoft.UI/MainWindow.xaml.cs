@@ -13,7 +13,7 @@ namespace PrayerSoft.UI
     public partial class MainWindow : Window
     {
         private bool isFullscreen;
-        private DailyPrayerTimesRepository repository;
+        private Calendar repository;
         private FileEnumerator imageEnumerator;
         private FileEnumerator videoEnumerator;
         private TimeSpan slideshowInterval;
@@ -23,7 +23,7 @@ namespace PrayerSoft.UI
             InitializeComponent();
 
             var clock = new Clock();
-            repository = new DailyPrayerTimesRepository();
+            repository = new Calendar();
             imageEnumerator = new FileEnumerator();
             videoEnumerator = new FileEnumerator();
             slideshowInterval = TimeSpan.FromSeconds(5);

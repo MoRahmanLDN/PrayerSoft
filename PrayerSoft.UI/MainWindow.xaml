@@ -29,23 +29,23 @@
             <ColumnDefinition Width="7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Label Content="{Binding Today.CurrentTime}"></Label>
-            <Label Content="{Binding Today.CurrentDate}"></Label>
-            <Label Content="{Binding Today.CurrentIslamicDate}"></Label>
+            <Label Content="{Binding DateAndTime.CurrentTime}"></Label>
+            <Label Content="{Binding DateAndTime.CurrentDate}"></Label>
+            <Label Content="{Binding DateAndTime.CurrentIslamicDate}"></Label>
             <Grid Margin="0,0,-0.4,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="2" Content="Fajr"/>
@@ -57,20 +57,44 @@
                 <Label Grid.Column="1" Grid.Row="1" Content="Begins"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Jamaat"/>
 
-                <Label Grid.Column="1" Grid.Row="2" Content="{Binding PrayersToday.FajrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="2" Content="{Binding PrayersToday.FajrJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding DailySchedule.FajrBegins}"/>
+                <Label Grid.Column="2" Grid.Row="2" Content="{Binding DailySchedule.FajrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="3" Content="{Binding PrayersToday.ZuhrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="3" Content="{Binding PrayersToday.ZuhrJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="{Binding DailySchedule.ZuhrBegins}"/>
+                <Label Grid.Column="2" Grid.Row="3" Content="{Binding DailySchedule.ZuhrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="4" Content="{Binding PrayersToday.AsrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="4" Content="{Binding PrayersToday.AsrJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="4" Content="{Binding DailySchedule.AsrBegins}"/>
+                <Label Grid.Column="2" Grid.Row="4" Content="{Binding DailySchedule.AsrJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="5" Content="{Binding PrayersToday.MaghribBegins}"/>
-                <Label Grid.Column="2" Grid.Row="5" Content="{Binding PrayersToday.MaghribJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="5" Content="{Binding DailySchedule.MaghribBegins}"/>
+                <Label Grid.Column="2" Grid.Row="5" Content="{Binding DailySchedule.MaghribJamaat}"/>
 
-                <Label Grid.Column="1" Grid.Row="6" Content="{Binding PrayersToday.IshaBegins}"/>
-                <Label Grid.Column="2" Grid.Row="6" Content="{Binding PrayersToday.IshaJamaat}"/>
+                <Label Grid.Column="1" Grid.Row="6" Content="{Binding DailySchedule.IshaBegins}"/>
+                <Label Grid.Column="2" Grid.Row="6" Content="{Binding DailySchedule.IshaJamaat}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Column="0" Grid.Row="0" Content="Sunrise"></Label>
+                <Label Grid.Column="0" Grid.Row="1" Content="{Binding DailySchedule.Sunrise}"></Label>
+                
+                <Label Grid.Column="1" Grid.Row="0" Content="Sunset"></Label>
+                <Label Grid.Column="1" Grid.Row="1" Content="{Binding DailySchedule.Sunset}"></Label>
+                
+                <Label Grid.Column="2" Grid.Row="0" Content="Sub-sadiq"></Label>
+                <Label Grid.Column="2" Grid.Row="1" Content="{Binding DailySchedule.SubSadiq}"></Label>
+                
+                <Label Grid.Column="3" Grid.Row="0" Content="Zawaal"></Label>
+                <Label Grid.Column="3" Grid.Row="1" Content="{Binding DailySchedule.Zawaal}"></Label>
             </Grid>
         </StackPanel>
         <ContentControl Grid.Column="1" Content="{Binding AlternatingSequence.Current}"></ContentControl>

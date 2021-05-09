@@ -5,16 +5,16 @@ using System;
 namespace PrayerSoft.Tests
 {
     [TestClass]
-    public class DailyPrayerTimesRepositoryTests
+    public class CalendarTests
     {
         [TestMethod]
         public void ParsesCorrectlyCsv()
         {
             var csv =
-                "Date,FajrBegins,FajrJamaat,ZuhrBegins,ZuhrJamaat,AsrBegins,AsrJamaat,MaghribBegins,MaghribJamaat,IshaBegins,IshaJamaat\r\n" +
-                "2022-05-01,10:20,10:30,10:40,10:50,11:00,11:10,11:20,11:30,11:40,11:50\r\n";
+                "Date,FajrBegins,FajrJamaat,ZuhrBegins,ZuhrJamaat,AsrBegins,AsrJamaat,MaghribBegins,MaghribJamaat,IshaBegins,IshaJamaat,Sunrise,Sunset,SubSadiq,Zawaal\r\n" +
+                "2022-05-01,10:20,10:30,10:40,10:50,11:00,11:10,11:20,11:30,11:40,11:50,01:01,02:02,03:03,04:04\r\n";
 
-            var repository = new DailyPrayerTimesRepository();
+            var repository = new Calendar();
             repository.Load(csv);
             var dailyPrayers = repository.Get(new DateTime(2022, 05, 01));
 
@@ -32,6 +32,11 @@ namespace PrayerSoft.Tests
 
             Assert.AreEqual(new DateTime(2022, 05, 01, 11, 40, 00), dailyPrayers.IshaBegins);
             Assert.AreEqual(new DateTime(2022, 05, 01, 11, 50, 00), dailyPrayers.IshaJamaat);
+
+            Assert.AreEqual(new DateTime(2022, 05, 01, 01, 01, 00), dailyPrayers.Sunrise);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 02, 02, 00), dailyPrayers.Sunset);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 03, 03, 00), dailyPrayers.SubSadiq);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 04, 04, 00), dailyPrayers.Zawaal);
         }
     }
 }

@@ -64,19 +64,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clock.cs" />
-    <Compile Include="CurrentTimeViewModel.cs" />
-    <Compile Include="Data\DailyPrayersRepository.cs" />
-    <Compile Include="DailyPrayerTimes.cs" />
+    <Compile Include="DateAndTimeViewModel.cs" />
+    <Compile Include="Data\Calendar.cs" />
+    <Compile Include="DailySchedule.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="Data\IFileEnumerator.cs" />
     <Compile Include="Data\FileEnumerator.cs" />
-    <Compile Include="Data\IPrayerTimesRepository.cs" />
+    <Compile Include="Data\ICalendar.cs" />
     <Compile Include="ISequenceViewModel.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="AlternatingSequenceViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="PrayerTimesTodayViewModel.cs" />
+    <Compile Include="DailyScheduleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlideshowViewModel.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />

@@ -3,12 +3,12 @@
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class CurrentTimeViewModel: IViewModel
+    public class DateAndTimeViewModel: IViewModel
     {
         readonly IClock clock;
         readonly Format format;
 
-        public CurrentTimeViewModel(IClock clock)
+        public DateAndTimeViewModel(IClock clock)
         {
             this.clock = clock;
             format = new Format();

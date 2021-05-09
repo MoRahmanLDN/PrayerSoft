@@ -5,16 +5,16 @@ using System;
 namespace PrayerSoft.Tests
 {
     [TestClass]
-    public class CurrentTimeViewModelTests
+    public class DateAndTimeViewModelTests
     {
         MockClock clock;
-        CurrentTimeViewModel viewModel;
+        DateAndTimeViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
             clock = new MockClock();
-            viewModel = new CurrentTimeViewModel(clock);
+            viewModel = new DateAndTimeViewModel(clock);
         }
 
         [TestMethod]

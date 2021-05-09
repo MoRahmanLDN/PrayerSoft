@@ -1,6 +1,6 @@
 ﻿namespace PrayerSoft.UI.DesignTime
 {
-    class PrayerTimesTodayDesignTimeViewModel
+    class DailyScheduleDesignTimeViewModel
     {
         public string FajrBegins { get; set; } = "10:10";
         public string FajrJamaat { get; set; } = "11:11";
@@ -16,5 +16,10 @@
 
         public string IshaBegins { get; set; } = "18:18";
         public string IshaJamaat { get; set; } = "19:19";
+
+        public string Sunrise { get; set; } = "01:01";
+        public string Sunset { get; set; } = "02:02";
+        public string SubSadiq { get; set; } = "03:03";
+        public string Zawaal { get; set; } = "04:04";
     }
 }

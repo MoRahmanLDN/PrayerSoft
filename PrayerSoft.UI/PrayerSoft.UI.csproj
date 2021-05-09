@@ -67,9 +67,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\Video.cs" />
-    <Compile Include="DesignTime\CurrentTimeDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\DateAndTimeDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
-    <Compile Include="DesignTime\PrayerTimesTodayDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\DailyScheduleDesignTimeViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

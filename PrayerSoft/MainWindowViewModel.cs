@@ -7,19 +7,19 @@ namespace PrayerSoft
     [AddINotifyPropertyChangedInterface]
     public class MainWindowViewModel : IViewModel
     {
-        public CurrentTimeViewModel Today { get; set; }
-        public PrayerTimesTodayViewModel PrayersToday { get; set; }
+        public DateAndTimeViewModel DateAndTime { get; set; }
+        public DailyScheduleViewModel DailySchedule { get; set; }
         public AlternatingSequenceViewModel AlternatingSequence { get; set; }
         
         public MainWindowViewModel(
             IClock clock,
-            IPrayerTimesRepository prayerTimesRepository,
+            ICalendar prayerTimesRepository,
             IFileEnumerator imageEnumerator,
             IFileEnumerator videoEnumerator,
             TimeSpan slideshowInterval)
         {
-            Today = new CurrentTimeViewModel(clock);
-            PrayersToday = new PrayerTimesTodayViewModel(clock, prayerTimesRepository);
+            DateAndTime = new DateAndTimeViewModel(clock);
+            DailySchedule = new DailyScheduleViewModel(clock, prayerTimesRepository);
             var imageSequence = new ImageSequenceViewModel(clock, imageEnumerator, slideshowInterval);
             var videoSequence = new VideoSequenceViewModel(videoEnumerator);
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
@@ -27,8 +27,8 @@ namespace PrayerSoft
 
         public void Refresh()
         {
-            Today.Refresh();
-            PrayersToday.Refresh();
+            DateAndTime.Refresh();
+            DailySchedule.Refresh();
             AlternatingSequence.Refresh();
         }
     }

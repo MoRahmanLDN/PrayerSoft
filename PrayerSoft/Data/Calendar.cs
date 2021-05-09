@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace PrayerSoft.Data
 {
-    public class DailyPrayerTimesRepository : IPrayerTimesRepository
+    public class Calendar : ICalendar
     {
-        public class DailyPrayerTimesRecord
+        public class CsvRecord
         {
             public DateTime Date { get; set; }
 
@@ -27,14 +27,19 @@ namespace PrayerSoft.Data
 
             public DateTime IshaBegins { get; set; }
             public DateTime IshaJamaat { get; set; }
+
+            public DateTime Sunrise { get; set; }
+            public DateTime Sunset { get; set; }
+            public DateTime SubSadiq { get; set; }
+            public DateTime Zawaal { get; set; }
         }
 
-        Dictionary<string, DailyPrayerTimes> prayerTimes;
+        Dictionary<string, DailySchedule> days;
         private const string DateFormat = "yyyy-MM-dd";
 
-        public DailyPrayerTimes Get(DateTime date)
+        public DailySchedule Get(DateTime date)
         {
-            return prayerTimes[date.ToString(DateFormat)];
+            return days[date.ToString(DateFormat)];
         }
 
         public void Load(string csv)
@@ -42,15 +47,15 @@ namespace PrayerSoft.Data
             using (var stringReader = new StringReader(csv))
             using (var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture))
             {
-                prayerTimes = csvReader.GetRecords<DailyPrayerTimesRecord>().ToDictionary(
+                days = csvReader.GetRecords<CsvRecord>().ToDictionary(
                     record => record.Date.ToString(DateFormat),
                     record => Map(record));
             }
         }
 
-        private DailyPrayerTimes Map(DailyPrayerTimesRecord record)
+        private DailySchedule Map(CsvRecord record)
         {
-            return new DailyPrayerTimes
+            return new DailySchedule
             {
                 FajrBegins = Combine(record.Date, record.FajrBegins),
                 FajrJamaat = Combine(record.Date, record.FajrJamaat),
@@ -65,7 +70,12 @@ namespace PrayerSoft.Data
                 MaghribJamaat = Combine(record.Date, record.MaghribJamaat),
 
                 IshaBegins = Combine(record.Date, record.IshaBegins),
-                IshaJamaat = Combine(record.Date, record.IshaJamaat)
+                IshaJamaat = Combine(record.Date, record.IshaJamaat),
+
+                Sunrise = Combine(record.Date, record.Sunrise),
+                Sunset = Combine(record.Date, record.Sunset),
+                SubSadiq = Combine(record.Date, record.SubSadiq),
+                Zawaal = Combine(record.Date, record.Zawaal),
             };
         }
 
