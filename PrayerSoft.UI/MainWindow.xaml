@@ -46,11 +46,23 @@
                 <Label Grid.Column="1" Grid.Row="1" Content="Begins"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Jamaat"/>
             </Grid>
-            <c:Prayer DataContext="{Binding DailySchedule.Fajr}"></c:Prayer>
-            <c:Prayer DataContext="{Binding DailySchedule.Zuhr}"></c:Prayer>
-            <c:Prayer DataContext="{Binding DailySchedule.Asr}"></c:Prayer>
-            <c:Prayer DataContext="{Binding DailySchedule.Maghrib}"></c:Prayer>
-            <c:Prayer DataContext="{Binding DailySchedule.Isha}"></c:Prayer>
+            <ItemsControl ItemsSource="{Binding DailySchedule.Prayers}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="{Binding PrayerName}"></Label>
+                            <Label Grid.Column="1" Content="{Binding Begins}"></Label>
+                            <Label Grid.Column="2" Content="{Binding Jamaat}"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

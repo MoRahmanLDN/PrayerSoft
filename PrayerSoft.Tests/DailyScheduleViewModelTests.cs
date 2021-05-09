@@ -15,43 +15,54 @@ namespace PrayerSoft.Tests
 
             calendar.DailySchedule = new DailySchedule
             {
-                FajrBegins = new DateTime(2021, 05, 01, 10, 20, 00),
-                FajrJamaat = new DateTime(2021, 05, 01, 14, 22, 00),
+                FajrBegins = DateTime.Parse("10:20"),
+                FajrJamaat = DateTime.Parse("11:21"),
 
-                AsrBegins = new DateTime(2021, 05, 01, 11, 30, 00),
-                AsrJamaat = new DateTime(2021, 05, 01, 15, 33, 00),
+                ZuhrBegins = DateTime.Parse("12:22"),
+                ZuhrJamaat = DateTime.Parse("13:23"),
 
-                MaghribBegins = new DateTime(2021, 05, 01, 12, 40, 00),
-                MaghribJamaat = new DateTime(2021, 05, 01, 16, 44, 00),
+                AsrBegins = DateTime.Parse("14:24"),
+                AsrJamaat = DateTime.Parse("15:25"),
 
-                IshaBegins = new DateTime(2021, 05, 01, 13, 50, 00),
-                IshaJamaat = new DateTime(2021, 05, 01, 17, 55, 00),
+                MaghribBegins = DateTime.Parse("16:26"),
+                MaghribJamaat = DateTime.Parse("17:27"),
 
-                Sunrise = new DateTime(2021, 05, 01, 01, 01, 00),
-                Sunset = new DateTime(2021, 05, 01, 02, 02, 00),
-                SubSadiq = new DateTime(2021, 05, 01, 03, 03, 00),
-                Zawaal = new DateTime(2021, 05, 01, 04, 04, 00),
+                IshaBegins = DateTime.Parse("18:28"),
+                IshaJamaat = DateTime.Parse("19:29"),
+
+                Sunrise = DateTime.Parse("20:30"),
+                Sunset = DateTime.Parse("21:31"),
+                SubSadiq = DateTime.Parse("22:32"),
+                Zawaal = DateTime.Parse("23:33"),
             };
             
             var viewModel = new DailyScheduleViewModel(clock, calendar);
             viewModel.Refresh();
 
-            Assert.AreEqual("10:20", viewModel.Fajr.Begins);
-            Assert.AreEqual("14:22", viewModel.Fajr.Jamaat);
+            Assert.AreEqual("Fajr", viewModel.Prayers[0].PrayerName);
+            Assert.AreEqual("10:20", viewModel.Prayers[0].Begins);
+            Assert.AreEqual("11:21", viewModel.Prayers[0].Jamaat);
 
-            Assert.AreEqual("11:30", viewModel.Asr.Begins);
-            Assert.AreEqual("15:33", viewModel.Asr.Jamaat);
+            Assert.AreEqual("Zuhr", viewModel.Prayers[1].PrayerName);
+            Assert.AreEqual("12:22", viewModel.Prayers[1].Begins);
+            Assert.AreEqual("13:23", viewModel.Prayers[1].Jamaat);
 
-            Assert.AreEqual("12:40", viewModel.Maghrib.Begins);
-            Assert.AreEqual("16:44", viewModel.Maghrib.Jamaat);
+            Assert.AreEqual("Asr", viewModel.Prayers[2].PrayerName);
+            Assert.AreEqual("14:24", viewModel.Prayers[2].Begins);
+            Assert.AreEqual("15:25", viewModel.Prayers[2].Jamaat);
 
-            Assert.AreEqual("13:50", viewModel.Isha.Begins);
-            Assert.AreEqual("17:55", viewModel.Isha.Jamaat);
+            Assert.AreEqual("Maghrib", viewModel.Prayers[3].PrayerName);
+            Assert.AreEqual("16:26", viewModel.Prayers[3].Begins);
+            Assert.AreEqual("17:27", viewModel.Prayers[3].Jamaat);
+
+            Assert.AreEqual("Isha", viewModel.Prayers[4].PrayerName);
+            Assert.AreEqual("18:28", viewModel.Prayers[4].Begins);
+            Assert.AreEqual("19:29", viewModel.Prayers[4].Jamaat);
             
-            Assert.AreEqual("01:01", viewModel.Sunrise);
-            Assert.AreEqual("02:02", viewModel.Sunset);
-            Assert.AreEqual("03:03", viewModel.SubSadiq);
-            Assert.AreEqual("04:04", viewModel.Zawaal);
+            Assert.AreEqual("20:30", viewModel.Sunrise);
+            Assert.AreEqual("21:31", viewModel.Sunset);
+            Assert.AreEqual("22:32", viewModel.SubSadiq);
+            Assert.AreEqual("23:33", viewModel.Zawaal);
         }
     }
 }
