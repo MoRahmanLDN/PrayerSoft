@@ -13,6 +13,8 @@ namespace PrayerSoft
         private readonly ICalendar calendar;
         private readonly Format format;
 
+        public bool IsVisible { get; set; }
+
         public CountdownViewModel(IClock clock, ICalendar calendar)
         {
             this.calendar = calendar;
@@ -36,9 +38,14 @@ namespace PrayerSoft
                 schedule.IshaJamaat 
             };
 
-            var remaining = times.Where(t => t > now).Min(t => t - now);
+            var next = times.Where(t => t > now);
+            IsVisible = next.Any();
 
-            Remaining = format.LongTime(remaining);
+            if (IsVisible)
+            {
+                var remaining = next.Min(t => t - now);
+                Remaining = format.LongTime(remaining);
+            }
         }
     }
 }

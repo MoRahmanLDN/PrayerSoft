@@ -13,6 +13,7 @@
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
         <DataTemplate DataType="{x:Type root:ImageSequenceViewModel}">
             <Image Stretch="Uniform" Source="{Binding Image}"></Image>
         </DataTemplate>
@@ -96,7 +97,7 @@
                 <Label Grid.Column="3" Grid.Row="0" Content="Zawaal"></Label>
                 <Label Grid.Column="3" Grid.Row="1" Content="{Binding DailySchedule.Zawaal}"></Label>
             </Grid>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Visibility="{Binding Path=Countdown.IsVisible, Converter={StaticResource BooleanToVisibility}}">
                 <Label Content="Time to Jamaat: "></Label>
                 <Label Content="{Binding Countdown.Remaining}"></Label>
             </StackPanel>
