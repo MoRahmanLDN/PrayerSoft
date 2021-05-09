@@ -36,17 +36,17 @@ namespace PrayerSoft.Tests
             var viewModel = new DailyScheduleViewModel(clock, calendar);
             viewModel.Refresh();
 
-            Assert.AreEqual("10:20", viewModel.FajrBegins);
-            Assert.AreEqual("14:22", viewModel.FajrJamaat);
+            Assert.AreEqual("10:20", viewModel.Fajr.Begins);
+            Assert.AreEqual("14:22", viewModel.Fajr.Jamaat);
 
-            Assert.AreEqual("11:30", viewModel.AsrBegins);
-            Assert.AreEqual("15:33", viewModel.AsrJamaat);
+            Assert.AreEqual("11:30", viewModel.Asr.Begins);
+            Assert.AreEqual("15:33", viewModel.Asr.Jamaat);
 
-            Assert.AreEqual("12:40", viewModel.MaghribBegins);
-            Assert.AreEqual("16:44", viewModel.MaghribJamaat);
+            Assert.AreEqual("12:40", viewModel.Maghrib.Begins);
+            Assert.AreEqual("16:44", viewModel.Maghrib.Jamaat);
 
-            Assert.AreEqual("13:50", viewModel.IshaBegins);
-            Assert.AreEqual("17:55", viewModel.IshaJamaat);
+            Assert.AreEqual("13:50", viewModel.Isha.Begins);
+            Assert.AreEqual("17:55", viewModel.Isha.Jamaat);
             
             Assert.AreEqual("01:01", viewModel.Sunrise);
             Assert.AreEqual("02:02", viewModel.Sunset);

@@ -11,52 +11,49 @@ namespace PrayerSoft
         private ICalendar calendar;
         private Format format;
 
-        public DailyScheduleViewModel(IClock clock, ICalendar calendar)
-        {
-            this.clock = clock;
-            this.calendar = calendar;
-            format = new Format();
-        }
-
-        public string FajrBegins { get; set; }
-        public string FajrJamaat { get; set; }
-
-        public string ZuhrBegins { get; set; }
-        public string ZuhrJamaat { get; set; }
-
-        public string AsrBegins { get; set; }
-        public string AsrJamaat { get; set; }
-
-        public string MaghribBegins { get; set; }
-        public string MaghribJamaat { get; set; }
-
-        public string IshaBegins { get; set; }
-        public string IshaJamaat { get; set; }
+        public PrayerViewModel Fajr { get; set; }
+        public PrayerViewModel Zuhr { get; set; }
+        public PrayerViewModel Asr { get; set; }
+        public PrayerViewModel Maghrib { get; set; }
+        public PrayerViewModel Isha { get; set; }
 
         public string Sunrise { get; set; }
         public string Sunset { get; set; }
         public string SubSadiq { get; set; }
         public string Zawaal { get; set; }
 
+        public DailyScheduleViewModel(IClock clock, ICalendar calendar)
+        {
+            this.clock = clock;
+            this.calendar = calendar;
+            format = new Format();
+
+            Fajr = new PrayerViewModel { PrayerName = "Fajr" };
+            Zuhr = new PrayerViewModel { PrayerName = "Zuhr" };
+            Asr = new PrayerViewModel { PrayerName = "Asr" };
+            Maghrib = new PrayerViewModel { PrayerName = "Maghrib" };
+            Isha = new PrayerViewModel { PrayerName = "Isha" };
+        }
+
         public void Refresh()
         {
             DateTime today = clock.Read();
             DailySchedule schedule = calendar.Get(today);
 
-            FajrBegins = format.ShortTime(schedule.FajrBegins);
-            FajrJamaat = format.ShortTime(schedule.FajrJamaat);
+            Fajr.Begins = format.ShortTime(schedule.FajrBegins);
+            Fajr.Jamaat = format.ShortTime(schedule.FajrJamaat);
 
-            ZuhrBegins = format.ShortTime(schedule.ZuhrBegins);
-            ZuhrJamaat = format.ShortTime(schedule.ZuhrJamaat);
+            Zuhr.Begins = format.ShortTime(schedule.ZuhrBegins);
+            Zuhr.Jamaat = format.ShortTime(schedule.ZuhrJamaat);
 
-            AsrBegins = format.ShortTime(schedule.AsrBegins);
-            AsrJamaat = format.ShortTime(schedule.AsrJamaat);
+            Asr.Begins = format.ShortTime(schedule.AsrBegins);
+            Asr.Jamaat = format.ShortTime(schedule.AsrJamaat);
 
-            MaghribBegins = format.ShortTime(schedule.MaghribBegins);
-            MaghribJamaat = format.ShortTime(schedule.MaghribJamaat);
+            Maghrib.Begins = format.ShortTime(schedule.MaghribBegins);
+            Maghrib.Jamaat = format.ShortTime(schedule.MaghribJamaat);
 
-            IshaBegins = format.ShortTime(schedule.IshaBegins);
-            IshaJamaat = format.ShortTime(schedule.IshaJamaat);
+            Isha.Begins = format.ShortTime(schedule.IshaBegins);
+            Isha.Jamaat = format.ShortTime(schedule.IshaJamaat);
 
             Sunrise = format.ShortTime(schedule.Sunrise);
             Sunset = format.ShortTime(schedule.Sunset);

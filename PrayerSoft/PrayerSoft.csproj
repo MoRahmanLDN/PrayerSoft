@@ -78,6 +78,7 @@
     <Compile Include="AlternatingSequenceViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="DailyScheduleViewModel.cs" />
+    <Compile Include="PrayerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlideshowViewModel.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />

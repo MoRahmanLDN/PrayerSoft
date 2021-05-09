@@ -41,38 +41,16 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
-
-                <Label Grid.Column="0" Grid.Row="2" Content="Fajr"/>
-                <Label Grid.Column="0" Grid.Row="3" Content="Zuhr"/>
-                <Label Grid.Column="0" Grid.Row="4" Content="Asr"/>
-                <Label Grid.Column="0" Grid.Row="5" Content="Maghrib"/>
-                <Label Grid.Column="0" Grid.Row="6" Content="Isha"/>
-
+                
                 <Label Grid.Column="1" Grid.Row="1" Content="Begins"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Jamaat"/>
-
-                <Label Grid.Column="1" Grid.Row="2" Content="{Binding DailySchedule.FajrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="2" Content="{Binding DailySchedule.FajrJamaat}"/>
-
-                <Label Grid.Column="1" Grid.Row="3" Content="{Binding DailySchedule.ZuhrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="3" Content="{Binding DailySchedule.ZuhrJamaat}"/>
-
-                <Label Grid.Column="1" Grid.Row="4" Content="{Binding DailySchedule.AsrBegins}"/>
-                <Label Grid.Column="2" Grid.Row="4" Content="{Binding DailySchedule.AsrJamaat}"/>
-
-                <Label Grid.Column="1" Grid.Row="5" Content="{Binding DailySchedule.MaghribBegins}"/>
-                <Label Grid.Column="2" Grid.Row="5" Content="{Binding DailySchedule.MaghribJamaat}"/>
-
-                <Label Grid.Column="1" Grid.Row="6" Content="{Binding DailySchedule.IshaBegins}"/>
-                <Label Grid.Column="2" Grid.Row="6" Content="{Binding DailySchedule.IshaJamaat}"/>
             </Grid>
+            <c:Prayer DataContext="{Binding DailySchedule.Fajr}"></c:Prayer>
+            <c:Prayer DataContext="{Binding DailySchedule.Zuhr}"></c:Prayer>
+            <c:Prayer DataContext="{Binding DailySchedule.Asr}"></c:Prayer>
+            <c:Prayer DataContext="{Binding DailySchedule.Maghrib}"></c:Prayer>
+            <c:Prayer DataContext="{Binding DailySchedule.Isha}"></c:Prayer>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
