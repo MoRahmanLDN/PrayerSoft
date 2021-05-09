@@ -7,13 +7,10 @@ using System.Windows.Threading;
 
 namespace PrayerSoft.UI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private bool isFullscreen;
-        private Calendar repository;
+        private Calendar calendar;
         private FileEnumerator imageEnumerator;
         private FileEnumerator videoEnumerator;
         private TimeSpan slideshowInterval;
@@ -23,11 +20,11 @@ namespace PrayerSoft.UI
             InitializeComponent();
 
             var clock = new Clock();
-            repository = new Calendar();
+            calendar = new Calendar();
             imageEnumerator = new FileEnumerator();
             videoEnumerator = new FileEnumerator();
             slideshowInterval = TimeSpan.FromSeconds(5);
-            DataContext = new MainWindowViewModel(clock, repository, imageEnumerator, videoEnumerator, slideshowInterval);
+            DataContext = new MainWindowViewModel(clock, calendar, imageEnumerator, videoEnumerator, slideshowInterval);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,7 +36,7 @@ namespace PrayerSoft.UI
 
         private void LoadData()
         {
-            repository.Load(File.ReadAllText("calendar.csv"));
+            calendar.Load(File.ReadAllText("calendar.csv"));
             imageEnumerator.Load(@"Images", "*.jpg");
             videoEnumerator.Load(@"Videos", "*.mp4");
         }

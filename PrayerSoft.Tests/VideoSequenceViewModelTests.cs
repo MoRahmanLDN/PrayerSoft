@@ -7,15 +7,15 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class VideoSequenceViewModelTests
     {
-        private MockFileEnumerator repository;
+        private MockFileEnumerator enumerator;
         private VideoSequenceViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
-            repository = new MockFileEnumerator();
-            repository.Files = new List<string> { "video1", "video2" };
-            viewModel = new VideoSequenceViewModel(repository);
+            enumerator = new MockFileEnumerator();
+            enumerator.Files = new List<string> { "video1", "video2" };
+            viewModel = new VideoSequenceViewModel(enumerator);
         }
 
         [TestMethod]

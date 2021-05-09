@@ -13,13 +13,13 @@ namespace PrayerSoft
         
         public MainWindowViewModel(
             IClock clock,
-            ICalendar prayerTimesRepository,
+            ICalendar calendar,
             IFileEnumerator imageEnumerator,
             IFileEnumerator videoEnumerator,
             TimeSpan slideshowInterval)
         {
             DateAndTime = new DateAndTimeViewModel(clock);
-            DailySchedule = new DailyScheduleViewModel(clock, prayerTimesRepository);
+            DailySchedule = new DailyScheduleViewModel(clock, calendar);
             var imageSequence = new ImageSequenceViewModel(clock, imageEnumerator, slideshowInterval);
             var videoSequence = new VideoSequenceViewModel(videoEnumerator);
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);

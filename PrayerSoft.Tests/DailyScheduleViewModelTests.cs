@@ -11,9 +11,9 @@ namespace PrayerSoft.Tests
         public void OnRefreshTodaysPrayersAreUpdated()
         {
             var clock = new MockClock();
-            var repository = new MockPrayerTimesRepository();
+            var calendar = new MockCalendar();
 
-            repository.PrayerTimes = new DailySchedule
+            calendar.DailySchedule = new DailySchedule
             {
                 FajrBegins = new DateTime(2021, 05, 01, 10, 20, 00),
                 FajrJamaat = new DateTime(2021, 05, 01, 14, 22, 00),
@@ -33,7 +33,7 @@ namespace PrayerSoft.Tests
                 Zawaal = new DateTime(2021, 05, 01, 04, 04, 00),
             };
             
-            var viewModel = new DailyScheduleViewModel(clock, repository);
+            var viewModel = new DailyScheduleViewModel(clock, calendar);
             viewModel.Refresh();
 
             Assert.AreEqual("10:20", viewModel.FajrBegins);

@@ -14,9 +14,9 @@ namespace PrayerSoft.Tests
                 "Date,FajrBegins,FajrJamaat,ZuhrBegins,ZuhrJamaat,AsrBegins,AsrJamaat,MaghribBegins,MaghribJamaat,IshaBegins,IshaJamaat,Sunrise,Sunset,SubSadiq,Zawaal\r\n" +
                 "2022-05-01,10:20,10:30,10:40,10:50,11:00,11:10,11:20,11:30,11:40,11:50,01:01,02:02,03:03,04:04\r\n";
 
-            var repository = new Calendar();
-            repository.Load(csv);
-            var dailyPrayers = repository.Get(new DateTime(2022, 05, 01));
+            var calendar = new Calendar();
+            calendar.Load(csv);
+            var dailyPrayers = calendar.Get(new DateTime(2022, 05, 01));
 
             Assert.AreEqual(new DateTime(2022, 05, 01, 10, 20, 00), dailyPrayers.FajrBegins);
             Assert.AreEqual(new DateTime(2022, 05, 01, 10, 30, 00), dailyPrayers.FajrJamaat);

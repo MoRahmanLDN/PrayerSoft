@@ -9,21 +9,21 @@ namespace PrayerSoft.Tests
     public class SlideshowViewModelTests
     {
         MockClock clock;
-        MockFileEnumerator repository;
+        MockFileEnumerator enumerator;
         ImageSequenceViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
             clock = new MockClock();
-            repository = new MockFileEnumerator();
-            viewModel = new ImageSequenceViewModel(clock, repository, TimeSpan.FromSeconds(10));
+            enumerator = new MockFileEnumerator();
+            viewModel = new ImageSequenceViewModel(clock, enumerator, TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
         public void WhenFirstShownDisplayFirstImage()
         {
-            repository.Files = new List<string> { "image" };
+            enumerator.Files = new List<string> { "image" };
 
             viewModel.Refresh();
 
@@ -33,7 +33,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void WhenTimeElapsedDisplayNextImage()
         {
-            repository.Files = new List<string> { "image1", "image2" };
+            enumerator.Files = new List<string> { "image1", "image2" };
 
             clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
             viewModel.Refresh();
@@ -49,7 +49,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void SequenceDoesNotEndBeforeTimeElapsesForLastImage()
         {
-            repository.Files = new List<string> { "image1", "image2" };
+            enumerator.Files = new List<string> { "image1", "image2" };
 
             clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
             viewModel.Refresh();
@@ -63,7 +63,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void SequenceEndsWhenTimeElapsesForLastImage()
         {
-            repository.Files = new List<string> { "image1", "image2" };
+            enumerator.Files = new List<string> { "image1", "image2" };
 
             clock.Set(new DateTime(2021, 05, 02, 19, 01, 00));
             viewModel.Refresh();
