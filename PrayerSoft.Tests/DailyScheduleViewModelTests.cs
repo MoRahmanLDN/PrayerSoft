@@ -7,12 +7,15 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class DailyScheduleViewModelTests
     {
-        [TestMethod]
-        public void OnRefreshTodaysPrayersAreUpdated()
-        {
-            var clock = new MockClock();
-            var calendar = new MockCalendar();
+        private MockClock clock;
+        private MockCalendar calendar;
+        private DailyScheduleViewModel viewModel;
 
+        [TestInitialize]
+        public void Initialize()
+        {
+            clock = new MockClock();
+            calendar = new MockCalendar();
             calendar.DailySchedule = new DailySchedule
             {
                 FajrBegins = DateTime.Parse("10:20"),
@@ -35,8 +38,13 @@ namespace PrayerSoft.Tests
                 SubSadiq = DateTime.Parse("22:32"),
                 Zawaal = DateTime.Parse("23:33"),
             };
-            
-            var viewModel = new DailyScheduleViewModel(clock, calendar);
+
+            viewModel = new DailyScheduleViewModel(clock, calendar);
+        }
+
+        [TestMethod]
+        public void OnRefreshTodaysPrayersAreUpdated()
+        {
             viewModel.Refresh();
 
             Assert.AreEqual("Fajr", viewModel.Prayers[0].PrayerName);
@@ -63,6 +71,56 @@ namespace PrayerSoft.Tests
             Assert.AreEqual("21:31", viewModel.Sunset);
             Assert.AreEqual("22:32", viewModel.SubSadiq);
             Assert.AreEqual("23:33", viewModel.Zawaal);
+        }
+        
+        [TestMethod]
+        public void CanMarkFajrAsNextPrayer()
+        {
+            clock.Set(DateTime.Parse("09:00"));
+
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.Prayers[0].IsNext);
+        }
+
+        [TestMethod]
+        public void CanMarkZuhrAsNextPrayer()
+        {
+            clock.Set(DateTime.Parse("13:00"));
+
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.Prayers[1].IsNext);
+        }
+
+        [TestMethod]
+        public void CanMarkAsrAsNextPrayer()
+        {
+            clock.Set(DateTime.Parse("15:00"));
+
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.Prayers[2].IsNext);
+        }
+
+        [TestMethod]
+        public void CanMarkMaghribAsNextPrayer()
+        {
+            clock.Set(DateTime.Parse("17:00"));
+
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.Prayers[3].IsNext);
+        }
+
+        [TestMethod]
+        public void CanMarkIshaAsNextPrayer()
+        {
+            clock.Set(DateTime.Parse("19:00"));
+
+            viewModel.Refresh();
+
+            Assert.IsTrue(viewModel.Prayers[4].IsNext);
         }
     }
 }

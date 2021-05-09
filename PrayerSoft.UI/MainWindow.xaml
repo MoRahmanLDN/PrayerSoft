@@ -56,6 +56,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
+                            <Border BorderBrush="Gainsboro" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="3" Visibility="{Binding IsNext, Converter={StaticResource BooleanToVisibility}}"></Border>
+                            
                             <Label Grid.Column="0" Content="{Binding PrayerName}"></Label>
                             <Label Grid.Column="1" Content="{Binding Begins}"></Label>
                             <Label Grid.Column="2" Content="{Binding Jamaat}"></Label>

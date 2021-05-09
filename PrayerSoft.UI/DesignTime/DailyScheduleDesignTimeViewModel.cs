@@ -16,18 +16,22 @@ namespace PrayerSoft.UI.DesignTime
             {
                 PrayerName = "Zuhr",
                 Begins = "12:12",
-                Jamaat = "13:13"
-            },new PrayerViewModel
+                Jamaat = "13:13",
+                IsNext = true
+            },
+            new PrayerViewModel
             {
                 PrayerName = "Asr",
                 Begins = "14:14",
                 Jamaat = "15:15"
-            },new PrayerViewModel
+            },
+            new PrayerViewModel
             {
                 PrayerName = "Maghrib",
                 Begins = "16:16",
                 Jamaat = "17:17"
-            },new PrayerViewModel
+            },
+            new PrayerViewModel
             {
                 PrayerName = "Isha",
                 Begins = "18:18",

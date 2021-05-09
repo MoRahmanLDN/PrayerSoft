@@ -42,9 +42,15 @@ namespace PrayerSoft
 
         public void Refresh()
         {
-            DateTime today = clock.Read();
-            DailySchedule schedule = calendar.Get(today);
+            DateTime now = clock.Read();
+            DailySchedule schedule = calendar.Get(now);
 
+            Format(schedule);
+            MarkNextPrayer(now, schedule);
+        }
+
+        private void Format(DailySchedule schedule)
+        {
             fajr.Begins = format.ShortTime(schedule.FajrBegins);
             fajr.Jamaat = format.ShortTime(schedule.FajrJamaat);
 
@@ -64,6 +70,37 @@ namespace PrayerSoft
             Sunset = format.ShortTime(schedule.Sunset);
             SubSadiq = format.ShortTime(schedule.SubSadiq);
             Zawaal = format.ShortTime(schedule.Zawaal);
+        }
+
+        private void MarkNextPrayer(DateTime now, DailySchedule schedule)
+        {
+            Prayers.ForEach(p => p.IsNext = false);
+
+            if (now < schedule.FajrJamaat)
+            {
+                fajr.IsNext = true;
+                return;
+            }
+            if (now < schedule.ZuhrJamaat)
+            {
+                zuhr.IsNext = true;
+                return;
+            }
+            if (now < schedule.AsrJamaat)
+            {
+                asr.IsNext = true;
+                return;
+            }
+            if (now < schedule.MaghribJamaat)
+            {
+                maghrib.IsNext = true;
+                return;
+            }
+            if (now < schedule.IshaJamaat)
+            {
+                isha.IsNext = true;
+                return;
+            }
         }
     }
 }
