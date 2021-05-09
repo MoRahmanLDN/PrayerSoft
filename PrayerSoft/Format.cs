@@ -10,6 +10,11 @@ namespace PrayerSoft
             return date.ToString("HH:mm:ss");
         }
 
+        public string LongTime(TimeSpan timeSpan)
+        {
+            return timeSpan.ToString();
+        }
+
         public string ShortTime(DateTime date)
         {
             return date.ToString("HH:mm");

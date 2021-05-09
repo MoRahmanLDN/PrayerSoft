@@ -67,6 +67,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\Video.cs" />
+    <Compile Include="DesignTime\CountdownDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\DateAndTimeDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\DailyScheduleDesignTimeViewModel.cs" />

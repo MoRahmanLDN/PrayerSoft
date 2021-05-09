@@ -32,7 +32,7 @@
             <Label Content="{Binding DateAndTime.CurrentTime}"></Label>
             <Label Content="{Binding DateAndTime.CurrentDate}"></Label>
             <Label Content="{Binding DateAndTime.CurrentIslamicDate}"></Label>
-            <Grid Margin="0,0,-0.4,0">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -96,6 +96,10 @@
                 <Label Grid.Column="3" Grid.Row="0" Content="Zawaal"></Label>
                 <Label Grid.Column="3" Grid.Row="1" Content="{Binding DailySchedule.Zawaal}"></Label>
             </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Time to Jamaat: "></Label>
+                <Label Content="{Binding Countdown.Remaining}"></Label>
+            </StackPanel>
         </StackPanel>
         <ContentControl Grid.Column="1" Content="{Binding AlternatingSequence.Current}"></ContentControl>
     </Grid>
