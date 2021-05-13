@@ -14,6 +14,8 @@ namespace PrayerSoft.UI
         private FileEnumerator imageEnumerator;
         private FileEnumerator videoEnumerator;
         private TimeSpan slideshowInterval;
+        private MessageEnumerator messageEnumerator;
+        private TimeSpan messageInterval;
 
         public MainWindow()
         {
@@ -24,7 +26,16 @@ namespace PrayerSoft.UI
             imageEnumerator = new FileEnumerator();
             videoEnumerator = new FileEnumerator();
             slideshowInterval = TimeSpan.FromSeconds(5);
-            DataContext = new MainWindowViewModel(clock, calendar, imageEnumerator, videoEnumerator, slideshowInterval);
+            messageEnumerator = new MessageEnumerator();
+            messageInterval = TimeSpan.FromSeconds(5);
+            DataContext = new MainWindowViewModel(
+                clock, 
+                calendar, 
+                imageEnumerator, 
+                videoEnumerator, 
+                slideshowInterval, 
+                messageEnumerator, 
+                messageInterval);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -36,9 +47,10 @@ namespace PrayerSoft.UI
 
         private void LoadData()
         {
-            calendar.Load(File.ReadAllText("calendar.csv"));
+            calendar.Load(File.ReadAllText("Data/calendar.csv"));
             imageEnumerator.Load(@"Images", "*.jpg");
             videoEnumerator.Load(@"Videos", "*.mp4");
+            messageEnumerator.Load(File.ReadAllText("Data/messages.csv"));
         }
 
         private void Refresh()

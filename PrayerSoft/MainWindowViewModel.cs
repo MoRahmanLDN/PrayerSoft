@@ -11,13 +11,16 @@ namespace PrayerSoft
         public DailyScheduleViewModel DailySchedule { get; set; }
         public AlternatingSequenceViewModel AlternatingSequence { get; set; }
         public CountdownViewModel Countdown { get; set; }
+        public MessagesViewModel Messages { get; set; }
 
         public MainWindowViewModel(
             IClock clock,
             ICalendar calendar,
             IFileEnumerator imageEnumerator,
             IFileEnumerator videoEnumerator,
-            TimeSpan slideshowInterval)
+            TimeSpan slideshowInterval,
+            IMessageEnumerator messageEnumerator,
+            TimeSpan messageInterval)
         {
             DateAndTime = new DateAndTimeViewModel(clock);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
@@ -25,6 +28,7 @@ namespace PrayerSoft
             var videoSequence = new VideoSequenceViewModel(videoEnumerator);
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
             Countdown = new CountdownViewModel(clock, calendar);
+            Messages = new MessagesViewModel(clock, messageEnumerator, messageInterval);
         }
 
         public void Refresh()
@@ -33,6 +37,7 @@ namespace PrayerSoft
             DailySchedule.Refresh();
             AlternatingSequence.Refresh();
             Countdown.Refresh();
+            Messages.Refresh();
         }
     }
 }

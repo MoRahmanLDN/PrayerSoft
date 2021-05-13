@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Clock.cs" />
     <Compile Include="CountdownViewModel.cs" />
+    <Compile Include="Data\IMessageEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
     <Compile Include="DailySchedule.cs" />
@@ -78,9 +79,12 @@
     <Compile Include="AlternatingSequenceViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="DailyScheduleViewModel.cs" />
+    <Compile Include="Data\MessageEnumerator.cs" />
+    <Compile Include="MessagesViewModel.cs" />
     <Compile Include="PrayerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlideshowViewModel.cs" />
+    <Compile Include="Utilities\Cycle.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

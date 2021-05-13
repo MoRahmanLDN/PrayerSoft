@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="AlternatingSequenceViewModelTests.cs" />
     <Compile Include="CountdownViewModelTests.cs" />
+    <Compile Include="CycleTests.cs" />
+    <Compile Include="MessageEnumeratorTests.cs" />
+    <Compile Include="MessagesViewModelTests.cs" />
+    <Compile Include="MockMessagesRepository.cs" />
     <Compile Include="Mocks\MockFileRepository.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />

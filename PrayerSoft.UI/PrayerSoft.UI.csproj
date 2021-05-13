@@ -71,6 +71,7 @@
     <Compile Include="DesignTime\DateAndTimeDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\DailyScheduleDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\MessagesDesignTimeViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,6 +95,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\Messages.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -110,7 +114,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Calendar.csv">
+    <None Include="Data\Calendar.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

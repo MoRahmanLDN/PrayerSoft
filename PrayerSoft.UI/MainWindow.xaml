@@ -29,7 +29,11 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
             <ColumnDefinition Width="7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
             <Label Content="{Binding DateAndTime.CurrentTime}"></Label>
             <Label Content="{Binding DateAndTime.CurrentDate}"></Label>
             <Label Content="{Binding DateAndTime.CurrentIslamicDate}"></Label>
@@ -94,6 +98,7 @@
                 <Label Content="{Binding Countdown.Remaining}"></Label>
             </StackPanel>
         </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding AlternatingSequence.Current}"></ContentControl>
+        <ContentControl Grid.Column="1" Grid.Row="0" Content="{Binding AlternatingSequence.Current}"></ContentControl>
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"></Label>
     </Grid>
 </Window>
