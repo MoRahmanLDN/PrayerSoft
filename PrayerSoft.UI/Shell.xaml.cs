@@ -10,6 +10,7 @@ namespace PrayerSoft.UI
     public partial class Shell : Window
     {
         private bool isFullscreen;
+        private Filesystem filesystem;
         private Configuration configuration;
         private Calendar calendar;
         private FileEnumerator imageEnumerator;
@@ -22,6 +23,7 @@ namespace PrayerSoft.UI
         {
             InitializeComponent();
 
+            filesystem = new Filesystem();
             configuration = new Configuration();
             var clock = new Clock();
             calendar = new Calendar();
@@ -50,7 +52,8 @@ namespace PrayerSoft.UI
         private void LoadData()
         {
             var calendarPath = configuration.GetCalendarPath();
-            calendar.Load(File.ReadAllText(calendarPath));
+            var calendarData = filesystem.Read(calendarPath);
+            calendar.Load(calendarData);
 
             var imagesPath = configuration.GetImagesPath();
             var imagesPattern = configuration.GetImagesPattern();
@@ -61,7 +64,8 @@ namespace PrayerSoft.UI
             videoEnumerator.Load(videosPath, videosPattern);
 
             var messagesPath = configuration.GetMessagesPath();
-            messageEnumerator.Load(File.ReadAllText(messagesPath));
+            var messagesData = filesystem.Read(messagesPath);
+            messageEnumerator.Load(messagesData);
         }
 
         private void Refresh()
