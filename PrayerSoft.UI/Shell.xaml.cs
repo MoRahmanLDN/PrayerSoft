@@ -29,17 +29,14 @@ namespace PrayerSoft.UI
             calendar = new Calendar(filesystem, configuration);
             imagesEnumerator = new ImagesEnumerator(filesystem, configuration);
             videosEnumerator = new VideosEnumerator(filesystem, configuration);
-            slideshowInterval = configuration.GetImagesInterval();
             messageEnumerator = new MessageEnumerator(filesystem, configuration);
-            messageInterval = configuration.GetMessagesInterval();
             DataContext = new ShellViewModel(
                 clock, 
+                configuration,
                 calendar, 
                 imagesEnumerator, 
                 videosEnumerator, 
-                slideshowInterval, 
-                messageEnumerator, 
-                messageInterval);
+                messageEnumerator);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

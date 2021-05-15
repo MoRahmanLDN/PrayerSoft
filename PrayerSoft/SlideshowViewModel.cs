@@ -9,22 +9,24 @@ namespace PrayerSoft
     {
         private readonly IClock clock;
         private readonly IFileEnumerator imageEnumerator;
-        private readonly TimeSpan interval;
+        private readonly IConfiguration configuration;
         private DateTime? lastUpdate;
 
         public string Image { get; set; }
         public bool HasEnded { get; set; }
 
-        public ImageSequenceViewModel(IClock clock, IFileEnumerator imageEnumerator, TimeSpan interval)
+        public ImageSequenceViewModel(IClock clock, IConfiguration configuration, IFileEnumerator imageEnumerator)
         {
             this.clock = clock;
+            this.configuration = configuration;
             this.imageEnumerator = imageEnumerator;
-            this.interval = interval;
         }
 
         public void Refresh()
         {
             var now = clock.Read();
+            var interval = configuration.GetImagesInterval();
+
             if (lastUpdate == null || now >= lastUpdate + interval)
             {
                 if (imageEnumerator.IsComplete)

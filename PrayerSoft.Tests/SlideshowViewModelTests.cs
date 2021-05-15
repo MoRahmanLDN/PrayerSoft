@@ -9,6 +9,7 @@ namespace PrayerSoft.Tests
     public class SlideshowViewModelTests
     {
         MockClock clock;
+        MockConfiguration configuration;
         MockFileEnumerator enumerator;
         ImageSequenceViewModel viewModel;
 
@@ -16,8 +17,10 @@ namespace PrayerSoft.Tests
         public void Initialize()
         {
             clock = new MockClock();
+            configuration = new MockConfiguration();
+            configuration.MessagesInterval = TimeSpan.FromSeconds(10);
             enumerator = new MockFileEnumerator();
-            viewModel = new ImageSequenceViewModel(clock, enumerator, TimeSpan.FromSeconds(10));
+            viewModel = new ImageSequenceViewModel(clock, configuration, enumerator);
         }
 
         [TestMethod]

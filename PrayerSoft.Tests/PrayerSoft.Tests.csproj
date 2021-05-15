@@ -55,6 +55,7 @@
     <Compile Include="MessageEnumeratorTests.cs" />
     <Compile Include="MessagesViewModelTests.cs" />
     <Compile Include="MockMessagesRepository.cs" />
+    <Compile Include="Mocks\MockConfiguration.cs" />
     <Compile Include="Mocks\MockFileRepository.cs" />
     <Compile Include="Mocks\MockFileSystem.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />

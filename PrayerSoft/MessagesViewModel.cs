@@ -8,15 +8,15 @@ namespace PrayerSoft
     public class MessagesViewModel: IViewModel
     {
         private readonly IClock clock;
+        private readonly IConfiguration configuration;
         private readonly IMessageEnumerator messageEnumerator;
-        private readonly TimeSpan interval;
         private DateTime? lastUpdate;
 
-        public MessagesViewModel(IClock clock, IMessageEnumerator messageEnumerator, TimeSpan interval)
+        public MessagesViewModel(IClock clock, IConfiguration configuration, IMessageEnumerator messageEnumerator)
         {
             this.clock = clock;
+            this.configuration = configuration;
             this.messageEnumerator = messageEnumerator;
-            this.interval = interval;
         }
 
         public string Current { get; set; }
@@ -25,6 +25,8 @@ namespace PrayerSoft
         public void Refresh()
         {
             var now = clock.Read();
+            var interval = configuration.GetMessagesInterval();
+
             if (lastUpdate == null || now - lastUpdate > interval)
             {
                 Current = messageEnumerator.GetNext(now);

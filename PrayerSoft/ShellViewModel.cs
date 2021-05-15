@@ -11,21 +11,19 @@ namespace PrayerSoft
 
         public ShellViewModel(
             IClock clock,
+            IConfiguration configuration,
             ICalendar calendar,
             IFileEnumerator imageEnumerator,
             IFileEnumerator videoEnumerator,
-            TimeSpan slideshowInterval,
-            IMessageEnumerator messageEnumerator,
-            TimeSpan messageInterval)
+            IMessageEnumerator messageEnumerator)
         {
             Current = new TodayViewModel(
                 clock, 
+                configuration,
                 calendar, 
                 imageEnumerator, 
                 videoEnumerator, 
-                slideshowInterval, 
-                messageEnumerator, 
-                messageInterval);
+                messageEnumerator);
         }
 
         public void Refresh()

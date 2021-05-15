@@ -15,20 +15,19 @@ namespace PrayerSoft
 
         public TodayViewModel(
             IClock clock,
+            IConfiguration configuration,
             ICalendar calendar,
             IFileEnumerator imageEnumerator,
             IFileEnumerator videoEnumerator,
-            TimeSpan slideshowInterval,
-            IMessageEnumerator messageEnumerator,
-            TimeSpan messageInterval)
+            IMessageEnumerator messageEnumerator)
         {
             DateAndTime = new DateAndTimeViewModel(clock);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
-            var imageSequence = new ImageSequenceViewModel(clock, imageEnumerator, slideshowInterval);
+            var imageSequence = new ImageSequenceViewModel(clock, configuration, imageEnumerator);
             var videoSequence = new VideoSequenceViewModel(videoEnumerator);
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
             Countdown = new CountdownViewModel(clock, calendar);
-            Messages = new MessagesViewModel(clock, messageEnumerator, messageInterval);
+            Messages = new MessagesViewModel(clock, configuration, messageEnumerator);
         }
 
         public void Refresh()

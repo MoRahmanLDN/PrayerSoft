@@ -8,6 +8,7 @@ namespace PrayerSoft.Tests
     public class MessagesViewModelTests
     {   
         private MockClock clock;
+        private MockConfiguration configuration;
         private MockMessagesRepository repository;
         private MessagesViewModel viewModel;
 
@@ -16,8 +17,9 @@ namespace PrayerSoft.Tests
         {
             clock = new MockClock();
             repository = new MockMessagesRepository();
-            var interval = TimeSpan.FromSeconds(10);
-            viewModel = new MessagesViewModel(clock, repository, interval);
+            configuration = new MockConfiguration();
+            configuration.ImagesInterval = TimeSpan.FromSeconds(10);
+            viewModel = new MessagesViewModel(clock, configuration, repository);
         }
 
         [TestMethod]
