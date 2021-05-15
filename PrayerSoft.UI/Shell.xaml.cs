@@ -1,5 +1,4 @@
-﻿using PrayerSoft.Data;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -14,7 +13,7 @@ namespace PrayerSoft.UI
         {
             InitializeComponent();
 
-            DataContext = new ShellViewModel(new Clock(), new Filesystem());
+            DataContext = new ShellViewModel();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

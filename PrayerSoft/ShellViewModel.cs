@@ -5,22 +5,46 @@ namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
     public class ShellViewModel : IViewModel
-    {   
-        private Configuration configuration;
-        private Calendar calendar;
-        private ImageEnumerator imageEnumerator;
-        private VideoEnumerator videoEnumerator;
-        private MessageEnumerator messageEnumerator;
+    {
+        private readonly IClock clock;
+        private readonly IConfiguration configuration;
+        private readonly Calendar calendar;
+        private readonly ImageEnumerator imageEnumerator;
+        private readonly VideoEnumerator videoEnumerator;
+        private readonly MessageEnumerator messageEnumerator;
 
         public IViewModel Current { get; set; }
 
-        public ShellViewModel(IClock clock, IFilesystem filesystem)
+        public ShellViewModel() : this(
+            new Clock(),
+            new Filesystem(),
+            new Configuration())
         {
-            configuration = new Configuration();
-            calendar = new Calendar(filesystem, configuration);
-            imageEnumerator = new ImageEnumerator(filesystem, configuration);
-            videoEnumerator = new VideoEnumerator(filesystem, configuration);
-            messageEnumerator = new MessageEnumerator(filesystem, configuration);
+        }
+
+        public ShellViewModel(
+            IClock clock, 
+            IFilesystem filesystem, 
+            IConfiguration configuration) : this(
+                clock,
+                configuration,
+                new Calendar(filesystem, configuration),
+                new ImageEnumerator(filesystem, configuration),
+                new VideoEnumerator(filesystem, configuration),
+                new MessageEnumerator(filesystem, configuration))
+        {
+        }
+
+        public ShellViewModel(
+            IClock clock, 
+            IConfiguration configuration,
+            ICalendar calendar,
+            IFileEnumerator imageEnumerator,
+            IFileEnumerator videoEnumerator,
+            IMessageEnumerator messageEnumerator)
+        {
+            this.clock = clock;
+            this.configuration = configuration;
 
             Current = new TodayViewModel(
                 clock, 
@@ -38,6 +62,7 @@ namespace PrayerSoft
 
         public void Load()
         {
+            configuration.Load();
             calendar.Load();
             imageEnumerator.Load();
             videoEnumerator.Load();

@@ -53,5 +53,9 @@ namespace PrayerSoft.Tests.Mocks
         {
             return VideosPattern;
         }
+
+        public void Load()
+        {
+        }
     }
 }

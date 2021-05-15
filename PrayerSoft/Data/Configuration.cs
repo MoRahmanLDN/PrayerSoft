@@ -43,5 +43,10 @@ namespace PrayerSoft.Data
         {
             return "*.mp4";
         }
+
+        public void Load()
+        {
+            
+        }
     }
 }
