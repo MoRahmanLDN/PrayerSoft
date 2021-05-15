@@ -34,17 +34,28 @@ namespace PrayerSoft.Data
             public DateTime Zawaal { get; set; }
         }
 
+        public Calendar(IFilesystem filesystem, IConfiguration configuration)
+        {
+            this.filesystem = filesystem;
+            this.configuration = configuration;
+        }
+
+        private readonly IFilesystem filesystem;
+        private readonly IConfiguration configuration;
         Dictionary<string, DailySchedule> days;
         private const string DateFormat = "yyyy-MM-dd";
-
+        
         public DailySchedule Get(DateTime date)
         {
             return days[date.ToString(DateFormat)];
         }
 
-        public void Load(string csv)
+        public void Load()
         {
-            using (var stringReader = new StringReader(csv))
+            var csvPath = configuration.GetCalendarPath();
+            var csvData = filesystem.Read(csvPath);
+
+            using (var stringReader = new StringReader(csvData))
             using (var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture))
             {
                 days = csvReader.GetRecords<CsvRecord>().ToDictionary(

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrayerSoft.Data;
+using PrayerSoft.Tests.Mocks;
 using System;
 
 namespace PrayerSoft.Tests
@@ -7,15 +8,26 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class CalendarTests
     {
+        private MockFileSystem filesystem;
+        private Configuration configuration;
+        private Calendar calendar;
+
+        [TestInitialize]
+        public void Initialize() 
+        {
+            filesystem = new MockFileSystem();
+            calendar = new Calendar(filesystem, configuration);
+        }
+
         [TestMethod]
         public void ParsesCorrectlyCsv()
         {
-            var csv =
+            filesystem.FileContent =
                 "Date,FajrBegins,FajrJamaat,ZuhrBegins,ZuhrJamaat,AsrBegins,AsrJamaat,MaghribBegins,MaghribJamaat,IshaBegins,IshaJamaat,Sunrise,Sunset,SubSadiq,Zawaal\r\n" +
                 "2022-05-01,10:20,10:30,10:40,10:50,11:00,11:10,11:20,11:30,11:40,11:50,01:01,02:02,03:03,04:04\r\n";
 
-            var calendar = new Calendar();
-            calendar.Load(csv);
+            calendar.Load();
+
             var dailyPrayers = calendar.Get(new DateTime(2022, 05, 01));
 
             Assert.AreEqual(new DateTime(2022, 05, 01, 10, 20, 00), dailyPrayers.FajrBegins);

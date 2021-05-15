@@ -17,10 +17,18 @@ namespace PrayerSoft.Data
             public string Message { get; set; }
         }
 
+        public MessageEnumerator(IFilesystem filesystem, IConfiguration configuration)
+        {
+            this.filesystem = filesystem;
+            this.configuration = configuration;
+        }
+
+        private readonly IFilesystem filesystem;
+        private readonly IConfiguration configuration;
+
         private List<MessageRecord> messages;
-
         private int currentIndex;
-
+        
         public string GetNext(DateTime now)
         {
             var indexes = Cycle.Get(currentIndex, messages.Count);
@@ -41,9 +49,12 @@ namespace PrayerSoft.Data
                 && record.EndDate > now;
         }
 
-        public void Load(string csv)
+        public void Load()
         {
-            using (var stringReader = new StringReader(csv))
+            var csvPath = configuration.GetMessagesPath();
+            var csvData = filesystem.Read(csvPath);
+
+            using (var stringReader = new StringReader(csvData))
             using (var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture))
             {
                 messages = csvReader.GetRecords<MessageRecord>().ToList();

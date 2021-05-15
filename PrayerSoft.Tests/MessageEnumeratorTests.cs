@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrayerSoft.Data;
+using PrayerSoft.Tests.Mocks;
 using System;
 
 namespace PrayerSoft.Tests
@@ -7,19 +8,25 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class MessageEnumeratorTests
     {
+        private MockFileSystem filesystem;
+        private Configuration configuration;
         private MessageEnumerator enumerator;
 
         [TestInitialize]
         public void Initialize()
         {
-            enumerator = new MessageEnumerator();
+            filesystem = new MockFileSystem();
+            configuration = new Configuration();
+            enumerator = new MessageEnumerator(filesystem, configuration);
         }
 
         [TestMethod]
         public void ReturnNullIfNoMessagesDefined()
         {
-            var csv = "StartDate,EndDate,Message\r\n";
-            enumerator.Load(csv);
+            filesystem.FileContent = 
+                "StartDate,EndDate,Message\r\n";
+
+            enumerator.Load();
 
             var message = enumerator.GetNext(new DateTime());
 
@@ -29,13 +36,13 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void ReturnsNullIfNoMessagesMatchDate()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-05-10 00:00,2022-05-30 23:59,Message\r\n" +
                 "2022-05-20 00:00,2022-05-30 23:59,Message\r\n" +
                 "2022-05-25 00:00,2022-05-30 23:59,Message\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message = enumerator.GetNext(DateTime.Parse("2022-06-01 00:00"));
 
@@ -45,11 +52,11 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void ReturnsFirstMessageIfItMatchesDate()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-05-10 00:00,2022-05-30 23:59,Message\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message = enumerator.GetNext(DateTime.Parse("2022-05-20 00:00"));
 
@@ -59,12 +66,12 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void ReturnsSecondMessageIfItIsTheFirstOneThatMatchesDate()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-05-10 00:00,2022-05-20 23:59,Message1\r\n" +
                 "2022-05-20 00:00,2022-05-30 23:59,Message2\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
 
@@ -74,13 +81,13 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void ReturnsMessagesInSequence()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-05-10 00:00,2022-05-30 23:59,Message1\r\n" +
                 "2022-05-20 00:00,2022-05-30 23:59,Message2\r\n" +
                 "2022-05-22 00:00,2022-05-30 23:59,Message3\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message1 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
             var message2 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
@@ -94,11 +101,11 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void AlwaysReturnsSameMessagesIfItIsOnlyOne()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-05-20 00:00,2022-05-30 23:59,Message\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message1 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
             var message2 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
@@ -110,13 +117,13 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void AlwaysReturnsSameMessagesIfItIsOnlyOneThatMatchesDate()
         {
-            var csv =
+            filesystem.FileContent =
                 "StartDate,EndDate,Message\r\n" +
                 "2022-04-20 00:00,2022-04-30 23:59,Message1\r\n" +
                 "2022-05-20 00:00,2022-05-30 23:59,Message2\r\n" +
                 "2022-06-20 00:00,2022-06-30 23:59,Message3\r\n";
 
-            enumerator.Load(csv);
+            enumerator.Load();
 
             var message1 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));
             var message2 = enumerator.GetNext(DateTime.Parse("2022-05-25 00:00"));

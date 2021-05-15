@@ -26,11 +26,11 @@ namespace PrayerSoft.UI
             filesystem = new Filesystem();
             configuration = new Configuration();
             var clock = new Clock();
-            calendar = new Calendar();
+            calendar = new Calendar(filesystem, configuration);
             imageEnumerator = new FileEnumerator();
             videoEnumerator = new FileEnumerator();
             slideshowInterval = configuration.GetImagesInterval();
-            messageEnumerator = new MessageEnumerator();
+            messageEnumerator = new MessageEnumerator(filesystem, configuration);
             messageInterval = configuration.GetMessagesInterval();
             DataContext = new ShellViewModel(
                 clock, 
@@ -51,9 +51,7 @@ namespace PrayerSoft.UI
 
         private void LoadData()
         {
-            var calendarPath = configuration.GetCalendarPath();
-            var calendarData = filesystem.Read(calendarPath);
-            calendar.Load(calendarData);
+            calendar.Load();
 
             var imagesPath = configuration.GetImagesPath();
             var imagesPattern = configuration.GetImagesPattern();
@@ -63,9 +61,7 @@ namespace PrayerSoft.UI
             var videosPattern = configuration.GetVideosPattern();
             videoEnumerator.Load(videosPath, videosPattern);
 
-            var messagesPath = configuration.GetMessagesPath();
-            var messagesData = filesystem.Read(messagesPath);
-            messageEnumerator.Load(messagesData);
+            messageEnumerator.Load();
         }
 
         private void Refresh()
