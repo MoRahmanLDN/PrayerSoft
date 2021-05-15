@@ -13,8 +13,8 @@ namespace PrayerSoft.UI
         private Filesystem filesystem;
         private Configuration configuration;
         private Calendar calendar;
-        private FileEnumerator imageEnumerator;
-        private FileEnumerator videoEnumerator;
+        private ImagesEnumerator imagesEnumerator;
+        private VideosEnumerator videosEnumerator;
         private TimeSpan slideshowInterval;
         private MessageEnumerator messageEnumerator;
         private TimeSpan messageInterval;
@@ -27,16 +27,16 @@ namespace PrayerSoft.UI
             configuration = new Configuration();
             var clock = new Clock();
             calendar = new Calendar(filesystem, configuration);
-            imageEnumerator = new FileEnumerator();
-            videoEnumerator = new FileEnumerator();
+            imagesEnumerator = new ImagesEnumerator(filesystem, configuration);
+            videosEnumerator = new VideosEnumerator(filesystem, configuration);
             slideshowInterval = configuration.GetImagesInterval();
             messageEnumerator = new MessageEnumerator(filesystem, configuration);
             messageInterval = configuration.GetMessagesInterval();
             DataContext = new ShellViewModel(
                 clock, 
                 calendar, 
-                imageEnumerator, 
-                videoEnumerator, 
+                imagesEnumerator, 
+                videosEnumerator, 
                 slideshowInterval, 
                 messageEnumerator, 
                 messageInterval);
@@ -52,15 +52,8 @@ namespace PrayerSoft.UI
         private void LoadData()
         {
             calendar.Load();
-
-            var imagesPath = configuration.GetImagesPath();
-            var imagesPattern = configuration.GetImagesPattern();
-            imageEnumerator.Load(imagesPath, imagesPattern);
-
-            var videosPath = configuration.GetVideosPath();
-            var videosPattern = configuration.GetVideosPattern();
-            videoEnumerator.Load(videosPath, videosPattern);
-
+            imagesEnumerator.Load();
+            videosEnumerator.Load();
             messageEnumerator.Load();
         }
 

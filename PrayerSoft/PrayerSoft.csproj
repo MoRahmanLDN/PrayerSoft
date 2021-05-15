@@ -69,7 +69,9 @@
     <Compile Include="Data\Filesystem.cs" />
     <Compile Include="Data\IConfiguration.cs" />
     <Compile Include="Data\IFilesystem.cs" />
+    <Compile Include="Data\ImagesEnumerator.cs" />
     <Compile Include="Data\IMessageEnumerator.cs" />
+    <Compile Include="Data\VideosEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
     <Compile Include="DailySchedule.cs" />
