@@ -5,7 +5,7 @@ using System;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class MainWindowViewModel : IViewModel
+    public class TodayViewModel : IViewModel
     {
         public DateAndTimeViewModel DateAndTime { get; set; }
         public DailyScheduleViewModel DailySchedule { get; set; }
@@ -13,7 +13,7 @@ namespace PrayerSoft
         public CountdownViewModel Countdown { get; set; }
         public MessagesViewModel Messages { get; set; }
 
-        public MainWindowViewModel(
+        public TodayViewModel(
             IClock clock,
             ICalendar calendar,
             IFileEnumerator imageEnumerator,

@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace PrayerSoft.UI
 {
-    public partial class MainWindow : Window
+    public partial class Shell : Window
     {
         private bool isFullscreen;
         private Calendar calendar;
@@ -17,7 +17,7 @@ namespace PrayerSoft.UI
         private MessageEnumerator messageEnumerator;
         private TimeSpan messageInterval;
 
-        public MainWindow()
+        public Shell()
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace PrayerSoft.UI
             slideshowInterval = TimeSpan.FromSeconds(5);
             messageEnumerator = new MessageEnumerator();
             messageInterval = TimeSpan.FromSeconds(5);
-            DataContext = new MainWindowViewModel(
+            DataContext = new ShellViewModel(
                 clock, 
                 calendar, 
                 imageEnumerator, 
@@ -55,7 +55,7 @@ namespace PrayerSoft.UI
 
         private void Refresh()
         {
-            ((MainWindowViewModel)DataContext).Refresh();
+            ((IViewModel)DataContext).Refresh();
         }
 
         private void SetRefreshTimer()
