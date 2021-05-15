@@ -10,6 +10,7 @@ namespace PrayerSoft.UI
     public partial class Shell : Window
     {
         private bool isFullscreen;
+        private Configuration configuration;
         private Calendar calendar;
         private FileEnumerator imageEnumerator;
         private FileEnumerator videoEnumerator;
@@ -21,13 +22,14 @@ namespace PrayerSoft.UI
         {
             InitializeComponent();
 
+            configuration = new Configuration();
             var clock = new Clock();
             calendar = new Calendar();
             imageEnumerator = new FileEnumerator();
             videoEnumerator = new FileEnumerator();
-            slideshowInterval = TimeSpan.FromSeconds(5);
+            slideshowInterval = configuration.GetImagesInterval();
             messageEnumerator = new MessageEnumerator();
-            messageInterval = TimeSpan.FromSeconds(5);
+            messageInterval = configuration.GetMessagesInterval();
             DataContext = new ShellViewModel(
                 clock, 
                 calendar, 
@@ -47,10 +49,19 @@ namespace PrayerSoft.UI
 
         private void LoadData()
         {
-            calendar.Load(File.ReadAllText("Data/calendar.csv"));
-            imageEnumerator.Load(@"Images", "*.jpg");
-            videoEnumerator.Load(@"Videos", "*.mp4");
-            messageEnumerator.Load(File.ReadAllText("Data/messages.csv"));
+            var calendarPath = configuration.GetCalendarPath();
+            calendar.Load(File.ReadAllText(calendarPath));
+
+            var imagesPath = configuration.GetImagesPath();
+            var imagesPattern = configuration.GetImagesPattern();
+            imageEnumerator.Load(imagesPath, imagesPattern);
+
+            var videosPath = configuration.GetVideosPath();
+            var videosPattern = configuration.GetVideosPattern();
+            videoEnumerator.Load(videosPath, videosPattern);
+
+            var messagesPath = configuration.GetMessagesPath();
+            messageEnumerator.Load(File.ReadAllText(messagesPath));
         }
 
         private void Refresh()

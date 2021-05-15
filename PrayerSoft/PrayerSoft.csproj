@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Clock.cs" />
     <Compile Include="CountdownViewModel.cs" />
+    <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\IConfiguration.cs" />
     <Compile Include="Data\IMessageEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
