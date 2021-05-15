@@ -1,7 +1,6 @@
 ﻿using PrayerSoft.Data;
+using PrayerSoft.Utilities;
 using PropertyChanged;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PrayerSoft
@@ -39,20 +38,7 @@ namespace PrayerSoft
 
         public void Refresh()
         {
-            var now = clock.Read();
-            var schedule = calendar.Get(now);
-            var interval = configuration.GetPrayerJamaatInterval();
-
-            var jamaatTimes = new List<DateTime> 
-            {
-                schedule.FajrJamaat, 
-                schedule.AsrJamaat,
-                schedule.ZuhrJamaat,
-                schedule.MaghribJamaat,
-                schedule.IshaJamaat
-            };
-
-            if (jamaatTimes.Any(t => now > t && now < t + interval))
+            if (IsPrayerJamaatTime())
             {
                 Current = prayerJamaat;
             }
@@ -60,8 +46,16 @@ namespace PrayerSoft
             {
                 Current = today;
             }
-            
             Current.Refresh();
+        }
+
+        private bool IsPrayerJamaatTime()
+        {
+            var now = clock.Read();
+            var schedule = calendar.Get(now);
+            var interval = configuration.GetPrayerJamaatInterval();
+            var jamaatIntervals = schedule.JamaatTimes.Select(t => new Range(t, t + interval));
+            return jamaatIntervals.Any(i => i.Contains(now));
         }
 
         public void Load()

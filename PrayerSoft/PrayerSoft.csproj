@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlideshowViewModel.cs" />
     <Compile Include="Utilities\Cycle.cs" />
+    <Compile Include="Utilities\Range.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PrayerSoft
 {
@@ -23,5 +24,14 @@ namespace PrayerSoft
         public DateTime Sunset { get; set; }
         public DateTime SubSadiq { get; set; }
         public DateTime Zawaal { get; set; }
+
+        public List<DateTime> JamaatTimes => new List<DateTime>
+        {
+            FajrJamaat,
+            AsrJamaat,
+            ZuhrJamaat,
+            MaghribJamaat,
+            IshaJamaat
+        };
     }
 }
