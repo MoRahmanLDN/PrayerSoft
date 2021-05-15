@@ -10,6 +10,9 @@
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">
     <Window.Resources>
+        <DataTemplate DataType="{x:Type root:PrayerJamaatViewModel}">
+            <ui:PrayerJamaat></ui:PrayerJamaat>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type root:TodayViewModel}">
             <ui:Today></ui:Today>
         </DataTemplate>

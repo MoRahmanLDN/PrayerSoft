@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PrayerSoft.Tests.Mocks
 {
-    public class MockFileSystem: IFilesystem
+    public class MockFilesystem: IFilesystem
     {
         public string FileContent { get; set; }
         public List<string> SearchResults { get; set; }

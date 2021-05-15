@@ -1,5 +1,8 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PrayerSoft
 {
@@ -8,55 +11,56 @@ namespace PrayerSoft
     {
         private readonly IClock clock;
         private readonly IConfiguration configuration;
-        private readonly Calendar calendar;
-        private readonly ImageEnumerator imageEnumerator;
-        private readonly VideoEnumerator videoEnumerator;
-        private readonly MessageEnumerator messageEnumerator;
+        private readonly ICalendar calendar;
+
+        private TodayViewModel today;
+        private PrayerJamaatViewModel prayerJamaat;
 
         public IViewModel Current { get; set; }
 
-        public ShellViewModel() : this(
-            new Clock(),
-            new Filesystem(),
-            new Configuration())
-        {
-        }
-
         public ShellViewModel(
             IClock clock, 
-            IFilesystem filesystem, 
-            IConfiguration configuration) : this(
-                clock,
-                configuration,
-                new Calendar(filesystem, configuration),
-                new ImageEnumerator(filesystem, configuration),
-                new VideoEnumerator(filesystem, configuration),
-                new MessageEnumerator(filesystem, configuration))
-        {
-        }
-
-        public ShellViewModel(
-            IClock clock, 
+            IFilesystem filesystem,
             IConfiguration configuration,
-            ICalendar calendar,
-            IFileEnumerator imageEnumerator,
-            IFileEnumerator videoEnumerator,
-            IMessageEnumerator messageEnumerator)
+            ICalendar calendar)
         {
             this.clock = clock;
             this.configuration = configuration;
+            this.calendar = calendar;
 
-            Current = new TodayViewModel(
+            today = new TodayViewModel(
                 clock, 
+                filesystem,                
                 configuration,
-                calendar,
-                imageEnumerator, 
-                videoEnumerator, 
-                messageEnumerator);
+                calendar);
+
+            prayerJamaat = new PrayerJamaatViewModel();
         }
 
         public void Refresh()
         {
+            var now = clock.Read();
+            var schedule = calendar.Get(now);
+            var interval = configuration.GetPrayerJamaatInterval();
+
+            var jamaatTimes = new List<DateTime> 
+            {
+                schedule.FajrJamaat, 
+                schedule.AsrJamaat,
+                schedule.ZuhrJamaat,
+                schedule.MaghribJamaat,
+                schedule.IshaJamaat
+            };
+
+            if (jamaatTimes.Any(t => now > t && now < t + interval))
+            {
+                Current = prayerJamaat;
+            }
+            else
+            {
+                Current = today;
+            }
+            
             Current.Refresh();
         }
 
@@ -64,9 +68,7 @@ namespace PrayerSoft
         {
             configuration.Load();
             calendar.Load();
-            imageEnumerator.Load();
-            videoEnumerator.Load();
-            messageEnumerator.Load();
+            today.Load();
         }
     }
 }

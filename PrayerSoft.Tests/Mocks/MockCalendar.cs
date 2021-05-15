@@ -11,5 +11,9 @@ namespace PrayerSoft.Tests.Mocks
         {
             return DailySchedule;    
         }
+
+        public void Load()
+        {
+        }
     }
 }

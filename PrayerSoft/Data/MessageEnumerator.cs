@@ -26,7 +26,7 @@ namespace PrayerSoft.Data
         private readonly IFilesystem filesystem;
         private readonly IConfiguration configuration;
 
-        private List<MessageRecord> messages;
+        private List<MessageRecord> messages = new List<MessageRecord>();
         private int currentIndex;
         
         public string GetNext(DateTime now)

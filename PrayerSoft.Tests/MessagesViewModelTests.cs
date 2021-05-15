@@ -18,7 +18,7 @@ namespace PrayerSoft.Tests
             clock = new MockClock();
             repository = new MockMessagesRepository();
             configuration = new MockConfiguration();
-            configuration.ImagesInterval = TimeSpan.FromSeconds(10);
+            configuration.MessagesInterval = TimeSpan.FromSeconds(10);
             viewModel = new MessagesViewModel(clock, configuration, repository);
         }
 

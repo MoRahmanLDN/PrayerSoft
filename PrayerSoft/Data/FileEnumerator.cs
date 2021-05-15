@@ -4,7 +4,7 @@ namespace PrayerSoft.Data
 {
     public abstract class FileEnumerator : IFileEnumerator
     {
-        protected List<string> files;
+        protected List<string> files = new List<string>();
         private int index;
 
         public bool IsComplete => index == files.Count;

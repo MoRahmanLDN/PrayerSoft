@@ -8,14 +8,14 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class MessageEnumeratorTests
     {
-        private MockFileSystem filesystem;
+        private MockFilesystem filesystem;
         private Configuration configuration;
         private MessageEnumerator enumerator;
 
         [TestInitialize]
         public void Initialize()
         {
-            filesystem = new MockFileSystem();
+            filesystem = new MockFilesystem();
             configuration = new Configuration();
             enumerator = new MessageEnumerator(filesystem, configuration);
         }

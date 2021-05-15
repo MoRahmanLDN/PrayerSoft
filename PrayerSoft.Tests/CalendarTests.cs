@@ -8,14 +8,15 @@ namespace PrayerSoft.Tests
     [TestClass]
     public class CalendarTests
     {
-        private MockFileSystem filesystem;
-        private Configuration configuration;
+        private MockFilesystem filesystem;
+        private MockConfiguration configuration;
         private Calendar calendar;
 
         [TestInitialize]
         public void Initialize() 
         {
-            filesystem = new MockFileSystem();
+            filesystem = new MockFilesystem();
+            configuration = new MockConfiguration();
             calendar = new Calendar(filesystem, configuration);
         }
 

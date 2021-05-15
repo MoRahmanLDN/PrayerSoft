@@ -44,6 +44,11 @@ namespace PrayerSoft.Data
             return "*.mp4";
         }
 
+        public TimeSpan GetPrayerJamaatInterval()
+        {
+            return TimeSpan.FromMinutes(5);
+        }
+
         public void Load()
         {
             

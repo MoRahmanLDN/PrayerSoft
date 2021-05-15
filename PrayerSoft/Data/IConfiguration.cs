@@ -13,5 +13,6 @@ namespace PrayerSoft.Data
         string GetMessagesPath();
         string GetVideosPath();
         string GetVideosPattern();
+        TimeSpan GetPrayerJamaatInterval();
     }
 }

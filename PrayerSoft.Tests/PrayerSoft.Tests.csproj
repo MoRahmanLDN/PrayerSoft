@@ -57,8 +57,9 @@
     <Compile Include="MockMessagesRepository.cs" />
     <Compile Include="Mocks\MockConfiguration.cs" />
     <Compile Include="Mocks\MockFileRepository.cs" />
-    <Compile Include="Mocks\MockFileSystem.cs" />
+    <Compile Include="Mocks\MockFilesystem.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
+    <Compile Include="ShellViewModelTests.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />
     <Compile Include="CalendarTests.cs" />
     <Compile Include="Mocks\MockClock.cs" />

@@ -13,6 +13,7 @@ namespace PrayerSoft.Tests.Mocks
         public string VideosPattern { get; set; }
         public string MessagesPath { get; set; }
         public TimeSpan MessagesInterval { get; set; }
+        public TimeSpan PrayerJamaatInterval { get; set; }
 
         public string GetCalendarPath()
         {
@@ -52,6 +53,11 @@ namespace PrayerSoft.Tests.Mocks
         public string GetVideosPattern()
         {
             return VideosPattern;
+        }
+
+        public TimeSpan GetPrayerJamaatInterval()
+        {
+            return PrayerJamaatInterval;
         }
 
         public void Load()

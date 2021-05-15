@@ -83,6 +83,7 @@
     <Compile Include="ISequenceViewModel.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="AlternatingSequenceViewModel.cs" />
+    <Compile Include="PrayerJamaatViewModel.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="TodayViewModel.cs" />
     <Compile Include="DailyScheduleViewModel.cs" />
