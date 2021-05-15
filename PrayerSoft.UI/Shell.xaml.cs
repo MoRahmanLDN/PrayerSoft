@@ -1,6 +1,5 @@
 ﻿using PrayerSoft.Data;
 using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -10,33 +9,12 @@ namespace PrayerSoft.UI
     public partial class Shell : Window
     {
         private bool isFullscreen;
-        private Filesystem filesystem;
-        private Configuration configuration;
-        private Calendar calendar;
-        private ImagesEnumerator imagesEnumerator;
-        private VideosEnumerator videosEnumerator;
-        private TimeSpan slideshowInterval;
-        private MessageEnumerator messageEnumerator;
-        private TimeSpan messageInterval;
-
+        
         public Shell()
         {
             InitializeComponent();
 
-            filesystem = new Filesystem();
-            configuration = new Configuration();
-            var clock = new Clock();
-            calendar = new Calendar(filesystem, configuration);
-            imagesEnumerator = new ImagesEnumerator(filesystem, configuration);
-            videosEnumerator = new VideosEnumerator(filesystem, configuration);
-            messageEnumerator = new MessageEnumerator(filesystem, configuration);
-            DataContext = new ShellViewModel(
-                clock, 
-                configuration,
-                calendar, 
-                imagesEnumerator, 
-                videosEnumerator, 
-                messageEnumerator);
+            DataContext = new ShellViewModel(new Clock(), new Filesystem());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -48,15 +26,12 @@ namespace PrayerSoft.UI
 
         private void LoadData()
         {
-            calendar.Load();
-            imagesEnumerator.Load();
-            videosEnumerator.Load();
-            messageEnumerator.Load();
+            ((ShellViewModel)DataContext).Load();
         }
 
         private void Refresh()
         {
-            ((IViewModel)DataContext).Refresh();
+            ((ShellViewModel)DataContext).Refresh();
         }
 
         private void SetRefreshTimer()

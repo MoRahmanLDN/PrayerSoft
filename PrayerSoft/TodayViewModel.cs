@@ -1,6 +1,5 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
-using System;
 
 namespace PrayerSoft
 {
@@ -23,6 +22,7 @@ namespace PrayerSoft
         {
             DateAndTime = new DateAndTimeViewModel(clock);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
+            
             var imageSequence = new ImageSequenceViewModel(clock, configuration, imageEnumerator);
             var videoSequence = new VideoSequenceViewModel(videoEnumerator);
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);

@@ -1,11 +1,11 @@
 ﻿namespace PrayerSoft.Data
 {
-    public class ImagesEnumerator: FileEnumerator
+    public class ImageEnumerator: FileEnumerator
     {
         private readonly IFilesystem filesystem;
         private readonly IConfiguration configuration;
 
-        public ImagesEnumerator(IFilesystem filesystem, IConfiguration configuration)
+        public ImageEnumerator(IFilesystem filesystem, IConfiguration configuration)
         {
             this.filesystem = filesystem;
             this.configuration = configuration;
