@@ -22,6 +22,7 @@ namespace PrayerSoft.Tests
             filesystem = new MockFilesystem();
             configuration = new MockConfiguration();
             calendar = new MockCalendar();
+            calendar.TimesOfDay = new TimesOfDay();
             calendar.Prayers = new List<Prayer>
             {
                 new Prayer { Name="Fajr", Begins = DateTime.Parse("10:00"), Jamaat = DateTime.Parse("11:00") },
@@ -30,6 +31,7 @@ namespace PrayerSoft.Tests
                 new Prayer { Name="Maghrib", Begins = DateTime.Parse("16:00"), Jamaat = DateTime.Parse("17:00") },
                 new Prayer { Name="Isha", Begins = DateTime.Parse("18:00"), Jamaat = DateTime.Parse("19:00") }
             };
+
             viewModel = new ShellViewModel(clock, filesystem, configuration, calendar);
         }
         

@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DesignTime\PrayerJamaatDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\ShellDesignTimeViewModel.cs" />
     <Compile Include="PrayerJamaat.xaml.cs">
       <DependentUpon>PrayerJamaat.xaml</DependentUpon>

@@ -96,7 +96,6 @@
     <Compile Include="Utilities\Csv.cs" />
     <Compile Include="Utilities\Cycle.cs" />
     <Compile Include="Utilities\Date.cs" />
-    <Compile Include="Utilities\Range.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 ﻿using PrayerSoft.Data;
-using PrayerSoft.Utilities;
 using PropertyChanged;
 using System.Linq;
 
@@ -12,8 +11,8 @@ namespace PrayerSoft
         private readonly IConfiguration configuration;
         private readonly ICalendar calendar;
 
-        private TodayViewModel today;
-        private PrayerJamaatViewModel prayerJamaat;
+        private TodayViewModel todayViewModel;
+        private PrayerJamaatViewModel prayerJamaatViewModel;
 
         public IViewModel Current { get; set; }
 
@@ -27,42 +26,40 @@ namespace PrayerSoft
             this.configuration = configuration;
             this.calendar = calendar;
 
-            today = new TodayViewModel(
+            todayViewModel = new TodayViewModel(
                 clock, 
                 filesystem,                
                 configuration,
                 calendar);
 
-            prayerJamaat = new PrayerJamaatViewModel();
+            prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
         }
 
         public void Refresh()
         {
-            if (IsPrayerJamaatTime())
-            {
-                Current = prayerJamaat;
-            }
-            else
-            {
-                Current = today;
-            }
-            Current.Refresh();
-        }
-
-        private bool IsPrayerJamaatTime()
-        {
             var now = clock.Read();
             var prayers = calendar.GetPrayers(now);
             var interval = configuration.GetPrayerJamaatInterval();
-            var jamaatIntervals = prayers.Select(p => new Range(p.Jamaat, p.Jamaat + interval));
-            return jamaatIntervals.Any(i => i.Contains(now));
+            var prayersJamaat = prayers.Where(p => p.Jamaat < now && now < p.Jamaat + interval);
+
+            if (prayersJamaat.Any())
+            {
+                var prayerJamaat = prayersJamaat.Single();
+                prayerJamaatViewModel.PrayerName = prayerJamaat.Name;
+                Current = prayerJamaatViewModel;
+            }
+            else
+            {
+                Current = todayViewModel;
+            }
+            Current.Refresh();
         }
 
         public void Load()
         {
             configuration.Load();
             calendar.Load();
-            today.Load();
+            todayViewModel.Load();
         }
     }
 }
