@@ -1,8 +1,6 @@
-﻿using CsvHelper;
+﻿using PrayerSoft.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 
 namespace PrayerSoft.Data
@@ -55,13 +53,9 @@ namespace PrayerSoft.Data
             var csvPath = configuration.GetCalendarPath();
             var csvData = filesystem.Read(csvPath);
 
-            using (var stringReader = new StringReader(csvData))
-            using (var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture))
-            {
-                days = csvReader.GetRecords<CsvRecord>().ToDictionary(
-                    record => record.Date.ToString(DateFormat),
-                    record => Map(record));
-            }
+            days = Csv.Read<CsvRecord>(csvData).ToDictionary(
+                record => record.Date.ToString(DateFormat),
+                record => Map(record));
         }
 
         private DailySchedule Map(CsvRecord record)

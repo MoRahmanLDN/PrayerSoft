@@ -54,11 +54,7 @@ namespace PrayerSoft.Data
             var csvPath = configuration.GetMessagesPath();
             var csvData = filesystem.Read(csvPath);
 
-            using (var stringReader = new StringReader(csvData))
-            using (var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture))
-            {
-                messages = csvReader.GetRecords<MessageRecord>().ToList();
-            }
+            messages = Csv.Read<MessageRecord>(csvData);
         }
     }
 }
