@@ -29,27 +29,34 @@ namespace PrayerSoft.Tests
 
             calendar.Load();
 
-            var dailyPrayers = calendar.Get(new DateTime(2022, 05, 01));
+            var prayers = calendar.GetPrayers(new DateTime(2022, 05, 01));
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 20, 00), dailyPrayers.FajrBegins);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 30, 00), dailyPrayers.FajrJamaat);
+            Assert.AreEqual("Fajr", prayers[0].Name);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 20, 00), prayers[0].Begins);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 30, 00), prayers[0].Jamaat);
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 40, 00), dailyPrayers.ZuhrBegins);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 50, 00), dailyPrayers.ZuhrJamaat);
+            Assert.AreEqual("Zuhr", prayers[1].Name);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 40, 00), prayers[1].Begins);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 10, 50, 00), prayers[1].Jamaat);
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 00, 00), dailyPrayers.AsrBegins);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 10, 00), dailyPrayers.AsrJamaat);
+            Assert.AreEqual("Asr", prayers[2].Name);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 00, 00), prayers[2].Begins);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 10, 00), prayers[2].Jamaat);
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 20, 00), dailyPrayers.MaghribBegins);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 30, 00), dailyPrayers.MaghribJamaat);
+            Assert.AreEqual("Maghrib", prayers[3].Name);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 20, 00), prayers[3].Begins);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 30, 00), prayers[3].Jamaat);
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 40, 00), dailyPrayers.IshaBegins);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 50, 00), dailyPrayers.IshaJamaat);
+            Assert.AreEqual("Isha", prayers[4].Name);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 40, 00), prayers[4].Begins);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 11, 50, 00), prayers[4].Jamaat);
 
-            Assert.AreEqual(new DateTime(2022, 05, 01, 01, 01, 00), dailyPrayers.Sunrise);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 02, 02, 00), dailyPrayers.Sunset);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 03, 03, 00), dailyPrayers.SubSadiq);
-            Assert.AreEqual(new DateTime(2022, 05, 01, 04, 04, 00), dailyPrayers.Zawaal);
+            var timesOfDay = calendar.GetTimesOfDay(new DateTime(2022, 05, 01));
+
+            Assert.AreEqual(new DateTime(2022, 05, 01, 01, 01, 00), timesOfDay.Sunrise);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 02, 02, 00), timesOfDay.Sunset);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 03, 03, 00), timesOfDay.SubSadiq);
+            Assert.AreEqual(new DateTime(2022, 05, 01, 04, 04, 00), timesOfDay.Zawaal);
         }
     }
 }

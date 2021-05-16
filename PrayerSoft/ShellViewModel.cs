@@ -52,9 +52,9 @@ namespace PrayerSoft
         private bool IsPrayerJamaatTime()
         {
             var now = clock.Read();
-            var schedule = calendar.Get(now);
+            var prayers = calendar.GetPrayers(now);
             var interval = configuration.GetPrayerJamaatInterval();
-            var jamaatIntervals = schedule.JamaatTimes.Select(t => new Range(t, t + interval));
+            var jamaatIntervals = prayers.Select(p => new Range(p.Jamaat, p.Jamaat + interval));
             return jamaatIntervals.Any(i => i.Contains(now));
         }
 

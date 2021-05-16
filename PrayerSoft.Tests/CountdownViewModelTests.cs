@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrayerSoft.Data;
 using PrayerSoft.Tests.Mocks;
 using System;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
@@ -18,13 +20,13 @@ namespace PrayerSoft.Tests
             clock.Set(DateTime.Parse("10:00:00"));
 
             calendar = new MockCalendar();
-            calendar.DailySchedule = new DailySchedule
+            calendar.Prayers = new List<Prayer>
             {
-                AsrJamaat = DateTime.Parse("23:59:59"),
-                ZuhrJamaat = DateTime.Parse("23:59:59"),
-                FajrJamaat = DateTime.Parse("23:59:59"),
-                MaghribJamaat = DateTime.Parse("23:59:59"),
-                IshaJamaat = DateTime.Parse("23:59:59"),
+                new Prayer { Name="Fajr", Jamaat = DateTime.Parse("23:59:59") },
+                new Prayer { Name="Zuhr", Jamaat = DateTime.Parse("23:59:59") },
+                new Prayer { Name="Asr", Jamaat = DateTime.Parse("23:59:59") },
+                new Prayer { Name="Maghrib", Jamaat = DateTime.Parse("23:59:59") },
+                new Prayer { Name="Isha", Jamaat = DateTime.Parse("23:59:59") }
             };
 
             viewModel = new CountdownViewModel(clock, calendar);
@@ -33,7 +35,7 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CountdownForFajrJamaat()
         {
-            calendar.DailySchedule.FajrJamaat = DateTime.Parse("10:02:03");
+            calendar.Prayers[0].Jamaat = DateTime.Parse("10:02:03");
 
             viewModel.Refresh();
 
@@ -43,8 +45,8 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CountdownForZuhrJamaat()
         {
-            calendar.DailySchedule.FajrJamaat = DateTime.Parse("09:00:00");
-            calendar.DailySchedule.ZuhrJamaat = DateTime.Parse("11:12:13");
+            calendar.Prayers[0].Jamaat = DateTime.Parse("09:00:00");
+            calendar.Prayers[1].Jamaat = DateTime.Parse("11:12:13");
 
             viewModel.Refresh();
 
@@ -54,9 +56,9 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CountdownForAsrJamaat()
         {
-            calendar.DailySchedule.FajrJamaat = DateTime.Parse("09:10:00");
-            calendar.DailySchedule.ZuhrJamaat = DateTime.Parse("09:20:00");
-            calendar.DailySchedule.AsrJamaat = DateTime.Parse("12:22:23");
+            calendar.Prayers[0].Jamaat = DateTime.Parse("09:10:00");
+            calendar.Prayers[1].Jamaat = DateTime.Parse("09:20:00");
+            calendar.Prayers[2].Jamaat = DateTime.Parse("12:22:23");
 
             viewModel.Refresh();
 
@@ -66,10 +68,10 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CountdownForMaghribJamaat()
         {
-            calendar.DailySchedule.FajrJamaat = DateTime.Parse("09:10:00");
-            calendar.DailySchedule.ZuhrJamaat = DateTime.Parse("09:20:00");
-            calendar.DailySchedule.AsrJamaat = DateTime.Parse("09:30:00");
-            calendar.DailySchedule.MaghribJamaat = DateTime.Parse("13:32:33");
+            calendar.Prayers[0].Jamaat = DateTime.Parse("09:10:00");
+            calendar.Prayers[1].Jamaat = DateTime.Parse("09:20:00");
+            calendar.Prayers[2].Jamaat = DateTime.Parse("09:30:00");
+            calendar.Prayers[3].Jamaat = DateTime.Parse("13:32:33");
 
             viewModel.Refresh();
 
@@ -79,11 +81,11 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void CountdownForIshaJamaat()
         {
-            calendar.DailySchedule.FajrJamaat = DateTime.Parse("09:10:00");
-            calendar.DailySchedule.ZuhrJamaat = DateTime.Parse("09:20:00");
-            calendar.DailySchedule.AsrJamaat = DateTime.Parse("09:30:00");
-            calendar.DailySchedule.MaghribJamaat = DateTime.Parse("09:40:00");
-            calendar.DailySchedule.IshaJamaat = DateTime.Parse("14:42:43");
+            calendar.Prayers[0].Jamaat = DateTime.Parse("09:10:00");
+            calendar.Prayers[1].Jamaat = DateTime.Parse("09:20:00");
+            calendar.Prayers[2].Jamaat = DateTime.Parse("09:30:00");
+            calendar.Prayers[3].Jamaat = DateTime.Parse("09:40:00");
+            calendar.Prayers[4].Jamaat = DateTime.Parse("14:42:43");
 
             viewModel.Refresh();
 

@@ -1,15 +1,22 @@
 ﻿using PrayerSoft.Data;
 using System;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests.Mocks
 {
     public class MockCalendar: ICalendar
     {
-        public DailySchedule DailySchedule { get; internal set; }
+        public List<Prayer> Prayers { get; set; }
+        public TimesOfDay TimesOfDay { get; set; }
 
-        public DailySchedule Get(DateTime date)
+        public List<Prayer> GetPrayers(DateTime date)
         {
-            return DailySchedule;    
+            return Prayers;
+        }
+
+        public TimesOfDay GetTimesOfDay(DateTime date)
+        {
+            return TimesOfDay;    
         }
 
         public void Load()

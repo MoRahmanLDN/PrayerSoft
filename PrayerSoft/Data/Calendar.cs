@@ -1,7 +1,6 @@
 ﻿using PrayerSoft.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PrayerSoft.Data
 {
@@ -40,53 +39,79 @@ namespace PrayerSoft.Data
 
         private readonly IFilesystem filesystem;
         private readonly IConfiguration configuration;
-        Dictionary<string, DailySchedule> days;
-        private const string DateFormat = "yyyy-MM-dd";
+
+        Dictionary<string, List<Prayer>> prayers = new Dictionary<string, List<Prayer>>();
+        Dictionary<string, TimesOfDay> timesOfDay = new Dictionary<string, TimesOfDay>();
         
-        public DailySchedule Get(DateTime date)
+        public List<Prayer> GetPrayers(DateTime date)
         {
-            return days[date.ToString(DateFormat)];
+            return prayers[Date.Hash(date)];
+        }
+
+        public TimesOfDay GetTimesOfDay(DateTime date)
+        {
+            return timesOfDay[Date.Hash(date)];
         }
 
         public void Load()
         {
             var csvPath = configuration.GetCalendarPath();
             var csvData = filesystem.Read(csvPath);
+            var records = Csv.Read<CsvRecord>(csvData);
 
-            days = Csv.Read<CsvRecord>(csvData).ToDictionary(
-                record => record.Date.ToString(DateFormat),
-                record => Map(record));
+            foreach (var record in records)
+            {
+                prayers[Date.Hash(record.Date)] = MapPrayer(record);
+                timesOfDay[Date.Hash(record.Date)] = MapTimesOfDay(record);
+            }
         }
 
-        private DailySchedule Map(CsvRecord record)
+        private List<Prayer> MapPrayer(CsvRecord record)
         {
-            return new DailySchedule
+            return new List<Prayer>
             {
-                FajrBegins = Combine(record.Date, record.FajrBegins),
-                FajrJamaat = Combine(record.Date, record.FajrJamaat),
-
-                ZuhrBegins = Combine(record.Date, record.ZuhrBegins),
-                ZuhrJamaat = Combine(record.Date, record.ZuhrJamaat),
-
-                AsrBegins = Combine(record.Date, record.AsrBegins),
-                AsrJamaat = Combine(record.Date, record.AsrJamaat),
-
-                MaghribBegins = Combine(record.Date, record.MaghribBegins),
-                MaghribJamaat = Combine(record.Date, record.MaghribJamaat),
-
-                IshaBegins = Combine(record.Date, record.IshaBegins),
-                IshaJamaat = Combine(record.Date, record.IshaJamaat),
-
-                Sunrise = Combine(record.Date, record.Sunrise),
-                Sunset = Combine(record.Date, record.Sunset),
-                SubSadiq = Combine(record.Date, record.SubSadiq),
-                Zawaal = Combine(record.Date, record.Zawaal),
+                new Prayer
+                {
+                    Name = "Fajr",
+                    Begins = Date.Combine(record.Date, record.FajrBegins),
+                    Jamaat = Date.Combine(record.Date, record.FajrJamaat)
+                },
+                new Prayer
+                {
+                    Name="Zuhr",
+                    Begins = Date.Combine(record.Date, record.ZuhrBegins),
+                    Jamaat = Date.Combine(record.Date, record.ZuhrJamaat),
+                },
+                new Prayer
+                {
+                    Name="Asr",
+                    Begins = Date.Combine(record.Date, record.AsrBegins),
+                    Jamaat = Date.Combine(record.Date, record.AsrJamaat),
+                },
+                new Prayer
+                {
+                    Name = "Maghrib",
+                    Begins = Date.Combine(record.Date, record.MaghribBegins),
+                    Jamaat = Date.Combine(record.Date, record.MaghribJamaat),
+                },
+                new Prayer
+                {
+                    Name = "Isha",
+                    Begins = Date.Combine(record.Date, record.IshaBegins),
+                    Jamaat = Date.Combine(record.Date, record.IshaJamaat),
+                }
             };
         }
 
-        private DateTime Combine(DateTime date, DateTime time)
+        private TimesOfDay MapTimesOfDay(CsvRecord record)
         {
-            return new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+            return new TimesOfDay
+            {
+                Sunrise = Date.Combine(record.Date, record.Sunrise),
+                Sunset = Date.Combine(record.Date, record.Sunset),
+                SubSadiq = Date.Combine(record.Date, record.SubSadiq),
+                Zawaal = Date.Combine(record.Date, record.Zawaal),
+            };
         }
     }
 }

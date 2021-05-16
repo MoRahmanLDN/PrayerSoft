@@ -71,10 +71,11 @@
     <Compile Include="Data\IFilesystem.cs" />
     <Compile Include="Data\ImageEnumerator.cs" />
     <Compile Include="Data\IMessageEnumerator.cs" />
+    <Compile Include="Data\Prayer.cs" />
     <Compile Include="Data\VideoEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
-    <Compile Include="DailySchedule.cs" />
+    <Compile Include="TimesOfDay.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="Data\IFileEnumerator.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="SlideshowViewModel.cs" />
     <Compile Include="Utilities\Csv.cs" />
     <Compile Include="Utilities\Cycle.cs" />
+    <Compile Include="Utilities\Date.cs" />
     <Compile Include="Utilities\Range.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />
   </ItemGroup>

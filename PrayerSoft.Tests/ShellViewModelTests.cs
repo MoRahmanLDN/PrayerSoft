@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrayerSoft.Data;
 using PrayerSoft.Tests.Mocks;
 using System;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
@@ -20,22 +22,13 @@ namespace PrayerSoft.Tests
             filesystem = new MockFilesystem();
             configuration = new MockConfiguration();
             calendar = new MockCalendar();
-            calendar.DailySchedule = new DailySchedule
+            calendar.Prayers = new List<Prayer>
             {
-                FajrBegins = DateTime.Parse("10:00"),
-                FajrJamaat = DateTime.Parse("11:00"),
-
-                ZuhrBegins = DateTime.Parse("12:00"),
-                ZuhrJamaat = DateTime.Parse("13:00"),
-
-                AsrBegins = DateTime.Parse("14:00"),
-                AsrJamaat = DateTime.Parse("15:00"),
-
-                MaghribBegins = DateTime.Parse("16:00"),
-                MaghribJamaat = DateTime.Parse("17:00"),
-
-                IshaBegins = DateTime.Parse("18:00"),
-                IshaJamaat = DateTime.Parse("19:00"),
+                new Prayer { Name="Fajr", Begins = DateTime.Parse("10:00"), Jamaat = DateTime.Parse("11:00") },
+                new Prayer { Name="Zuhr", Begins = DateTime.Parse("12:00"), Jamaat = DateTime.Parse("13:00") },
+                new Prayer { Name="Asr", Begins = DateTime.Parse("14:00"), Jamaat = DateTime.Parse("15:00") },
+                new Prayer { Name="Maghrib", Begins = DateTime.Parse("16:00"), Jamaat = DateTime.Parse("17:00") },
+                new Prayer { Name="Isha", Begins = DateTime.Parse("18:00"), Jamaat = DateTime.Parse("19:00") }
             };
             viewModel = new ShellViewModel(clock, filesystem, configuration, calendar);
         }

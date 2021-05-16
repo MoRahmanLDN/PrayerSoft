@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrayerSoft.Data;
 using PrayerSoft.Tests.Mocks;
 using System;
+using System.Collections.Generic;
 
 namespace PrayerSoft.Tests
 {
@@ -16,23 +18,17 @@ namespace PrayerSoft.Tests
         {
             clock = new MockClock();
             calendar = new MockCalendar();
-            calendar.DailySchedule = new DailySchedule
+            calendar.Prayers = new List<Prayer>
             {
-                FajrBegins = DateTime.Parse("10:20"),
-                FajrJamaat = DateTime.Parse("11:21"),
+                new Prayer { Name="Fajr", Begins = DateTime.Parse("10:20"), Jamaat = DateTime.Parse("11:21") },
+                new Prayer { Name="Zuhr", Begins = DateTime.Parse("12:22"), Jamaat = DateTime.Parse("13:23") },
+                new Prayer { Name="Asr", Begins = DateTime.Parse("14:24"), Jamaat = DateTime.Parse("15:25") },
+                new Prayer { Name="Maghrib", Begins = DateTime.Parse("16:26"), Jamaat = DateTime.Parse("17:27") },
+                new Prayer { Name="Isha", Begins = DateTime.Parse("18:28"), Jamaat = DateTime.Parse("19:29") }
+            };
 
-                ZuhrBegins = DateTime.Parse("12:22"),
-                ZuhrJamaat = DateTime.Parse("13:23"),
-
-                AsrBegins = DateTime.Parse("14:24"),
-                AsrJamaat = DateTime.Parse("15:25"),
-
-                MaghribBegins = DateTime.Parse("16:26"),
-                MaghribJamaat = DateTime.Parse("17:27"),
-
-                IshaBegins = DateTime.Parse("18:28"),
-                IshaJamaat = DateTime.Parse("19:29"),
-
+            calendar.TimesOfDay = new TimesOfDay
+            {
                 Sunrise = DateTime.Parse("20:30"),
                 Sunset = DateTime.Parse("21:31"),
                 SubSadiq = DateTime.Parse("22:32"),

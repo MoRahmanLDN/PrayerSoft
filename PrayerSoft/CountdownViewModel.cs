@@ -1,6 +1,7 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PrayerSoft
@@ -26,14 +27,14 @@ namespace PrayerSoft
         public void Refresh()
         {
             DateTime now = clock.Read();
-            DailySchedule schedule = calendar.Get(now);
+            List<Prayer> prayers = calendar.GetPrayers(now);
 
-            var next = schedule.JamaatTimes.Where(t => t > now);
+            var next = prayers.Where(p => p.Jamaat > now);
             IsVisible = next.Any();
 
             if (IsVisible)
             {
-                var remaining = next.Min(t => t - now);
+                var remaining = next.Min(p => p.Jamaat - now);
                 Remaining = format.LongTime(remaining);
             }
         }
