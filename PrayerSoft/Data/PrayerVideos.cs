@@ -1,6 +1,6 @@
 ﻿namespace PrayerSoft.Data
 {
-    public class PrayerVideos
+    public class PrayerVideos : IPrayerVideos
     {
         public string Get(string prayerName)
         {

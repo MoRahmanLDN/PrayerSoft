@@ -55,10 +55,12 @@
     <Compile Include="MessageEnumeratorTests.cs" />
     <Compile Include="MessagesViewModelTests.cs" />
     <Compile Include="MockMessagesRepository.cs" />
+    <Compile Include="MockPrayerVideos.cs" />
     <Compile Include="Mocks\MockConfiguration.cs" />
     <Compile Include="Mocks\MockFileRepository.cs" />
     <Compile Include="Mocks\MockFilesystem.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
+    <Compile Include="PrayerBeginsViewModelTests.cs" />
     <Compile Include="ShellViewModelTests.cs" />
     <Compile Include="SlideshowViewModelTests.cs" />
     <Compile Include="CalendarTests.cs" />

@@ -21,6 +21,7 @@ namespace PrayerSoft.Tests
             clock = new MockClock();
             filesystem = new MockFilesystem();
             configuration = new MockConfiguration();
+            configuration.PrayerJamaatInterval = TimeSpan.FromMinutes(20);
             calendar = new MockCalendar();
             calendar.TimesOfDay = new TimesOfDay();
             calendar.Prayers = new List<Prayer>
@@ -36,7 +37,7 @@ namespace PrayerSoft.Tests
         }
         
         [TestMethod]
-        public void BeforeAnyJamaatDisplayScheduleForToday()
+        public void BeforeAnyPrayerJamaatDisplayScheduleForToday()
         {
             AssertCurrent(typeof(TodayViewModel), "09:00");
         }
@@ -52,7 +53,7 @@ namespace PrayerSoft.Tests
         }
 
         [TestMethod]
-        public void AfterJamaatAfterIntervalExpiredDisplayScheduleForToday()
+        public void AfterPrayerJamaatAfterIntervalExpiredDisplayScheduleForToday()
         {
             AssertCurrent(typeof(TodayViewModel), "11:30");
             AssertCurrent(typeof(TodayViewModel), "13:30");
@@ -61,9 +62,29 @@ namespace PrayerSoft.Tests
             AssertCurrent(typeof(TodayViewModel), "19:30");
         }
 
-        private void AssertCurrent(Type type, string time)
+        [TestMethod]
+        public void AfterPrayerBeginsBeforeJamaatDisplayPrayerBegins()
         {
-            configuration.PrayerJamaatInterval = TimeSpan.FromMinutes(20);
+            AssertCurrent(typeof(PrayerBeginsViewModel), "10:10");
+            AssertCurrent(typeof(PrayerBeginsViewModel), "12:10");
+            AssertCurrent(typeof(PrayerBeginsViewModel), "14:10");
+            AssertCurrent(typeof(PrayerBeginsViewModel), "16:10");
+            AssertCurrent(typeof(PrayerBeginsViewModel), "18:10");
+        }
+
+        [TestMethod]
+        public void AfterPrayerBeginsAfterVideoEndsDisplayScheduleForToday()
+        {
+            clock.Set(DateTime.Parse("10:09"));
+            viewModel.Refresh();
+            var prayerBegins = (PrayerBeginsViewModel)viewModel.Current;
+            prayerBegins.HasEnded = true;
+
+            AssertCurrent(typeof(TodayViewModel), "10:10");
+        }
+
+        private void AssertCurrent(Type type, string time)
+        {   
             clock.Set(DateTime.Parse(time));
 
             viewModel.Refresh();
