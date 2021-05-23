@@ -72,6 +72,7 @@
     <Compile Include="Data\ImageEnumerator.cs" />
     <Compile Include="Data\IMessageEnumerator.cs" />
     <Compile Include="Data\Prayer.cs" />
+    <Compile Include="Data\PrayerVideos.cs" />
     <Compile Include="Data\VideoEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />

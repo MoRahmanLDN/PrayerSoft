@@ -34,7 +34,7 @@ namespace PrayerSoft
                 calendar);
 
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
-            prayerBeginsViewModel = new PrayerBeginsViewModel();
+            prayerBeginsViewModel = new PrayerBeginsViewModel(new PrayerVideos());
         }
 
         public void Refresh()
@@ -51,10 +51,10 @@ namespace PrayerSoft
                 prayerJamaatViewModel.PrayerName = prayerJamaat.Name;
                 Current = prayerJamaatViewModel;
             }
-            else if (prayersBegins.Any())
+            else if (prayersBegins.Any() && !prayerBeginsViewModel.HasEnded)
             {
                 var prayerBegins = prayersBegins.Single();
-                //prayerBeginsViewModel.PrayerName = prayerBegins.Name;
+                prayerBeginsViewModel.PrayerName = prayerBegins.Name;
                 Current = prayerBeginsViewModel;
             }
             else
