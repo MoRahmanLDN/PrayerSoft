@@ -75,6 +75,7 @@
     <Compile Include="Data\VideoEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
+    <Compile Include="PrayerBeginsViewModel.cs" />
     <Compile Include="TimesOfDay.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="IClock.cs" />

@@ -60,12 +60,19 @@
     </ApplicationDefinition>
     <Compile Include="DesignTime\PrayerJamaatDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\ShellDesignTimeViewModel.cs" />
+    <Compile Include="PrayerBegins.xaml.cs">
+      <DependentUpon>PrayerBegins.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PrayerJamaat.xaml.cs">
       <DependentUpon>PrayerJamaat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Today.xaml.cs">
       <DependentUpon>Today.xaml</DependentUpon>
     </Compile>
+    <Page Include="PrayerBegins.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PrayerJamaat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

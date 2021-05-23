@@ -13,6 +13,7 @@ namespace PrayerSoft
 
         private TodayViewModel todayViewModel;
         private PrayerJamaatViewModel prayerJamaatViewModel;
+        private PrayerBeginsViewModel prayerBeginsViewModel;
 
         public IViewModel Current { get; set; }
 
@@ -33,6 +34,7 @@ namespace PrayerSoft
                 calendar);
 
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
+            prayerBeginsViewModel = new PrayerBeginsViewModel();
         }
 
         public void Refresh()
@@ -41,12 +43,19 @@ namespace PrayerSoft
             var prayers = calendar.GetPrayers(now);
             var interval = configuration.GetPrayerJamaatInterval();
             var prayersJamaat = prayers.Where(p => p.Jamaat < now && now < p.Jamaat + interval);
+            var prayersBegins = prayers.Where(p => p.Begins < now && now < p.Jamaat);
 
             if (prayersJamaat.Any())
             {
                 var prayerJamaat = prayersJamaat.Single();
                 prayerJamaatViewModel.PrayerName = prayerJamaat.Name;
                 Current = prayerJamaatViewModel;
+            }
+            else if (prayersBegins.Any())
+            {
+                var prayerBegins = prayersBegins.Single();
+                //prayerBeginsViewModel.PrayerName = prayerBegins.Name;
+                Current = prayerBeginsViewModel;
             }
             else
             {
