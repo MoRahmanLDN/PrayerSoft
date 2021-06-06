@@ -19,6 +19,9 @@
         <DataTemplate DataType="{x:Type root:TodayViewModel}">
             <ui:Today></ui:Today>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type root:WeeklyTimetableViewModel}">
+            <ui:Week></ui:Week>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding Current}"></ContentControl>

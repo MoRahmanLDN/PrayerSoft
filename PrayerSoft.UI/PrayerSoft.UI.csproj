@@ -69,6 +69,9 @@
     <Compile Include="Today.xaml.cs">
       <DependentUpon>Today.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Week.xaml.cs">
+      <DependentUpon>Week.xaml</DependentUpon>
+    </Compile>
     <Page Include="PrayerBegins.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Today.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Week.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
