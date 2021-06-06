@@ -7,8 +7,9 @@ using System.Collections.Generic;
 namespace PrayerSoft.Tests
 {
     [TestClass]
-    class WeeklyTimetableViewModelTests
+    public class WeeklyTimetableViewModelTests
     {
+        [TestMethod]
         public void LoadsAndDisplaysDataCorrectly()
         {
             var clock = new MockClock();
@@ -34,8 +35,8 @@ namespace PrayerSoft.Tests
             Assert.AreEqual("Tuesday", viewModel.WeeklyPrayers[2].DayOfWeek);
             Assert.AreEqual("Wednesday", viewModel.WeeklyPrayers[3].DayOfWeek);
             Assert.AreEqual("Thursday", viewModel.WeeklyPrayers[4].DayOfWeek);
-            Assert.AreEqual("Friday", viewModel.WeeklyPrayers[4].DayOfWeek);
-            Assert.AreEqual("Saturday", viewModel.WeeklyPrayers[5].DayOfWeek);
+            Assert.AreEqual("Friday", viewModel.WeeklyPrayers[5].DayOfWeek);
+            Assert.AreEqual("Saturday", viewModel.WeeklyPrayers[6].DayOfWeek);
 
             for (int i=0; i<7; i++)
             {
