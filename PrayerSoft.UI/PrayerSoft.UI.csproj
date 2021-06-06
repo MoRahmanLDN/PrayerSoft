@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="DesignTime\PrayerJamaatDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\ShellDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\WeeklyTimetableDesignTimeViewModel.cs" />
     <Compile Include="PrayerBegins.xaml.cs">
       <DependentUpon>PrayerBegins.xaml</DependentUpon>
     </Compile>

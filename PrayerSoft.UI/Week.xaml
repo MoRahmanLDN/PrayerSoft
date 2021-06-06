@@ -5,8 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrayerSoft.UI"
              mc:Ignorable="d" 
+             xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
              d:DesignHeight="450" d:DesignWidth="800">
+    <d:UserControl.DataContext>
+        <dt:WeeklyTimetableDesignTimeViewModel></dt:WeeklyTimetableDesignTimeViewModel>
+    </d:UserControl.DataContext>
     <Grid>
-            
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
+                <Label Content="Fajr"></Label>
+                <Label Content="Zuhr"></Label>
+                <Label Content="Asr"></Label>
+                <Label Content="Maghrib"></Label>
+                <Label Content="Isha"></Label>
+            </StackPanel>
+            <ItemsControl Grid.Column="1" ItemsSource="{Binding WeeklyPrayers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1 0 0 0" BorderBrush="Black">
+                            <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="{Binding DayOfWeek}"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Begins"></Label>
+                            <Label Grid.Row="1" Grid.Column="1" Content="Jamaat"></Label>
+
+                            <ItemsControl Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Prayers}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Column="0" Content="{Binding Begins}"></Label>
+                                            <Label Grid.Column="1" Content="{Binding Jamaat}"></Label>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </UserControl>

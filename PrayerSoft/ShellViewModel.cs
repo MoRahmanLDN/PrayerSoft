@@ -35,7 +35,9 @@ namespace PrayerSoft
                 configuration,
                 calendar);
 
-            weeklyTimetableViewModel = new WeeklyTimetableViewModel();
+            weeklyTimetableViewModel = new WeeklyTimetableViewModel(
+                clock,
+                calendar);
 
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
             prayerBeginsViewModel = new PrayerBeginsViewModel(new PrayerVideos());
