@@ -32,8 +32,9 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void OnRefreshCurrentDateIsUpdated()
         {
-            var expectedDate = "Sunday, 25 April 2021";
-            clock.Set(new DateTime(2021, 04, 25));
+            var date = new DateTime(2021, 04, 25);
+            var expectedDate = date.ToString("ddddd, dd MMMM yyyy");
+            clock.Set(date);
 
             viewModel.Refresh();
 
