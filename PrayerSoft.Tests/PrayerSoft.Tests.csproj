@@ -70,6 +70,7 @@
     <Compile Include="DailyScheduleViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VideoSequenceViewModelTests.cs" />
+    <Compile Include="WeeklyTimetableViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
