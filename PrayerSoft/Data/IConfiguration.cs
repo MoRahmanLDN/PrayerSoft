@@ -14,5 +14,7 @@ namespace PrayerSoft.Data
         string GetVideosPath();
         string GetVideosPattern();
         TimeSpan GetPrayerJamaatInterval();
+        TimeSpan GetWeeklyTimetableInterval();
+        TimeSpan GetTodayTimetableInterval();
     }
 }

@@ -21,6 +21,8 @@ namespace PrayerSoft.Tests
             clock = new MockClock();
             filesystem = new MockFilesystem();
             configuration = new MockConfiguration();
+            configuration.TodayTimetableInterval = TimeSpan.FromHours(20);
+            configuration.WeeklyTimetableInterval = TimeSpan.FromSeconds(1);
             configuration.PrayerJamaatInterval = TimeSpan.FromMinutes(20);
             calendar = new MockCalendar();
             calendar.TimesOfDay = new TimesOfDay();
@@ -81,6 +83,22 @@ namespace PrayerSoft.Tests
             prayerBegins.HasEnded = true;
 
             AssertCurrent(typeof(TodayViewModel), "10:10");
+        }
+
+        [TestMethod]
+        public void DisplayWeeklyTimetableOnRegularIntervals()
+        {
+            configuration.WeeklyTimetableInterval = TimeSpan.FromMinutes(2);
+            configuration.TodayTimetableInterval = TimeSpan.FromMinutes(3);
+
+            AssertCurrent(typeof(TodayViewModel), "09:00:01");
+            AssertCurrent(typeof(TodayViewModel), "09:03:00");
+            AssertCurrent(typeof(WeeklyTimetableViewModel), "09:03:01");
+            AssertCurrent(typeof(WeeklyTimetableViewModel), "09:05:00");
+            AssertCurrent(typeof(TodayViewModel), "09:05:01");
+            AssertCurrent(typeof(TodayViewModel), "09:08:00");
+            AssertCurrent(typeof(WeeklyTimetableViewModel), "09:08:01");
+            AssertCurrent(typeof(WeeklyTimetableViewModel), "09:10:00");
         }
 
         private void AssertCurrent(Type type, string time)

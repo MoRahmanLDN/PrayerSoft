@@ -1,5 +1,6 @@
 ﻿using PrayerSoft.Data;
 using PropertyChanged;
+using System;
 using System.Linq;
 
 namespace PrayerSoft
@@ -12,6 +13,7 @@ namespace PrayerSoft
         private readonly ICalendar calendar;
 
         private TodayViewModel todayViewModel;
+        private WeeklyTimetableViewModel weeklyTimetableViewModel;
         private PrayerJamaatViewModel prayerJamaatViewModel;
         private PrayerBeginsViewModel prayerBeginsViewModel;
 
@@ -33,9 +35,13 @@ namespace PrayerSoft
                 configuration,
                 calendar);
 
+            weeklyTimetableViewModel = new WeeklyTimetableViewModel();
+
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
             prayerBeginsViewModel = new PrayerBeginsViewModel(new PrayerVideos());
         }
+
+        private DateTime? lastSwitch;
 
         public void Refresh()
         {
@@ -59,7 +65,21 @@ namespace PrayerSoft
             }
             else
             {
-                Current = todayViewModel;
+                if (Current == null || Current is PrayerBeginsViewModel || Current is PrayerJamaatViewModel)
+                {
+                    Current = todayViewModel;
+                    lastSwitch = now;
+                }
+                else if (Current is TodayViewModel && now >= lastSwitch + configuration.GetTodayTimetableInterval())
+                {
+                    Current = weeklyTimetableViewModel;
+                    lastSwitch = now;
+                }
+                else if (Current is WeeklyTimetableViewModel && now >= lastSwitch + configuration.GetWeeklyTimetableInterval())
+                {
+                    Current = todayViewModel;
+                    lastSwitch = now;
+                }
             }
             Current.Refresh();
         }

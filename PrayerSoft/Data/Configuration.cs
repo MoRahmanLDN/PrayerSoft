@@ -53,5 +53,15 @@ namespace PrayerSoft.Data
         {
             
         }
+
+        public TimeSpan GetWeeklyTimetableInterval()
+        {
+            return TimeSpan.FromMinutes(2);
+        }
+
+        public TimeSpan GetTodayTimetableInterval()
+        {
+            return TimeSpan.FromMinutes(3);
+        }
     }
 }

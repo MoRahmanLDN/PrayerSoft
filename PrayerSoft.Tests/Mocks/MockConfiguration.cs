@@ -14,6 +14,8 @@ namespace PrayerSoft.Tests.Mocks
         public string MessagesPath { get; set; }
         public TimeSpan MessagesInterval { get; set; }
         public TimeSpan PrayerJamaatInterval { get; set; }
+        public TimeSpan WeeklyTimetableInterval { get; internal set; }
+        public TimeSpan TodayTimetableInterval { get; internal set; }
 
         public string GetCalendarPath()
         {
@@ -58,6 +60,16 @@ namespace PrayerSoft.Tests.Mocks
         public TimeSpan GetPrayerJamaatInterval()
         {
             return PrayerJamaatInterval;
+        }
+
+        public TimeSpan GetWeeklyTimetableInterval()
+        {
+            return WeeklyTimetableInterval;
+        }
+
+        public TimeSpan GetTodayTimetableInterval()
+        {
+            return TodayTimetableInterval;
         }
 
         public void Load()
