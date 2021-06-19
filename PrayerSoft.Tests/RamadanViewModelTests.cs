@@ -42,5 +42,16 @@ namespace PrayerSoft.Tests
             var expectedPeriod = $"{expectedStartDate} - {expectedEndDate}";
             Assert.AreEqual(expectedPeriod, viewModel.Period);
         }
+
+        [TestMethod]
+        public void DisplayWhichDayIsToday()
+        {
+            clock.Set(DateTime.Parse("2021-04-18"));
+            ramadan.StartDate = DateTime.Parse("2021-04-13");
+
+            viewModel.Refresh();
+
+            Assert.AreEqual("Today is day 6 of Ramadan", viewModel.Day);
+        }
     }
 }
