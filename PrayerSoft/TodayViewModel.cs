@@ -11,6 +11,7 @@ namespace PrayerSoft
         public AlternatingSequenceViewModel AlternatingSequence { get; set; }
         public CountdownViewModel Countdown { get; set; }
         public MessagesViewModel Messages { get; set; }
+        public RamadanViewModel Ramadan { get; set; }
 
         private ImageEnumerator imageEnumerator;
         private VideoEnumerator videoEnumerator;
@@ -34,6 +35,7 @@ namespace PrayerSoft
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
             Countdown = new CountdownViewModel(clock, calendar);
             Messages = new MessagesViewModel(clock, configuration, messageEnumerator);
+            Ramadan = new RamadanViewModel(clock);
         }
 
         public void Load()
@@ -50,6 +52,7 @@ namespace PrayerSoft
             AlternatingSequence.Refresh();
             Countdown.Refresh();
             Messages.Refresh();
+            Ramadan.Refresh();
         }
     }
 }
