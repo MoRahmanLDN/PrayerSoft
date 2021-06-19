@@ -20,9 +20,14 @@ namespace PrayerSoft
             return date.ToString("HH:mm");
         }
 
-        public string Date(DateTime date)
+        public string LongDate(DateTime date)
         {
             return date.ToString("ddddd, dd MMMM yyyy");
+        }
+
+        public string ShortDate(DateTime date)
+        {
+            return date.ToString("ddddd, dd MMMM");
         }
 
         private static string[] IslamicMonths = new string[]

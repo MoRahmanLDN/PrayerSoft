@@ -13,6 +13,7 @@ namespace PrayerSoft.Tests
         private MockFilesystem filesystem;
         private MockConfiguration configuration;
         private MockCalendar calendar;
+        private MockRamadan ramadan;
         private ShellViewModel viewModel;
 
         [TestInitialize]
@@ -34,8 +35,8 @@ namespace PrayerSoft.Tests
                 new Prayer { Name="Maghrib", Begins = DateTime.Parse("16:00"), Jamaat = DateTime.Parse("17:00") },
                 new Prayer { Name="Isha", Begins = DateTime.Parse("18:00"), Jamaat = DateTime.Parse("19:00") }
             };
-
-            viewModel = new ShellViewModel(clock, filesystem, configuration, calendar);
+            ramadan = new MockRamadan();
+            viewModel = new ShellViewModel(clock, filesystem, configuration, calendar, ramadan);
         }
         
         [TestMethod]

@@ -74,9 +74,11 @@
     <Compile Include="Data\IPrayerVideos.cs" />
     <Compile Include="Data\Prayer.cs" />
     <Compile Include="Data\PrayerVideos.cs" />
+    <Compile Include="Data\Ramadan.cs" />
     <Compile Include="Data\VideoEnumerator.cs" />
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
+    <Compile Include="Data\IRamadan.cs" />
     <Compile Include="PrayerBeginsViewModel.cs" />
     <Compile Include="PrayersPerDayViewModel.cs" />
     <Compile Include="RamadanViewModel.cs" />

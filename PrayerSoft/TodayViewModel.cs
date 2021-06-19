@@ -21,7 +21,8 @@ namespace PrayerSoft
             IClock clock,
             IFilesystem filesystem,
             IConfiguration configuration,
-            ICalendar calendar)
+            ICalendar calendar, 
+            IRamadan ramadan)
         {
             DateAndTime = new DateAndTimeViewModel(clock);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
@@ -35,7 +36,7 @@ namespace PrayerSoft
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
             Countdown = new CountdownViewModel(clock, calendar);
             Messages = new MessagesViewModel(clock, configuration, messageEnumerator);
-            Ramadan = new RamadanViewModel(clock);
+            Ramadan = new RamadanViewModel(clock, ramadan);
         }
 
         public void Load()

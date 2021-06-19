@@ -23,7 +23,8 @@ namespace PrayerSoft
             IClock clock, 
             IFilesystem filesystem,
             IConfiguration configuration,
-            ICalendar calendar)
+            ICalendar calendar,
+            IRamadan ramadan)
         {
             this.clock = clock;
             this.configuration = configuration;
@@ -33,7 +34,8 @@ namespace PrayerSoft
                 clock, 
                 filesystem,                
                 configuration,
-                calendar);
+                calendar,
+                ramadan);
 
             weeklyTimetableViewModel = new WeeklyTimetableViewModel(
                 clock,

@@ -22,7 +22,7 @@ namespace PrayerSoft
         {
             var now = clock.Read();
             CurrentTime = format.LongTime(now);
-            CurrentDate = format.Date(now);
+            CurrentDate = format.LongDate(now);
             CurrentIslamicDate = format.IslamicDate(now);
         }
     }
