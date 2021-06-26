@@ -24,6 +24,7 @@ namespace PrayerSoft
         public string IftarBegins { get; set; }
         public string FirstTaraweeh { get; set; }
         public string SecondTaraweeh { get; set; }
+        public bool IsVisible { get; set; }
 
         public void Refresh()
         {
@@ -31,14 +32,19 @@ namespace PrayerSoft
             var startDate = ramadan.GetStartDate();
             var endDate = ramadan.GetEndDate();
 
-            Title = $"Ramadan {now.Year}";
-            Period = $"{format.ShortDate(startDate)} - {format.ShortDate(endDate)}";
-            Day = $"Today is day {(now - startDate).Days + 1} of Ramadan";
+            IsVisible = now >= startDate && now <= endDate;
 
-            SuhurEnds = format.ShortTime(ramadan.GetSuhurEnds(now));
-            IftarBegins = format.ShortTime(ramadan.GetIftarBegins(now));
-            FirstTaraweeh = format.ShortTime(ramadan.GetFirstTaraweeh(now));
-            SecondTaraweeh = format.ShortTime(ramadan.GetSecondTaraweeh(now));
+            if (IsVisible)
+            {
+                Title = $"Ramadan {now.Year}";
+                Period = $"{format.ShortDate(startDate)} - {format.ShortDate(endDate)}";
+                Day = $"Today is day {(now - startDate).Days + 1} of Ramadan";
+
+                SuhurEnds = format.ShortTime(ramadan.GetSuhurEnds(now));
+                IftarBegins = format.ShortTime(ramadan.GetIftarBegins(now));
+                FirstTaraweeh = format.ShortTime(ramadan.GetFirstTaraweeh(now));
+                SecondTaraweeh = format.ShortTime(ramadan.GetSecondTaraweeh(now));
+            }
         }
     }
 }

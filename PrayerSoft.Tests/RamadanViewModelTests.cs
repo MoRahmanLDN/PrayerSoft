@@ -44,6 +44,22 @@ namespace PrayerSoft.Tests
         }
 
         [TestMethod]
+        public void OnlyDisplayWhenTodayIsRamadan()
+        {
+            ramadan.StartDate = DateTime.Parse("2021-04-13");
+            ramadan.EndDate = DateTime.Parse("2021-06-12");
+
+            clock.Set(DateTime.Parse("2021-03-20"));
+            Assert.IsFalse(viewModel.IsVisible);
+
+            clock.Set(DateTime.Parse("2021-05-23"));
+            Assert.IsTrue(viewModel.IsVisible);
+
+            clock.Set(DateTime.Parse("2021-06-26"));
+            Assert.IsFalse(viewModel.IsVisible);
+        }
+
+        [TestMethod]
         public void DisplayWhichDayIsToday()
         {
             clock.Set(DateTime.Parse("2021-04-18"));
