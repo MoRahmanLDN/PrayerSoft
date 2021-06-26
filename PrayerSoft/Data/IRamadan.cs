@@ -4,6 +4,7 @@ namespace PrayerSoft.Data
 {
     public interface IRamadan
     {
+        void Load();
         DateTime GetStartDate();
         DateTime GetEndDate();
         DateTime GetSuhurEnds(DateTime now);

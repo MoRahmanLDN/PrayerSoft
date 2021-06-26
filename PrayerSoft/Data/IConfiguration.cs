@@ -5,6 +5,7 @@ namespace PrayerSoft.Data
     public interface IConfiguration
     {
         void Load();
+        string GetRamadanPath();
         string GetCalendarPath();
         TimeSpan GetImagesInterval();
         string GetImagesPath();

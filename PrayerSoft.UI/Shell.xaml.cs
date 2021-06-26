@@ -18,7 +18,7 @@ namespace PrayerSoft.UI
             var filesystem = new Filesystem();
             var configuration = new Configuration();
             var calendar = new Calendar(filesystem, configuration);
-            var ramadan = new Ramadan();
+            var ramadan = new Ramadan(filesystem, configuration);
 
             DataContext = new ShellViewModel(clock, filesystem, configuration, calendar, ramadan);
         }

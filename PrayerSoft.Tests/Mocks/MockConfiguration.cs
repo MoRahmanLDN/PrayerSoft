@@ -6,6 +6,7 @@ namespace PrayerSoft.Tests.Mocks
     public class MockConfiguration : IConfiguration
     {
         public string CalendarPath { get; set; }
+        public string RamadanPath { get; set; }
         public string ImagesPath { get; set; }
         public string ImagesPattern { get; set; }
         public TimeSpan ImagesInterval { get; set; }
@@ -20,6 +21,11 @@ namespace PrayerSoft.Tests.Mocks
         public string GetCalendarPath()
         {
             return CalendarPath;
+        }
+
+        public string GetRamadanPath()
+        {
+            return RamadanPath;
         }
 
         public TimeSpan GetImagesInterval()

@@ -41,5 +41,9 @@ namespace PrayerSoft.Tests.Mocks
         {
             return SecondTaraweeh;
         }
+
+        public void Load()
+        {
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace PrayerSoft
         private readonly IClock clock;
         private readonly IConfiguration configuration;
         private readonly ICalendar calendar;
+        private readonly IRamadan ramadan;
 
         private TodayViewModel todayViewModel;
         private WeeklyTimetableViewModel weeklyTimetableViewModel;
@@ -29,6 +30,7 @@ namespace PrayerSoft
             this.clock = clock;
             this.configuration = configuration;
             this.calendar = calendar;
+            this.ramadan = ramadan;
 
             todayViewModel = new TodayViewModel(
                 clock, 
@@ -92,6 +94,7 @@ namespace PrayerSoft
         {
             configuration.Load();
             calendar.Load();
+            ramadan.Load();
             todayViewModel.Load();
         }
     }

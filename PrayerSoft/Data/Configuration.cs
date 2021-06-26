@@ -8,6 +8,11 @@ namespace PrayerSoft.Data
         {
             return @"Data\Calendar.csv";
         }
+        
+        public string GetRamadanPath()
+        {
+            return @"Data\Ramadan.csv";
+        }
 
         public string GetMessagesPath()
         {
