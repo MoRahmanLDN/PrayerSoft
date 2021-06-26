@@ -96,6 +96,29 @@
             <Label HorizontalAlignment="Center" Content="{Binding Ramadan.Title}"></Label>
             <Label HorizontalAlignment="Center" Content="{Binding Ramadan.Period}"></Label>
             <Label HorizontalAlignment="Center" Content="{Binding Ramadan.Day}"></Label>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <Label HorizontalAlignment="Center" Content="Suhur Ends"></Label>
+                    <Label HorizontalAlignment="Center" Content="{Binding Ramadan.SuhurEnds}"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <Label HorizontalAlignment="Center" Content="Iftar Begins"></Label>
+                    <Label HorizontalAlignment="Center" Content="{Binding Ramadan.IftarBegins}"></Label>
+                </StackPanel>
+            </Grid>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Content="Taraweeh Prayer"></Label>
+                <Label Content="{Binding Ramadan.FirstTaraweeh}"></Label>
+                <Label Content="{Binding Ramadan.SecondTaraweeh}"></Label>
+            </StackPanel>
         </StackPanel>
         <ContentControl Grid.Column="1" Grid.Row="0" Content="{Binding AlternatingSequence.Current}"></ContentControl>
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"></Label>

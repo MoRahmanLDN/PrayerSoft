@@ -13,5 +13,25 @@ namespace PrayerSoft.Data
         {
             return new DateTime(2021, 8, 1);
         }
+
+        public DateTime GetSuhurEnds(DateTime now)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetIftarBegins(DateTime now)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetFirstTaraweeh(DateTime now)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetSecondTaraweeh(DateTime now)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
