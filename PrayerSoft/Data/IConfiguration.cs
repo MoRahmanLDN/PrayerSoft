@@ -17,5 +17,7 @@ namespace PrayerSoft.Data
         TimeSpan GetPrayerJamaatInterval();
         TimeSpan GetWeeklyTimetableInterval();
         TimeSpan GetTodayTimetableInterval();
+        DateTime GetEidUlFitr();
+        DateTime GetEidUlAdha();
     }
 }

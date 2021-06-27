@@ -68,5 +68,15 @@ namespace PrayerSoft.Data
         {
             return TimeSpan.FromMinutes(3);
         }
+
+        public DateTime GetEidUlFitr()
+        {
+            return new DateTime(2021, 05, 13);
+        }
+
+        public DateTime GetEidUlAdha()
+        {
+            return new DateTime(2021, 07, 19);
+        }
     }
 }

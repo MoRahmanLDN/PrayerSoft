@@ -8,12 +8,14 @@ namespace PrayerSoft
     {
         private readonly IClock clock;
         private readonly IRamadan ramadan;
+        private readonly IConfiguration configuration;
         private Format format;
 
-        public RamadanViewModel(IClock clock, IRamadan ramadan)
+        public RamadanViewModel(IClock clock, IRamadan ramadan, IConfiguration configuration)
         {
             this.clock = clock;
             this.ramadan = ramadan;
+            this.configuration = configuration;
             this.format = new Format();
         }
         
@@ -25,6 +27,8 @@ namespace PrayerSoft
         public string FirstTaraweeh { get; set; }
         public string SecondTaraweeh { get; set; }
         public bool IsVisible { get; set; }
+        public string EidUlFitr { get; set; }
+        public string EidUlAdha { get; set; }
 
         public void Refresh()
         {
@@ -44,6 +48,8 @@ namespace PrayerSoft
                 IftarBegins = format.ShortTime(ramadan.GetIftarBegins(now));
                 FirstTaraweeh = format.ShortTime(ramadan.GetFirstTaraweeh(now));
                 SecondTaraweeh = format.ShortTime(ramadan.GetSecondTaraweeh(now));
+                EidUlFitr = format.ShortDate(configuration.GetEidUlFitr());
+                EidUlAdha = format.ShortDate(configuration.GetEidUlAdha());
             }
         }
     }

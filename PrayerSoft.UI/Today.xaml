@@ -120,6 +120,14 @@
                     <Label Content="{Binding Ramadan.FirstTaraweeh}"></Label>
                     <Label Content="{Binding Ramadan.SecondTaraweeh}"></Label>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Eid ul Fitr"></Label>
+                    <Label Content="{Binding Ramadan.EidUlFitr}"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Eid ul Adha"></Label>
+                    <Label Content="{Binding Ramadan.EidUlAdha}"></Label>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <ContentControl Grid.Column="1" Grid.Row="0" Content="{Binding AlternatingSequence.Current}"></ContentControl>

@@ -15,8 +15,10 @@ namespace PrayerSoft.Tests.Mocks
         public string MessagesPath { get; set; }
         public TimeSpan MessagesInterval { get; set; }
         public TimeSpan PrayerJamaatInterval { get; set; }
-        public TimeSpan WeeklyTimetableInterval { get; internal set; }
-        public TimeSpan TodayTimetableInterval { get; internal set; }
+        public TimeSpan WeeklyTimetableInterval { get; set; }
+        public TimeSpan TodayTimetableInterval { get; set; }
+        public DateTime EidUlFitr { get; set; }
+        public DateTime EidUlAdha { get; set; }
 
         public string GetCalendarPath()
         {
@@ -80,6 +82,16 @@ namespace PrayerSoft.Tests.Mocks
 
         public void Load()
         {
+        }
+
+        public DateTime GetEidUlFitr()
+        {
+            return EidUlFitr;
+        }
+
+        public DateTime GetEidUlAdha()
+        {
+            return EidUlAdha;
         }
     }
 }

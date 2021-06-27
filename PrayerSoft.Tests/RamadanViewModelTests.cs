@@ -9,6 +9,7 @@ namespace PrayerSoft.Tests
     {
         private MockClock clock;
         private MockRamadan ramadan;
+        private MockConfiguration configuration;
         private RamadanViewModel viewModel;
 
         [TestInitialize]
@@ -16,7 +17,8 @@ namespace PrayerSoft.Tests
         {
             clock = new MockClock();
             ramadan = new MockRamadan();
-            viewModel = new RamadanViewModel(clock, ramadan);
+            configuration = new MockConfiguration();
+            viewModel = new RamadanViewModel(clock, ramadan, configuration);
         }
 
         [TestMethod]
@@ -127,6 +129,25 @@ namespace PrayerSoft.Tests
             viewModel.Refresh();
 
             Assert.AreEqual("21:55", viewModel.SecondTaraweeh);
+        }
+
+        [TestMethod]
+        public void DisplayEidDays()
+        {
+            clock.Set(DateTime.Parse("2021-06-27"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
+
+            configuration.EidUlFitr = DateTime.Parse("2021-06-27");
+            configuration.EidUlAdha = DateTime.Parse("2021-06-28");
+
+            viewModel.Refresh();
+
+            var expectedEidUlFitr = configuration.EidUlFitr.ToString("ddddd, dd MMMM");
+            Assert.AreEqual(expectedEidUlFitr, viewModel.EidUlFitr);
+
+            var expectedEidUlAdha = configuration.EidUlAdha.ToString("ddddd, dd MMMM");
+            Assert.AreEqual(expectedEidUlAdha, viewModel.EidUlAdha);
         }
     }
 }

@@ -9,5 +9,7 @@
         public string IftarBegins { get; set; } = "13:07";
         public string FirstTaraweeh { get; set; } = "17:05";
         public string SecondTaraweeh { get; set; } = "17:09";
+        public string EidUlFitr { get; set; } = "Tuesday, 13 April";
+        public string EidUlAdha { get; set; } = "Wednesday, 12 May";
     }
 }

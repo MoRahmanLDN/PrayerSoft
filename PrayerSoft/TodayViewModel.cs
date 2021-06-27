@@ -36,7 +36,7 @@ namespace PrayerSoft
             AlternatingSequence = new AlternatingSequenceViewModel(imageSequence, videoSequence);
             Countdown = new CountdownViewModel(clock, calendar);
             Messages = new MessagesViewModel(clock, configuration, messageEnumerator);
-            Ramadan = new RamadanViewModel(clock, ramadan);
+            Ramadan = new RamadanViewModel(clock, ramadan, configuration);
         }
 
         public void Load()
