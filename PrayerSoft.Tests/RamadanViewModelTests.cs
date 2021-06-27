@@ -22,7 +22,9 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void DisplaysCurrentYear()
         {
-            clock.Set(DateTime.Parse("2021-06-19"));
+            clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
 
             viewModel.Refresh();
 
@@ -32,8 +34,9 @@ namespace PrayerSoft.Tests
         [TestMethod]
         public void DisplayStartAndEndDates()
         {
-            ramadan.StartDate = DateTime.Parse("2021-04-13");
-            ramadan.EndDate = DateTime.Parse("2021-05-12");
+            clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
 
             viewModel.Refresh();
 
@@ -50,30 +53,36 @@ namespace PrayerSoft.Tests
             ramadan.EndDate = DateTime.Parse("2021-06-12");
 
             clock.Set(DateTime.Parse("2021-03-20"));
+            viewModel.Refresh();
             Assert.IsFalse(viewModel.IsVisible);
 
             clock.Set(DateTime.Parse("2021-05-23"));
+            viewModel.Refresh();
             Assert.IsTrue(viewModel.IsVisible);
 
             clock.Set(DateTime.Parse("2021-06-26"));
+            viewModel.Refresh();
             Assert.IsFalse(viewModel.IsVisible);
         }
 
         [TestMethod]
         public void DisplayWhichDayIsToday()
         {
-            clock.Set(DateTime.Parse("2021-04-18"));
-            ramadan.StartDate = DateTime.Parse("2021-04-13");
+            clock.Set(DateTime.Parse("2021-06-27"));
+            ramadan.StartDate = DateTime.Parse("2021-06-26");
+            ramadan.EndDate = DateTime.Parse("2021-06-28");
 
             viewModel.Refresh();
 
-            Assert.AreEqual("Today is day 6 of Ramadan", viewModel.Day);
+            Assert.AreEqual("Today is day 2 of Ramadan", viewModel.Day);
         }
         
         [TestMethod]
         public void DisplaySuhurEnds()
         {
             clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
             ramadan.SuhurEnds = DateTime.Parse("2021-06-26 21:42:00");
 
             viewModel.Refresh();
@@ -85,6 +94,8 @@ namespace PrayerSoft.Tests
         public void DisplayIftarBegins()
         {
             clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
             ramadan.IftarBegins = DateTime.Parse("2021-06-26 21:46:00");
 
             viewModel.Refresh();
@@ -96,6 +107,8 @@ namespace PrayerSoft.Tests
         public void DisplayFirstTaraweeh()
         {
             clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
             ramadan.FirstTaraweeh = DateTime.Parse("2021-06-26 21:51:00");
 
             viewModel.Refresh();
@@ -107,6 +120,8 @@ namespace PrayerSoft.Tests
         public void DisplaySecondTaraweeh()
         {
             clock.Set(DateTime.Parse("2021-06-26"));
+            ramadan.StartDate = DateTime.Parse("2021-06-25");
+            ramadan.EndDate = DateTime.Parse("2021-06-27");
             ramadan.SecondTaraweeh = DateTime.Parse("2021-06-26 21:55:00");
 
             viewModel.Refresh();
