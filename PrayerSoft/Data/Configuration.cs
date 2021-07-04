@@ -1,82 +1,92 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace PrayerSoft.Data
 {
     public class Configuration : IConfiguration
     {
-        public string GetCalendarPath()
-        {
-            return @"Data\Calendar.csv";
-        }
-        
-        public string GetRamadanPath()
-        {
-            return @"Data\Ramadan.csv";
-        }
+        private IFilesystem filesystem;
+        private dynamic settings;
 
-        public string GetMessagesPath()
+        public Configuration(IFilesystem filesystem)
         {
-            return @"Data\Messages.csv";
-        }
-
-        public TimeSpan GetMessagesInterval()
-        {
-            return TimeSpan.FromSeconds(5);
-        }
-
-        public string GetImagesPath()
-        {
-            return "Images";
-        }
-
-        public string GetImagesPattern()
-        {
-            return "*.jpg";
-        }
-
-        public TimeSpan GetImagesInterval()
-        {
-            return TimeSpan.FromSeconds(5);
-        }
-
-        public string GetVideosPath()
-        {
-            return "Videos";
-        }
-
-        public string GetVideosPattern()
-        {
-            return "*.mp4";
-        }
-
-        public TimeSpan GetPrayerJamaatInterval()
-        {
-            return TimeSpan.FromMinutes(5);
+            this.filesystem = filesystem;
         }
 
         public void Load()
         {
-            
+            var settingsString = filesystem.Read("settings.json");
+            settings = JsonConvert.DeserializeObject(settingsString);
+        }
+
+        public string GetCalendarPath()
+        {
+            return settings.CalendarPath.Value;
+        }
+        
+        public string GetRamadanPath()
+        {
+            return settings.RamadanPath.Value;
+        }
+
+        public string GetMessagesPath()
+        {
+            return settings.Messages.Path.Value;
+        }
+
+        public TimeSpan GetMessagesInterval()
+        {
+            return TimeSpan.Parse(settings.Messages.Interval.Value);
+        }
+
+        public string GetImagesPath()
+        {
+            return settings.Images.Path.Value;
+        }
+
+        public string GetImagesPattern()
+        {
+            return settings.Images.Pattern.Value;
+        }
+
+        public TimeSpan GetImagesInterval()
+        {
+            return TimeSpan.Parse(settings.Images.Interval.Value);
+        }
+
+        public string GetVideosPath()
+        {
+            return settings.Videos.Path.Value;
+        }
+
+        public string GetVideosPattern()
+        {
+            return settings.Videos.Pattern.Value;
+        }
+
+        public TimeSpan GetPrayerJamaatInterval()
+        {
+            return TimeSpan.Parse(settings.PrayerJamaatInterval.Value);
         }
 
         public TimeSpan GetWeeklyTimetableInterval()
         {
-            return TimeSpan.FromMinutes(2);
+            return TimeSpan.Parse(settings.WeeklyTimetableInterval.Value);
         }
 
         public TimeSpan GetTodayTimetableInterval()
         {
-            return TimeSpan.FromMinutes(3);
+            return TimeSpan.Parse(settings.TodayTimetableInterval.Value);
         }
 
         public DateTime GetEidUlFitr()
         {
-            return new DateTime(2021, 05, 13);
+            return DateTime.Parse(settings.EidUlFitr.Value);
         }
 
         public DateTime GetEidUlAdha()
         {
-            return new DateTime(2021, 07, 19);
+            return DateTime.Parse(settings.EidUlAdha.Value);
         }
     }
 }

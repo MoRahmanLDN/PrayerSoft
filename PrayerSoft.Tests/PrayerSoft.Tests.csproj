@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlternatingSequenceViewModelTests.cs" />
+    <Compile Include="ConfigurationTests.cs" />
     <Compile Include="CountdownViewModelTests.cs" />
     <Compile Include="CycleTests.cs" />
     <Compile Include="MessageEnumeratorTests.cs" />

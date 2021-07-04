@@ -1,0 +1,22 @@
+{
+  "CalendarPath": "Data\\Calendar.csv",
+  "RamadanPath": "Data\\Ramadan.csv",
+  "Messages": {
+    "Path": "Data\\Messages.csv",
+    "Interval": "00:00:05"
+  },
+  "Images": {
+    "Path": "Images",
+    "Pattern": "*.jpg",
+    "Interval": "00:00:05"
+  },
+  "Videos": {
+    "Path": "Videos",
+    "Pattern": "*.mp4"
+  },
+  "PrayerJamaatInterval": "00:05:00",
+  "TodayTimetableInterval": "00:03:00",
+  "WeeklyTimetableInterval": "00:02:00",
+  "EidUlFitr": "2021-05-13",
+  "EidUlAdha": "2021-07-19"
+}
