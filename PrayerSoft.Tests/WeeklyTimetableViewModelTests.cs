@@ -25,7 +25,7 @@ namespace PrayerSoft.Tests
                 new Prayer{Begins = DateTime.Parse("14:00"), Jamaat = DateTime.Parse("14:10")},
             };
             
-            var viewModel = new WeeklyTimetableViewModel(clock, calendar);
+            var viewModel = new WeeklyScheduleViewModel(clock, calendar);
 
             viewModel.Refresh();
 

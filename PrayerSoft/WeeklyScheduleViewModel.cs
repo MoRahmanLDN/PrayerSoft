@@ -7,7 +7,7 @@ using System.Linq;
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
-    public class WeeklyTimetableViewModel : IViewModel
+    public class WeeklyScheduleViewModel : IViewModel
     {
         private readonly IClock clock;
         private readonly ICalendar calendar;
@@ -16,7 +16,7 @@ namespace PrayerSoft
 
         public List<PrayersPerDayViewModel> WeeklyPrayers { get; set; }
 
-        public WeeklyTimetableViewModel(IClock clock, ICalendar calendar)
+        public WeeklyScheduleViewModel(IClock clock, ICalendar calendar)
         {
             this.clock = clock;
             this.calendar = calendar;
