@@ -61,7 +61,8 @@
     <Compile Include="DesignTime\PrayerJamaatDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\RamadanDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\ShellDesignTimeViewModel.cs" />
-    <Compile Include="DesignTime\WeeklyTimetableDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\WeekDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\WeeklyScheduleDesignTimeViewModel.cs" />
     <Compile Include="PrayerBegins.xaml.cs">
       <DependentUpon>PrayerBegins.xaml</DependentUpon>
     </Compile>
@@ -93,7 +94,7 @@
     <Compile Include="Controls\Video.cs" />
     <Compile Include="DesignTime\CountdownDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\DateAndTimeDesignTimeViewModel.cs" />
-    <Compile Include="DesignTime\MainWindowDesignTimeViewModel.cs" />
+    <Compile Include="DesignTime\TodayDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\DailyScheduleDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\MessagesDesignTimeViewModel.cs" />
     <Compile Include="Shell.xaml.cs">

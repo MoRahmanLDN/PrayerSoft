@@ -2,6 +2,6 @@
 {
     class ShellDesignTimeViewModel
     {
-        public MainWindowDesignTimeViewModel Current { get; set; } = new MainWindowDesignTimeViewModel();
+        public TodayDesignTimeViewModel Current { get; set; } = new TodayDesignTimeViewModel();
     }
 }

@@ -24,6 +24,12 @@ namespace PrayerSoft
             WeeklyPrayers = new List<PrayersPerDayViewModel>();
         }
 
+        public void Load()
+        {
+            var now = clock.Read();
+            Reload(now);
+        }
+
         public void Refresh()
         {
             var now = clock.Read();
@@ -31,6 +37,7 @@ namespace PrayerSoft
             if (now.DayOfWeek != lastRefresh.DayOfWeek)
             {
                 Reload(now);
+                lastRefresh = now;
             }
         }
 

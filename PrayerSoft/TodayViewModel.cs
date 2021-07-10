@@ -40,7 +40,7 @@ namespace PrayerSoft
         }
 
         public void Load()
-        {
+        {   
             imageEnumerator.Load();
             videoEnumerator.Load();
             messageEnumerator.Load();

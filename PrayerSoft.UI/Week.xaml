@@ -8,7 +8,7 @@
              xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
              d:DesignHeight="450" d:DesignWidth="800">
     <d:UserControl.DataContext>
-        <dt:WeeklyTimetableDesignTimeViewModel></dt:WeeklyTimetableDesignTimeViewModel>
+        <dt:WeekDesignTimeViewModel></dt:WeekDesignTimeViewModel>
     </d:UserControl.DataContext>
     <Grid>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -23,7 +23,7 @@
                 <Label Content="Maghrib"></Label>
                 <Label Content="Isha"></Label>
             </StackPanel>
-            <ItemsControl Grid.Column="1" ItemsSource="{Binding WeeklyPrayers}">
+            <ItemsControl Grid.Column="1" ItemsSource="{Binding Schedule.WeeklyPrayers}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"></StackPanel>

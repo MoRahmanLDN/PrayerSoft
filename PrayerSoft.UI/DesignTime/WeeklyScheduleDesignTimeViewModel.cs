@@ -2,7 +2,7 @@
 
 namespace PrayerSoft.UI.DesignTime
 {
-    class WeeklyTimetableDesignTimeViewModel
+    class WeeklyScheduleDesignTimeViewModel
     {
         private static List<PrayerViewModel> prayers = new List<PrayerViewModel>
         {

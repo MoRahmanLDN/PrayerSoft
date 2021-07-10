@@ -94,12 +94,12 @@ namespace PrayerSoft.Tests
 
             AssertCurrent(typeof(TodayViewModel), "09:00:01");
             AssertCurrent(typeof(TodayViewModel), "09:03:00");
-            AssertCurrent(typeof(WeeklyScheduleViewModel), "09:03:01");
-            AssertCurrent(typeof(WeeklyScheduleViewModel), "09:05:00");
+            AssertCurrent(typeof(WeekViewModel), "09:03:01");
+            AssertCurrent(typeof(WeekViewModel), "09:05:00");
             AssertCurrent(typeof(TodayViewModel), "09:05:01");
             AssertCurrent(typeof(TodayViewModel), "09:08:00");
-            AssertCurrent(typeof(WeeklyScheduleViewModel), "09:08:01");
-            AssertCurrent(typeof(WeeklyScheduleViewModel), "09:10:00");
+            AssertCurrent(typeof(WeekViewModel), "09:08:01");
+            AssertCurrent(typeof(WeekViewModel), "09:10:00");
         }
 
         private void AssertCurrent(Type type, string time)

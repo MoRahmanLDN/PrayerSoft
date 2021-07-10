@@ -1,6 +1,6 @@
 ﻿namespace PrayerSoft.UI.DesignTime
 {
-    class MainWindowDesignTimeViewModel
+    class TodayDesignTimeViewModel
     {
         public DateAndTimeDesignTimeViewModel DateAndTime { get; set; } = new DateAndTimeDesignTimeViewModel();
         public DailyScheduleDesignTimeViewModel DailySchedule { get; set; } = new DailyScheduleDesignTimeViewModel();

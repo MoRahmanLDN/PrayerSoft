@@ -108,6 +108,7 @@
     <Compile Include="Utilities\Date.cs" />
     <Compile Include="VideoSequenceViewModel.cs" />
     <Compile Include="WeeklyScheduleViewModel.cs" />
+    <Compile Include="WeekViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

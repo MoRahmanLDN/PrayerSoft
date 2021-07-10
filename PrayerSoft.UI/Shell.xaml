@@ -19,7 +19,7 @@
         <DataTemplate DataType="{x:Type root:TodayViewModel}">
             <ui:Today></ui:Today>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type root:WeeklyScheduleViewModel}">
+        <DataTemplate DataType="{x:Type root:WeekViewModel}">
             <ui:Week></ui:Week>
         </DataTemplate>
     </Window.Resources>

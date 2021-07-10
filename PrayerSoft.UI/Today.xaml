@@ -18,7 +18,7 @@
         </DataTemplate>
     </UserControl.Resources>
     <d:UserControl.DataContext>
-        <dt:MainWindowDesignTimeViewModel></dt:MainWindowDesignTimeViewModel>
+        <dt:TodayDesignTimeViewModel></dt:TodayDesignTimeViewModel>
     </d:UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>

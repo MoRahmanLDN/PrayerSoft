@@ -14,7 +14,7 @@ namespace PrayerSoft
         private readonly IRamadan ramadan;
 
         private TodayViewModel todayViewModel;
-        private WeeklyScheduleViewModel weeklyTimetableViewModel;
+        private WeekViewModel weekViewModel;
         private PrayerJamaatViewModel prayerJamaatViewModel;
         private PrayerBeginsViewModel prayerBeginsViewModel;
 
@@ -39,9 +39,7 @@ namespace PrayerSoft
                 calendar,
                 ramadan);
 
-            weeklyTimetableViewModel = new WeeklyScheduleViewModel(
-                clock,
-                calendar);
+            weekViewModel = new WeekViewModel(clock, calendar);
 
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
             prayerBeginsViewModel = new PrayerBeginsViewModel(new PrayerVideos());
@@ -78,10 +76,10 @@ namespace PrayerSoft
                 }
                 else if (Current is TodayViewModel && now >= lastSwitch + configuration.GetTodayTimetableInterval())
                 {
-                    Current = weeklyTimetableViewModel;
+                    Current = weekViewModel;
                     lastSwitch = now;
                 }
-                else if (Current is WeeklyScheduleViewModel && now >= lastSwitch + configuration.GetWeeklyTimetableInterval())
+                else if (Current is WeekViewModel && now >= lastSwitch + configuration.GetWeeklyTimetableInterval())
                 {
                     Current = todayViewModel;
                     lastSwitch = now;
@@ -96,6 +94,7 @@ namespace PrayerSoft
             calendar.Load();
             ramadan.Load();
             todayViewModel.Load();
+            weekViewModel.Load();
         }
     }
 }
