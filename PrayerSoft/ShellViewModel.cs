@@ -39,7 +39,11 @@ namespace PrayerSoft
                 calendar,
                 ramadan);
 
-            weekViewModel = new WeekViewModel(clock, calendar);
+            weekViewModel = new WeekViewModel(
+                clock, 
+                filesystem, 
+                configuration,
+                calendar);
 
             prayerJamaatViewModel = new PrayerJamaatViewModel(clock);
             prayerBeginsViewModel = new PrayerBeginsViewModel(new PrayerVideos());

@@ -11,7 +11,14 @@
         <dt:WeekDesignTimeViewModel></dt:WeekDesignTimeViewModel>
     </d:UserControl.DataContext>
     <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -68,5 +75,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
+        <Label Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"></Label>
     </Grid>
 </UserControl>
