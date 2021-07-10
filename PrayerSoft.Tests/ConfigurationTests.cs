@@ -9,7 +9,7 @@ namespace PrayerSoft.Tests
     public class ConfigurationTests
     {
         [TestMethod]
-        public void Foo()
+        public void ParsesCorrectlyJson()
         {
             var filesystem = new MockFilesystem();
             filesystem.FileContent = @"{
