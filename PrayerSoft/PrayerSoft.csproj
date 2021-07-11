@@ -82,6 +82,7 @@
     <Compile Include="DateAndTimeViewModel.cs" />
     <Compile Include="Data\Calendar.cs" />
     <Compile Include="Data\IRamadan.cs" />
+    <Compile Include="MosqueViewModel.cs" />
     <Compile Include="PrayerBeginsViewModel.cs" />
     <Compile Include="PrayersPerDayViewModel.cs" />
     <Compile Include="RamadanViewModel.cs" />

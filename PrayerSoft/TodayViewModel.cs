@@ -6,6 +6,7 @@ namespace PrayerSoft
     [AddINotifyPropertyChangedInterface]
     public class TodayViewModel : IViewModel
     {
+        public MosqueViewModel Mosque { get; set; }
         public DateAndTimeViewModel DateAndTime { get; set; }
         public DailyScheduleViewModel DailySchedule { get; set; }
         public AlternatingSequenceViewModel AlternatingSequence { get; set; }
@@ -24,6 +25,7 @@ namespace PrayerSoft
             ICalendar calendar, 
             IRamadan ramadan)
         {
+            Mosque = new MosqueViewModel(configuration);
             DateAndTime = new DateAndTimeViewModel(clock);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
 
@@ -48,6 +50,7 @@ namespace PrayerSoft
 
         public void Refresh()
         {
+            Mosque.Refresh();
             DateAndTime.Refresh();
             DailySchedule.Refresh();
             AlternatingSequence.Refresh();

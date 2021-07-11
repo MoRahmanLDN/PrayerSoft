@@ -5,6 +5,7 @@ namespace PrayerSoft.Tests.Mocks
 {
     public class MockConfiguration : IConfiguration
     {
+        public string MosqueName { get; set; }
         public string CalendarPath { get; set; }
         public string RamadanPath { get; set; }
         public string ImagesPath { get; set; }
@@ -19,6 +20,15 @@ namespace PrayerSoft.Tests.Mocks
         public TimeSpan TodayTimetableInterval { get; set; }
         public DateTime EidUlFitr { get; set; }
         public DateTime EidUlAdha { get; set; }
+
+        public void Load()
+        {
+        }
+
+        public string GetMosqueName()
+        {
+            return MosqueName;
+        }
 
         public string GetCalendarPath()
         {
@@ -78,10 +88,6 @@ namespace PrayerSoft.Tests.Mocks
         public TimeSpan GetTodayTimetableInterval()
         {
             return TodayTimetableInterval;
-        }
-
-        public void Load()
-        {
         }
 
         public DateTime GetEidUlFitr()

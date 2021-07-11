@@ -1,4 +1,5 @@
 {
+  "MosqueName": "Mosque",
   "CalendarPath": "Data\\Calendar.csv",
   "RamadanPath": "Data\\Ramadan.csv",
   "Messages": {

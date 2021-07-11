@@ -4,6 +4,7 @@ namespace PrayerSoft
 {
     public class WeekViewModel : IViewModel
     {
+        public MosqueViewModel Mosque { get; set; }
         public WeeklyScheduleViewModel Schedule { get; set; }
         public MessagesViewModel Messages { get; set; }
 
@@ -15,6 +16,7 @@ namespace PrayerSoft
             IConfiguration configuration, 
             ICalendar calendar)
         {
+            Mosque = new MosqueViewModel(configuration);
             Schedule = new WeeklyScheduleViewModel(clock, calendar);
 
             messageEnumerator = new MessageEnumerator(filesyste, configuration);
@@ -29,6 +31,7 @@ namespace PrayerSoft
 
         public void Refresh()
         {
+            Mosque.Refresh();
             Schedule.Refresh();
             Messages.Refresh();
         }

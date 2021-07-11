@@ -19,6 +19,11 @@ namespace PrayerSoft.Data
             settings = JsonConvert.DeserializeObject(settingsString);
         }
 
+        public string GetMosqueName() 
+        {
+            return settings.MosqueName;
+        }
+
         public string GetCalendarPath()
         {
             return settings.CalendarPath.Value;

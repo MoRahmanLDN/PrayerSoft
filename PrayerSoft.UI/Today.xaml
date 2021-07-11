@@ -30,6 +30,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label Content="{Binding Mosque.Name}"></Label>
             <Label Content="{Binding DateAndTime.CurrentTime}"></Label>
             <Label Content="{Binding DateAndTime.CurrentDate}"></Label>
             <Label Content="{Binding DateAndTime.CurrentIslamicDate}"></Label>

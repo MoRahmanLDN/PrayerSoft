@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DesignTime\MosqueDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\PrayerJamaatDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\RamadanDesignTimeViewModel.cs" />
     <Compile Include="DesignTime\ShellDesignTimeViewModel.cs" />

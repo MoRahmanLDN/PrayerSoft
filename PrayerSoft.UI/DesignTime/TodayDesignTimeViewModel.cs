@@ -2,6 +2,7 @@
 {
     class TodayDesignTimeViewModel
     {
+        public MosqueDesignTimeViewModel Mosque { get; set; } = new MosqueDesignTimeViewModel();
         public DateAndTimeDesignTimeViewModel DateAndTime { get; set; } = new DateAndTimeDesignTimeViewModel();
         public DailyScheduleDesignTimeViewModel DailySchedule { get; set; } = new DailyScheduleDesignTimeViewModel();
         public CountdownDesignTimeViewModel Countdown { get; set; } = new CountdownDesignTimeViewModel();

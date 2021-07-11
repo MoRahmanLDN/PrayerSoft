@@ -13,6 +13,7 @@ namespace PrayerSoft.Tests
         {
             var filesystem = new MockFilesystem();
             filesystem.FileContent = @"{
+              ""MosqueName"" : ""Mosque"",
               ""CalendarPath"": ""Data\\Calendar.csv"",
               ""RamadanPath"": ""Data\\Ramadan.csv"",
               ""Messages"": {
@@ -38,6 +39,7 @@ namespace PrayerSoft.Tests
             var configuration = new Configuration(filesystem);
             configuration.Load();
 
+            Assert.AreEqual("Mosque", configuration.GetMosqueName());
             Assert.AreEqual("Data\\Calendar.csv", configuration.GetCalendarPath());
             Assert.AreEqual("Data\\Ramadan.csv", configuration.GetRamadanPath());
             Assert.AreEqual("Data\\Messages.csv", configuration.GetMessagesPath());

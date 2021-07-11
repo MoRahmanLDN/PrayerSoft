@@ -62,6 +62,7 @@
     <Compile Include="Mocks\MockFilesystem.cs" />
     <Compile Include="Mocks\MockRamadan.cs" />
     <Compile Include="Mocks\MockSequenceViewModel.cs" />
+    <Compile Include="MosqueViewModelTests.cs" />
     <Compile Include="PrayerBeginsViewModelTests.cs" />
     <Compile Include="RamadanTests.cs" />
     <Compile Include="RamadanViewModelTests.cs" />
