@@ -56,6 +56,10 @@ namespace PrayerSoft.UI
             {
                 ToggleFullScreen();
             }
+            if (e.Key == Key.F5)
+            {
+                LoadData();
+            }
         }
 
         private void ToggleFullScreen()

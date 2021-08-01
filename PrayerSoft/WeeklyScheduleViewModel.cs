@@ -21,7 +21,6 @@ namespace PrayerSoft
             this.clock = clock;
             this.calendar = calendar;
             format = new Format();
-            WeeklyPrayers = new List<PrayersPerDayViewModel>();
         }
 
         public void Load()
@@ -33,7 +32,7 @@ namespace PrayerSoft
         public void Refresh()
         {
             var now = clock.Read();
-
+            
             if (now.DayOfWeek != lastRefresh.DayOfWeek)
             {
                 Reload(now);
@@ -43,19 +42,21 @@ namespace PrayerSoft
 
         private void Reload(DateTime startDate)
         {
-            WeeklyPrayers.Clear();
+            var weeklyPrayers = new List<PrayersPerDayViewModel>();
 
             for (int daysToAdd = 0; daysToAdd < 7; daysToAdd++)
             {
                 var day = startDate.AddDays(daysToAdd);
                 var prayers = calendar.GetPrayers(day).Select(Map).ToList();
 
-                WeeklyPrayers.Add(new PrayersPerDayViewModel
+                weeklyPrayers.Add(new PrayersPerDayViewModel
                 {
                     DayOfWeek = day.DayOfWeek.ToString(),
                     Prayers = prayers
                 });
             }
+
+            WeeklyPrayers = weeklyPrayers;
         }
 
         private PrayerViewModel Map(Prayer prayer)
