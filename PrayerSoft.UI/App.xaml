@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:PrayerSoft.UI"
              StartupUri="Shell.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey }" Color="{x:Static local:StyleConfig.TextColor}"/>
     </Application.Resources>
 </Application>

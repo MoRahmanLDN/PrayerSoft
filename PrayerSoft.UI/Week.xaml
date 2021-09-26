@@ -17,9 +17,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="{Binding Mosque.Name}"></Label>
+        <Label Grid.Column="0" Grid.Row="0" Content="{Binding Mosque.Name}"
+               FontFamily="{x:Static local:StyleConfig.MosqueNameFontFamily}"
+               FontWeight="{x:Static local:StyleConfig.MosqueNameFontWeight}" 
+               FontSize="{x:Static local:StyleConfig.MosqueNameFontSize}"></Label>
         <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -40,7 +44,10 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1 0 0 0" BorderBrush="Black">
+                        <Border BorderThickness="1 0 0 0">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{x:Static local:StyleConfig.TextColor}"></SolidColorBrush>
+                            </Border.BorderBrush>
                             <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
@@ -77,6 +84,14 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
-        <Label Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"></Label>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.Background>
+                <SolidColorBrush Color="{x:Static local:StyleConfig.SplitterColor}"></SolidColorBrush>
+            </Grid.Background>
+        </Grid>
+        <Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"
+               FontFamily="{x:Static local:StyleConfig.MessagesFontFamily}"
+               FontWeight="{x:Static local:StyleConfig.MessagesFontWeight}"
+               FontSize="{x:Static local:StyleConfig.MessagesFontSize}"></Label>
     </Grid>
 </UserControl>

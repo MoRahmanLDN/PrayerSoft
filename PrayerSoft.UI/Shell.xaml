@@ -23,6 +23,9 @@
             <ui:Week></ui:Week>
         </DataTemplate>
     </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush Color="{x:Static ui:StyleConfig.BackgroundColor}"></SolidColorBrush>
+    </Window.Background>
     <Grid>
         <ContentControl Content="{Binding Current}"></ContentControl>
     </Grid>
