@@ -81,5 +81,10 @@ namespace PrayerSoft.UI
                 this.WindowStyle = WindowStyle.SingleBorderWindow;
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

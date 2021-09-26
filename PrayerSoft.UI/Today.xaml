@@ -7,6 +7,7 @@
              xmlns:ui="clr-namespace:PrayerSoft.UI"
              xmlns:root="clr-namespace:PrayerSoft;assembly=PrayerSoft"
              xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
+             xmlns:p="clr-namespace:PrayerSoft.UI.Properties"
              mc:Ignorable="d"
              d:DesignHeight="576" d:DesignWidth="1024">
     <UserControl.Resources>
@@ -23,14 +24,14 @@
     </d:UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="{Binding Source={x:Static p:Settings.Default}, Path=LeftColumn, Mode=TwoWay}"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="7*"></ColumnDefinition>
+            <ColumnDefinition Width="{Binding Source={x:Static p:Settings.Default}, Path=RightColumn, Mode=TwoWay}"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="5"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="{Binding Source={x:Static p:Settings.Default}, Path=FooterHeight, Mode=TwoWay}"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0">
             <Label Content="{Binding Mosque.Name}"
@@ -142,13 +143,15 @@
                 <SolidColorBrush Color="{x:Static ui:StyleConfig.SplitterColor}"></SolidColorBrush>
             </GridSplitter.Background>
         </GridSplitter>
-        <Grid Grid.Row="1" Grid.ColumnSpan="3">
-            <Grid.Background>
+        <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" ResizeDirection="Rows" HorizontalAlignment="Stretch">
+            <GridSplitter.Background>
                 <SolidColorBrush Color="{x:Static ui:StyleConfig.SplitterColor}"></SolidColorBrush>
-            </Grid.Background>
-        </Grid>
+            </GridSplitter.Background>
+        </GridSplitter>
         <ContentControl Grid.Column="2" Grid.Row="0" Content="{Binding AlternatingSequence.Current}"></ContentControl>
-        <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"
+        <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Content="{Binding Messages.Current}"
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" 
                FontFamily="{x:Static ui:StyleConfig.MessagesFontFamily}"
                FontWeight="{x:Static ui:StyleConfig.MessagesFontWeight}"
                FontSize="{x:Static ui:StyleConfig.MessagesFontSize}"></Label>

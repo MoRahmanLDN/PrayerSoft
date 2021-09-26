@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrayerSoft.UI"
+             xmlns:p="clr-namespace:PrayerSoft.UI.Properties"
              mc:Ignorable="d" 
              xmlns:dt="clr-namespace:PrayerSoft.UI.DesignTime"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -18,7 +19,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="5"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="{Binding Source={x:Static p:Settings.Default}, Path=FooterHeight, Mode=TwoWay}"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Content="{Binding Mosque.Name}"
                FontFamily="{x:Static local:StyleConfig.MosqueNameFontFamily}"
@@ -84,12 +85,14 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="3">
-            <Grid.Background>
+        <GridSplitter Grid.Row="2" Grid.ColumnSpan="3" ResizeDirection="Rows" HorizontalAlignment="Stretch">
+            <GridSplitter.Background>
                 <SolidColorBrush Color="{x:Static local:StyleConfig.SplitterColor}"></SolidColorBrush>
-            </Grid.Background>
-        </Grid>
-        <Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center" Content="{Binding Messages.Current}"
+            </GridSplitter.Background>
+        </GridSplitter>
+        <Label Grid.Column="0" Grid.Row="3" Content="{Binding Messages.Current}"
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" 
                FontFamily="{x:Static local:StyleConfig.MessagesFontFamily}"
                FontWeight="{x:Static local:StyleConfig.MessagesFontWeight}"
                FontSize="{x:Static local:StyleConfig.MessagesFontSize}"></Label>
