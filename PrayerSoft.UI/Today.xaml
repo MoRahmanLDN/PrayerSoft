@@ -11,10 +11,10 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
         <DataTemplate DataType="{x:Type root:ImageSequenceViewModel}">
-            <Image Stretch="Uniform" Source="{Binding Image}"></Image>
+            <Image Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Image}"></Image>
         </DataTemplate>
         <DataTemplate DataType="{x:Type root:VideoSequenceViewModel}">
-            <c:Video Stretch="Uniform" Source="{Binding Video}" HasEnded="{Binding HasCurrentVideoEnded, Mode=OneWayToSource}"></c:Video>
+            <c:Video Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Video}" HasEnded="{Binding HasCurrentVideoEnded, Mode=OneWayToSource}"></c:Video>
         </DataTemplate>
     </UserControl.Resources>
     <d:UserControl.DataContext>
