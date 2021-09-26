@@ -1,16 +1,19 @@
-﻿using PropertyChanged;
+﻿using PrayerSoft.Data;
+using PropertyChanged;
 
 namespace PrayerSoft
 {
     [AddINotifyPropertyChangedInterface]
     public class DateAndTimeViewModel: IViewModel
     {
+        readonly IConfiguration configuration;
         readonly IClock clock;
         readonly Format format;
 
-        public DateAndTimeViewModel(IClock clock)
+        public DateAndTimeViewModel(IClock clock, IConfiguration configuration)
         {
             this.clock = clock;
+            this.configuration = configuration;
             format = new Format();
         }
 
@@ -23,7 +26,7 @@ namespace PrayerSoft
             var now = clock.Read();
             CurrentTime = format.LongTime(now);
             CurrentDate = format.LongDate(now);
-            CurrentIslamicDate = format.IslamicDate(now);
+            CurrentIslamicDate = format.IslamicDate(now, configuration.GetHijriAdjustment());
         }
     }
 }

@@ -20,6 +20,7 @@ namespace PrayerSoft.Tests.Mocks
         public TimeSpan TodayTimetableInterval { get; set; }
         public DateTime EidUlFitr { get; set; }
         public DateTime EidUlAdha { get; set; }
+        public int HijriAdjustment { get; set; }
 
         public void Load()
         {
@@ -98,6 +99,11 @@ namespace PrayerSoft.Tests.Mocks
         public DateTime GetEidUlAdha()
         {
             return EidUlAdha;
+        }
+
+        public int GetHijriAdjustment()
+        {
+            return HijriAdjustment;
         }
     }
 }

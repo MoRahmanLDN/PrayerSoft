@@ -19,5 +19,6 @@
   "TodayTimetableInterval": "00:03:00",
   "WeeklyTimetableInterval": "00:02:00",
   "EidUlFitr": "2021-05-13",
-  "EidUlAdha": "2021-07-19"
+  "EidUlAdha": "2021-07-19",
+  "HijriAdjustment": -1
 }

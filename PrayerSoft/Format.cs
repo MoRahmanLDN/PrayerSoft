@@ -47,10 +47,10 @@ namespace PrayerSoft
             ""
         };
 
-        public string IslamicDate(DateTime date)
+        public string IslamicDate(DateTime date, int hijriAdjustment)
         {
             var format = CultureInfo.CreateSpecificCulture("ar").DateTimeFormat;
-            format.Calendar = new HijriCalendar { HijriAdjustment = -1 };
+            format.Calendar = new HijriCalendar { HijriAdjustment = hijriAdjustment };
             format.MonthGenitiveNames = IslamicMonths;
             return date.ToString("dd MMMM yyyy", format);
         }

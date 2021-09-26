@@ -20,5 +20,6 @@ namespace PrayerSoft.Data
         TimeSpan GetTodayTimetableInterval();
         DateTime GetEidUlFitr();
         DateTime GetEidUlAdha();
+        int GetHijriAdjustment();
     }
 }

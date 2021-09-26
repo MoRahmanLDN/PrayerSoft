@@ -93,5 +93,10 @@ namespace PrayerSoft.Data
         {
             return DateTime.Parse(settings.EidUlAdha.Value);
         }
+
+        public int GetHijriAdjustment()
+        {
+            return (int)settings.HijriAdjustment.Value;
+        }
     }
 }

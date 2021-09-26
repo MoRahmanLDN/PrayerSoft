@@ -26,7 +26,7 @@ namespace PrayerSoft
             IRamadan ramadan)
         {
             Mosque = new MosqueViewModel(configuration);
-            DateAndTime = new DateAndTimeViewModel(clock);
+            DateAndTime = new DateAndTimeViewModel(clock, configuration);
             DailySchedule = new DailyScheduleViewModel(clock, calendar);
 
             imageEnumerator = new ImageEnumerator(filesystem, configuration);

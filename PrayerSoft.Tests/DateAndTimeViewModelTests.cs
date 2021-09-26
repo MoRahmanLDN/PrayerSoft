@@ -8,13 +8,15 @@ namespace PrayerSoft.Tests
     public class DateAndTimeViewModelTests
     {
         MockClock clock;
+        MockConfiguration configuration;
         DateAndTimeViewModel viewModel;
 
         [TestInitialize]
         public void Initialize()
         {
             clock = new MockClock();
-            viewModel = new DateAndTimeViewModel(clock);
+            configuration = new MockConfiguration();
+            viewModel = new DateAndTimeViewModel(clock, configuration);
         }
 
         [TestMethod]
@@ -46,6 +48,7 @@ namespace PrayerSoft.Tests
         public void OnRefreshCurrentIslamicDateIsUpdated()
         {
             var expectedDate = "13 Ramadan 1442";
+            configuration.HijriAdjustment = -1;
             clock.Set(new DateTime(2021, 04, 25));
 
             viewModel.Refresh();

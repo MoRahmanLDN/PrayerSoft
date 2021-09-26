@@ -33,7 +33,8 @@ namespace PrayerSoft.Tests
               ""TodayTimetableInterval"": ""00:03:00"",
               ""WeeklyTimetableInterval"": ""00:02:00"",
               ""EidUlFitr"": ""2021-05-13"",
-              ""EidUlAdha"": ""2021-07-19""
+              ""EidUlAdha"": ""2021-07-19"",
+              ""HijriAdjustment"": -1
             }";
 
             var configuration = new Configuration(filesystem);
@@ -54,6 +55,7 @@ namespace PrayerSoft.Tests
             Assert.AreEqual(TimeSpan.Parse("00:02:00"), configuration.GetWeeklyTimetableInterval());
             Assert.AreEqual(DateTime.Parse("2021-05-13"), configuration.GetEidUlFitr());
             Assert.AreEqual(DateTime.Parse("2021-07-19"), configuration.GetEidUlAdha());
+            Assert.AreEqual(-1, configuration.GetHijriAdjustment());
         }
     }
 }
