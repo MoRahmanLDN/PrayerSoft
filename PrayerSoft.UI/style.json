@@ -2,10 +2,59 @@
   "BackgroundColor": "#AF2084",
   "TextColor": "White",
   "SplitterColor": "#f5b5ef",
+
   "MessagesFontSize": 30,
   "MessagesFontFamily": "Arial",
   "MessagesFontWeight": "Bold",
+
   "MosqueNameFontSize": 30,
   "MosqueNameFontFamily": "Arial",
-  "MosqueNameFontWeight": "Bold"
+  "MosqueNameFontWeight": "Bold",
+
+  "TimeFontSize": 12,
+  "TimeFontFamily": "Arial",
+  "TimeFontWeight": "Normal",
+
+  "DateFontSize": 12,
+  "DateFontFamily": "Arial",
+  "DateFontWeight": "Normal",
+
+  "IslamicDateFontSize": 12,
+  "IslamicDateFontFamily": "Arial",
+  "IslamicDateFontWeight": "Normal",
+
+  "PrayersFontSize": 12,
+  "PrayersFontFamily": "Arial",
+  "PrayersFontWeight": "Normal",
+
+  "TimeToJamaatFontSize": 12,
+  "TimeToJamaatFontFamily": "Arial",
+  "TimeToJamaatFontWeight": "Normal",
+
+  "RamadanTitleFontSize": 12,
+  "RamadanTitleFontFamily": "Arial",
+  "RamadanTitleFontWeight": "Normal",
+
+  "RamadanIntervalFontSize": 12,
+  "RamadanIntervalFontFamily": "Arial",
+  "RamadanIntervalFontWeight": "Normal",
+
+  "RamadanDayFontSize": 12,
+  "RamadanDayFontFamily": "Arial",
+  "RamadanDayFontWeight": "Normal",
+
+  "RamadanPrayersFontSize": 12,
+  "RamadanPrayersFontFamily": "Arial",
+  "RamadanPrayersFontWeight": "Normal",
+
+  "EidDatesFontSize": 12,
+  "EidDatesFontFamily": "Arial",
+  "EidDatesFontWeight": "Normal",
+
+  "WeeklyPrayersFontSize": 15,
+  "WeeklyPrayersFontFamily": "Arial",
+  "WeeklyPrayersFontWeight": "Normal",
+
+  "AlternatingColor1": "#AF2099",
+  "AlternatingColor2": "#AF2064"
 }
