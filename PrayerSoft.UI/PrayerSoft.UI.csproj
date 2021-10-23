@@ -147,6 +147,9 @@
     <None Include="settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="style.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
