@@ -55,6 +55,10 @@
   "WeeklyPrayersFontFamily": "Arial",
   "WeeklyPrayersFontWeight": "Normal",
 
+  "PrayerJamaatFontSize": 30,
+  "PrayerJamaatFontFamily": "Arial",
+  "PrayerJamaatFontWeight": "Normal",
+
   "AlternatingColor1": "#AF2099",
   "AlternatingColor2": "#AF2064"
 }
