@@ -21,6 +21,9 @@ namespace PrayerSoft.UI
         public static double MosqueNameFontSize { get; set; }
         public static FontWeight MosqueNameFontWeight { get; set; }
 
+        public static Color AlternatingColor1 { get; set; }
+        public static Color AlternatingColor2 { get; set; }
+        
         static StyleConfig()
         {
             Load();
@@ -41,6 +44,9 @@ namespace PrayerSoft.UI
             MosqueNameFontFamily = GetFont("MosqueNameFontFamily");
             MosqueNameFontSize = GetDouble("MosqueNameFontSize");
             MosqueNameFontWeight = GetFontWeight("MosqueNameFontWeight");
+
+            AlternatingColor1 = GetColor("AlternatingColor1");
+            AlternatingColor2 = GetColor("AlternatingColor2");
         }
 
         private static Color GetColor(string name)

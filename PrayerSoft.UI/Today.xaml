@@ -54,10 +54,10 @@
                 <Label Grid.Column="1" Grid.Row="1" Content="Begins"/>
                 <Label Grid.Column="2" Grid.Row="1" Content="Jamaat"/>
             </Grid>
-            <ItemsControl ItemsSource="{Binding DailySchedule.Prayers}">
+            <ItemsControl ItemsSource="{Binding DailySchedule.Prayers}" AlternationCount="2">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
+                    <DataTemplate>                        
+                        <Grid x:Name="Item">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -70,6 +70,22 @@
                             <Label Grid.Column="1" Content="{Binding Begins}"></Label>
                             <Label Grid.Column="2" Content="{Binding Jamaat}"></Label>
                         </Grid>
+                        <DataTemplate.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" TargetName="Item">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{x:Static ui:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" TargetName="Item">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{x:Static ui:StyleConfig.AlternatingColor2}"></SolidColorBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -98,6 +114,9 @@
                 <Label Grid.Column="3" Grid.Row="1" Content="{Binding DailySchedule.Zawaal}"></Label>
             </Grid>
             <StackPanel Orientation="Horizontal" Visibility="{Binding Path=Countdown.IsVisible, Converter={StaticResource BooleanToVisibility}}">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="{x:Static ui:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                </StackPanel.Background>
                 <Label Content="Time to Jamaat: "></Label>
                 <Label Content="{Binding Countdown.Remaining}"></Label>
             </StackPanel>
@@ -113,7 +132,11 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
+                    <Grid.Background>
+                        <SolidColorBrush Color="{x:Static ui:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                    </Grid.Background>
                     <StackPanel Grid.Column="0" Grid.Row="0">
                         <Label HorizontalAlignment="Center" Content="Suhur Ends"></Label>
                         <Label HorizontalAlignment="Center" Content="{Binding Ramadan.SuhurEnds}"></Label>
@@ -122,12 +145,16 @@
                         <Label HorizontalAlignment="Center" Content="Iftar Begins"></Label>
                         <Label HorizontalAlignment="Center" Content="{Binding Ramadan.IftarBegins}"></Label>
                     </StackPanel>
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{x:Static ui:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                        </StackPanel.Background>
+                        <Label Content="Taraweeh Prayer"></Label>
+                        <Label Content="{Binding Ramadan.FirstTaraweeh}"></Label>
+                        <Label Content="{Binding Ramadan.SecondTaraweeh}"></Label>
+                    </StackPanel>
                 </Grid>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Taraweeh Prayer"></Label>
-                    <Label Content="{Binding Ramadan.FirstTaraweeh}"></Label>
-                    <Label Content="{Binding Ramadan.SecondTaraweeh}"></Label>
-                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Eid ul Fitr"></Label>
                     <Label Content="{Binding Ramadan.EidUlFitr}"></Label>
