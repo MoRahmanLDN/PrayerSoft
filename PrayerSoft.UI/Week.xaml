@@ -31,11 +31,23 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
-                <Label Content="Fajr"></Label>
+                <Label Content="Fajr">
+                    <Label.Background>
+                        <SolidColorBrush Color="{x:Static local:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                    </Label.Background>
+                </Label>
                 <Label Content="Zuhr"></Label>
-                <Label Content="Asr"></Label>
+                <Label Content="Asr">
+                    <Label.Background>
+                        <SolidColorBrush Color="{x:Static local:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                    </Label.Background>
+                </Label>
                 <Label Content="Maghrib"></Label>
-                <Label Content="Isha"></Label>
+                <Label Content="Isha">
+                    <Label.Background>
+                        <SolidColorBrush Color="{x:Static local:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                    </Label.Background>
+                </Label>
             </StackPanel>
             <ItemsControl Grid.Column="1" ItemsSource="{Binding Schedule.WeeklyPrayers}">
                 <ItemsControl.ItemsPanel>
@@ -64,19 +76,35 @@
                             <Label Grid.Row="1" Grid.Column="0" Content="Begins"></Label>
                             <Label Grid.Row="1" Grid.Column="1" Content="Jamaat"></Label>
 
-                            <ItemsControl Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Prayers}">
+                                <ItemsControl Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Prayers}" AlternationCount="2">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
+                                         <Grid x:Name="Item">
+                                                <Grid.ColumnDefinitions>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Content="{Binding Begins}"></Label>
                                             <Label Grid.Column="1" Content="{Binding Jamaat}"></Label>
-                                        </Grid>
-                                    </DataTemplate>
+                                         </Grid>
+                                            <DataTemplate.Triggers>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                    <Setter Property="Background" TargetName="Item">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{x:Static local:StyleConfig.AlternatingColor1}"></SolidColorBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                    <Setter Property="Background" TargetName="Item">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{x:Static local:StyleConfig.AlternatingColor2}"></SolidColorBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Grid>
